@@ -1,0 +1,117 @@
+.bg-login{
+    min-height: 100vh;
+    min-width: 100vw;
+}
+.card-login{
+    width: 450px;
+}
+.btn-masuk{
+    background: #363636;
+}
+.bg-daftar{
+    min-height: 100vh;
+    min-width: 100vw;
+}
+.card-daftar{
+    width: 450px;
+}
+
+.btn-daftar{
+    background: #363636;
+}
+.bg-header{
+    min-width: 100vw;
+    background: #363636;
+}
+.bg-home{
+    background-image: url("../asset/bg-home.jpg");
+    min-height: 85vh;
+    min-width: 100vw;
+    background-position: center;
+    background-size: cover;
+}
+.btn-lihat{
+    border-radius: 10px;
+    height: 50px;
+    width: 130px;
+}
+.txt-tgldiskon{
+    color: #8E8E8E;
+}
+.section-footer{
+    background: #363636;
+    padding:20px 50px 20px;
+    font-size: small;;
+    min-width: 100vw;
+}
+
+.bgcard-art{
+    background: #363636; 
+    width: 300px;
+    height: 340px;
+    border-radius: 7px;
+    font-size: x-large;
+}
+.card-art{
+    width: 280px;
+    height: 280px;
+    margin: 20px 30px 20px 0px;
+    border-radius: 7px;
+    background-color: white;
+}
+.card-art2{
+    width: 330px;
+    height: 350px;
+    margin: 0px 30px 20px 0px;
+    border-radius: 7px;
+}
+.box-card{
+    position: absolute;
+    margin: 10px 0px 0px 180px;
+}
+.art{
+    width: 670px;
+    height: 720px;
+}
+.tampilan-lukisan{
+    width: 120px;
+    height: 120px;
+}
+.box-stock{
+    min-width: 40vw;
+    min-height: 25vh;
+    background-color: #EEEEEE;
+    border-radius: 15px;
+}
+.box-deskripsi{
+    min-width: 40vw;
+    min-height: 80vh;
+    background-color: #EEEEEE;
+    border-radius: 15px;
+}
+.btn-tambah-keranjang {
+    font-size: small;
+    background: #363636;
+    border-radius: 10px;
+    height: 38px;
+}
+.btn-beli-langsung{
+    font-size: small;
+    border-radius: 10px;
+    color: #363636;
+    display: flex;
+    justify-content: center;
+}
+.box-add{
+    width: 80px;
+    border-style: groove;   
+}
+.font-under{
+    font-size: smaller;
+}
+.search{
+    background-color: white;
+    min-width: 40vw;
+    min-height: 8vh;
+    border-radius: 10px;
+}
