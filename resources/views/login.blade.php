@@ -17,7 +17,7 @@
                         <label for="Kata Sandi" class="form-label">Kata Sandi</label>
                     </div>
                     <div>
-                        <input class="form-control" type="password" id="katasandi" name="katasandi">
+                        <input class="form-control" type="password" id="password" name="password">
                     </div>
                     @if ($errors->any())
                         <tr>

@@ -16,7 +16,7 @@ class DaftarController extends Controller
         $request->validate([
             'nama' => 'required|unique:users,nama|regex:/^[a-zA-Z]+$/',
             'email' => 'required|email|unique:users,email',
-            'katasandi' => 'required|min:5|max:20',
+            'password' => 'required|min:5|max:20',
         ],
         [
             'nama.required' => 'Kolom nama harus terisi',
@@ -25,15 +25,15 @@ class DaftarController extends Controller
             'email.required' => 'Kolom email harus terisi',
             'email.email' => 'Email yang dimasukkan harus sesuai',
             'email.unique' => 'Email sudah digunakkan',
-            'katasandi.required' => 'Kolom kata sandi harus terisi',
-            'katasandi.min' => 'Kata sandi harus terdapat minimal 5 karakter',
-            'katasandi.max' => 'Kata sandi harus terdapat maksimal 20 karakter',
+            'password.required' => 'Kolom kata sandi harus terisi',
+            'password.min' => 'Kata sandi harus terdapat minimal 5 karakter',
+            'password.max' => 'Kata sandi harus terdapat maksimal 20 karakter',
         ]);
 
         $user = new User();
         $user->nama = $request->nama;
         $user->email = $request->email;
-        $user->katasandi = Hash::make($request->katasandi);
+        $user->password = Hash::make($request->password);
         $user->role = "Member";
         $user->save();
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -15,10 +16,15 @@ class LoginController extends Controller
     }
 
     public function Login(Request $request){
-        $credentials = $request->validate([
+        $request->validate([
             'nama' => 'required|regex:/^[a-zA-Z]+$/',
-            'katasandi' => 'required|min:5|max:20',
+            'password' => 'required|min:5|max:20',
         ]);
+
+        $credentials = [
+            'nama' => $request->nama,
+            'password' => $request->password
+        ];
 
         if(Auth::attempt($credentials,false)){
             $request->session()->regenerate();
@@ -27,7 +33,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'katasandi' => 'Nama atau kata sandi salah',
+            'password' => 'Nama atau kata sandi salah',
         ]);
     }
 

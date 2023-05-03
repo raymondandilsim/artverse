@@ -23,7 +23,7 @@
                         <label for="Kata Sandi" class="form-label">Kata Sandi</label>
                     </div>
                     <div>
-                        <input class="form-control" type="password" id="katasandi" name="katasandi">
+                        <input class="form-control" type="password" id="password" name="password">
                     </div>
                     <div>
                         <label for="Masukkan Sandi Ulang" class="form-label">Masukkan Sandi Ulang</label>
