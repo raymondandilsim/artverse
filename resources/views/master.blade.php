@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
-a
+
 <body>
     <header class="bg-header">
         <nav class="d-flex justify-content-around py-4">
