@@ -4,7 +4,7 @@
     <div class="d-flex bg-daftar bg-secondary justify-content-center align-items-center">
         <div class="card-daftar bg-white px-5 py-5 rounded-3 shadow">
             <h2 class="text-center"><b>DAFTAR</b></h2>
-            <form action="/Daftar" method="POST">
+            <form action="/daftar" method="POST">
                 @csrf
                 <div>
                     <div>
@@ -31,8 +31,18 @@
                     <div>
                         <input class="form-control" type="password" id="masukkansandiulang" name="masukkansandiulang">
                     </div>
+                    @if ($errors->any())
+                        <tr>
+                            <td colspan="2" class="px-5 py-2">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                                </ul>
+                            </td>
+                        </tr>
+                    @endif
                     <input class="btn-daftar text-white form-control mt-5" type="submit" value="Daftar">
-                    <h6>Sudah punya akun? <a class="text-decoration-none" href="/login">Masuk</a></h6>
+                    <h6>Sudah punya akun? <a class="text-decoration-none" href="/loginPage">Masuk</a></h6>
                 </div>
             </form>
         </div>

@@ -20,12 +20,12 @@
                 <div>
                     <span><b> Atur jumlah dan catatan </b></span>
                     <div class="d-flex align-items-center mt-1">
-                        <div class="box-add d-flex justify-content-between me-1">
-                            <input class="plus-btn border-0 pt-0" type="button" value="-">
-                            <input type="text" id="quantity" value="1">
-                            <input class="min-btn border-0 pt-0" type="button" value="+">
+                        <div class="box-add d-flex me-1">
+                            <button class="plus-btn border-0 pt-0">-</button>
+                            <input class="quantity text-center border-0" type="text" id="quantity" value="1">
+                            <button class="min-btn border-0 pt-0">+</button>
                         </div>
-                        <span>Stock Total:</span>
+                        <div>Stock Total:</div>
                     </div>
                     <div class="d-flex justify-content-between mt-4">
                         <span>Subtotal</span>
@@ -33,15 +33,8 @@
                     </div>
                 </div>
                 <div>
-                    <input class="btn-tambah-keranjang text-white fw-bold form-control" type="submit" value="+Keranjang">
-                    <input class="btn-beli-langsung fw-bold mt-1 form-control" type="submit" value="Beli Langsung">
-                    <div class="font-under d-flex justify-content-center mt-2">
-                        <a class="text-decoration-none text-dark me-2" href=""><i class="bi-chat-left-text me-1"></i><b>Diskusi</b></a>
-                        <span>|</span>
-                        <a class="text-decoration-none text-dark mx-2" href=""><i class="bi-heart me-1"></i><b>Wishlist</b></a>
-                        <span>|</span>
-                        <a class="text-decoration-none text-dark ms-2" href=""><i class="bi-share-fill me-1"></i><b>Share</b></a>
-                    </div>
+                    <button class="btn-tambah-keranjang text-white fw-bold mt-2"> +Keranjang</button>
+                    <button class="btn-beli-langsung fw-bold mt-2">Beli Langsung</button>
                 </div>
             </div>
             <div class="box-deskripsi shadow mt-4 p-5">
@@ -64,8 +57,21 @@
                     </ul>
                 </div>
                 <div class="mt-2 pb-2 border-bottom border-dark">
-                    <img src="\asset\profile.png" alt="">
-                    <span class="mx-2">Yanto</span>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <img src="\asset\profile.png" alt="">
+                            <span class="mx-2">Yanto</span>
+                        </div>
+                        <a class="text-decoration-none text-dark me-2" href=""><i class="bi-chat-left-text me-2"></i>Chat</a>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <i class="bi-geo-alt-fill"></i>
+                    <span>Dikirim dari kota <b>Kota</b></span>
+                    <div class="d-flex justify-content-center justify-content-around mt-3">
+                        <button class="btn-diskusi text-white"><b>Diskusi</b></button>
+                        <button class="btn-ulasan text-white"><b>Ulasan</b></button>
+                    </div>
                 </div>
             </div>
         </div>

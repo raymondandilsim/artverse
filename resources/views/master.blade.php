@@ -17,26 +17,19 @@
 
 <body>
     <header class="bg-header">
-        <nav class="d-flex justify-content-between py-4">
+        <nav class="d-flex justify-content-around py-4">
             <div class="align-items-center justify-content-center">
                 <a href="/"><img src="\asset\logoArtverse.png" alt=""></a>
             </div>
-            <div class="d-flex align-items-center">
-                <form action="" method="GET">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-search" viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg>
-                        <input class="search  bi-search ps-5" type="search" id="search"
-                            placeholder="Mencari...">
+            <div class="d-flex align-items-center ">
+                    <div class="search">
+                        <i class="ms-4 bi-search"></i>
+                        <input class="ps-3 border-0 form-control" type="search" id="search" placeholder="Mencari...">
                     </div>
-                </form>
             </div>
             <div class="d-flex align-items-center">
                 <a href=""><img class="mx-4"src="\asset\cartwhite.png" alt=""></a>
-                <a href="/login"><img class="mx-3"src="\asset\profilewhite.png" alt=""></a>
+                <a href="/loginPage"><img class="mx-3"src="\asset\profilewhite.png" alt=""></a>
             </div>
         </nav>
     </header>

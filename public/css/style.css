@@ -79,7 +79,7 @@
 }
 .box-stock{
     min-width: 40vw;
-    min-height: 25vh;
+    min-height: 23vh;
     background-color: #EEEEEE;
     border-radius: 15px;
 }
@@ -93,25 +93,44 @@
     font-size: small;
     background: #363636;
     border-radius: 10px;
-    height: 38px;
+    width: 200px;
+    height: 40px;
 }
 .btn-beli-langsung{
+    background-color: white;
     font-size: small;
     border-radius: 10px;
     color: #363636;
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
 }
 .box-add{
-    width: 80px;
     border-style: groove;   
-}
-.font-under{
-    font-size: smaller;
 }
 .search{
     background-color: white;
     min-width: 40vw;
     min-height: 8vh;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.quantity{
+    width: 25px;
+}
+.btn-diskusi{
+    background-color: #444444;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+}
+.btn-ulasan{
+    background-color: #444444;
+    width: 200px;
+    height: 40px;
     border-radius: 10px;
 }

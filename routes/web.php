@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/daftarPage', 'App\Http\Controllers\DaftarController@DaftarPage'); 
+Route::post('/daftar', 'App\Http\Controllers\DaftarController@Daftar'); 
+
+Route::get('/loginPage', 'App\Http\Controllers\LoginController@LoginPage');
+Route::post('/login', 'App\Http\Controllers\LoginController@Login');
+
 // Route::get('/', 'App\Http\Controllers\HalamanUtamaController@HomePage');
 Route::get('/', 'App\Http\Controllers\DetailLukisanController@LukisanPage');
-Route::get('/login', 'App\Http\Controllers\LoginController@LoginPage');
-Route::get('/daftar', 'App\Http\Controllers\DaftarController@DaftarPage'); 
+

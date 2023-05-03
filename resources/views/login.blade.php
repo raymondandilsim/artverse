@@ -19,8 +19,18 @@
                     <div>
                         <input class="form-control" type="password" id="katasandi" name="katasandi">
                     </div>
+                    @if ($errors->any())
+                        <tr>
+                            <td colspan="2" class="px-5 py-2">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                                </ul>
+                            </td>
+                        </tr>
+                    @endif
                     <input class="btn-masuk text-white form-control mt-5" type="submit" value="Masuk">
-                    <h6>Belum mempunyai akun? <a class="text-decoration-none" href="/daftar">Daftar</a></h6>
+                    <h6>Belum mempunyai akun? <a class="text-decoration-none" href="/daftarPage">Daftar</a></h6>
                 </div>
             </form>
         </div>
