@@ -19,6 +19,13 @@ class LoginController extends Controller
         $request->validate([
             'nama' => 'required|regex:/^[a-zA-Z]+$/',
             'password' => 'required|min:5|max:20',
+        ],
+        [
+            'nama.required' => 'Kolom nama harus terisi',
+            'nama.regex' => 'Nama harus terdapat huruf kecil atau huruf besar',
+            'password.required' => 'Kolom kata sandi harus terisi',
+            'password.min' => 'Kata sandi harus terdapat minimal 5 karakter',
+            'password.max' => 'Kata sandi harus terdapat maksimal 20 karakter',
         ]);
 
         $credentials = [

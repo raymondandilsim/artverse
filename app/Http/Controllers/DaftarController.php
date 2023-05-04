@@ -21,7 +21,7 @@ class DaftarController extends Controller
         [
             'nama.required' => 'Kolom nama harus terisi',
             'nama.unique' => 'Nama sudah digunakkan',
-            'nama.regex' => 'Nama harus terdapat huruf kecil dan huruf besar',
+            'nama.regex' => 'Nama harus terdapat huruf kecil atau huruf besar',
             'email.required' => 'Kolom email harus terisi',
             'email.email' => 'Email yang dimasukkan harus sesuai',
             'email.unique' => 'Email sudah digunakkan',
