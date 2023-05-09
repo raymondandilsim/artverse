@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('nama_provinsi');
             $table->string('nama_kota');
             $table->string('password');
-            $table->string('role')->default('Member');
+            $table->unsignedBigInteger('role_id')->default(2);
+            $table->foreign('role_id')->references('id')->on('role');
             $table->timestamps();
         });
     }
