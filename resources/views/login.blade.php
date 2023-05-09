@@ -1,6 +1,21 @@
-@extends('Master')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('Page-Contents')
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtVerse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="{{ url('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+</head>
+
+<body>
     <div class="d-flex bg-login bg-secondary justify-content-center align-items-center">
         <div class="card-login bg-white px-5 py-5 rounded-3 shadow">
             <h2 class="text-center"><b>MASUK</b></h2>
@@ -35,4 +50,6 @@
             </form>
         </div>
     </div>
-@endsection
+</body>
+
+</html>
