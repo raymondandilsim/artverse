@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('nomor_telepon');
+            $table->string('nama_provinsi');
+            $table->string('nama_kota');
             $table->string('password');
             $table->string('role')->default('Member');
             $table->timestamps();

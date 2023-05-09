@@ -19,18 +19,41 @@
     <header class="bg-header">
         <nav class="d-flex justify-content-around py-4">
             <div class="align-items-center justify-content-center">
-                <a href="/"><img src="\asset\logoArtverse.png" alt=""></a>
+                <a href="/"><img src="\asset\logoArtverse.png"></a>
             </div>
             <div class="d-flex align-items-center ">
-                    <div class="search">
-                        <i class="ms-4 bi-search"></i>
-                        <input class="ps-3 border-0 form-control" type="search" id="search" placeholder="Mencari...">
-                    </div>
+                <div class="search">
+                    <i class="ms-4 bi-search"></i>
+                    <input class="ps-3 border-0 form-control" type="search" id="search" placeholder="Mencari...">
+                </div>
             </div>
-            <div class="d-flex align-items-center">
-                <a href=""><img class="mx-4"src="\asset\cartwhite.png" alt=""></a>
-                <a href="/loginPage"><img class="mx-3"src="\asset\profilewhite.png" alt=""></a>
-            </div>
+            @auth
+                <div class="d-flex align-items-center">
+                    @if (Auth::check() && Auth::user()->role === 'Member')
+                        <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
+                        <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
+                        <ul class="dropdown-menu bg-dropdown">
+                            <li><a class="dropdown-item text-white hover" href="">Profil</a></li>
+                            <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
+                            <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
+                        </ul>
+                    @else
+                        <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
+                        <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
+                        <ul class="dropdown-menu bg-dropdown">
+                            <li><a class="dropdown-item text-white hover" href="">Lihat Semua Akun</a></li>
+                            <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
+                            <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
+                        </ul>
+                    @endif
+                </div>
+            @endauth
+            @guest
+                <div class="d-flex align-items-center">
+                    <a href="/loginPage"><img class="mx-4"src="\asset\cartwhite.png"></a>
+                    <a href="/loginPage"><img class="mx-3"src="\asset\profilewhite.png"></a>
+                </div>
+            @endguest
         </nav>
     </header>
     @yield('Page-Contents')
