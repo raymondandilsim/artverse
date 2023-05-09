@@ -27,8 +27,12 @@
                         </div>
                         <div>Stock Total:</div>
                     </div>
-                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle"><textarea class="form-control ml-1 shadow-none "></textarea></div>
-                    <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="button">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
+                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle">
+                        <textarea class="form-control ml-1 shadow-none "></textarea>
+                    </div>
+                    <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="button">Post
+                            comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none"
+                            type="button">Cancel</button></div>
                     <div class="d-flex justify-content-between mt-4">
                         <span>Subtotal</span>
                         <span><b>Rp 224.242</b></span>
@@ -64,7 +68,8 @@
                             <img src="\asset\profile.png" alt="">
                             <span class="mx-2">Yanto</span>
                         </div>
-                        <a class="text-decoration-none text-dark me-2" href=""><i class="bi-chat-left-text me-2"></i>Chat</a>
+                        <a class="text-decoration-none text-dark me-2" href=""><i
+                                class="bi-chat-left-text me-2"></i>Chat</a>
                     </div>
                 </div>
                 <div class="p-2">
