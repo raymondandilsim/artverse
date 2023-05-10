@@ -14,7 +14,7 @@ class DaftarController extends Controller
     }
     public function Daftar(Request $request){
         $request->validate([
-            'nama' => 'required|unique:users,nama|regex:/^[a-zA-Z]+$/',
+            'nama' => 'required|regex:/^[a-zA-Z]+$/',
             'username' => 'required|unique:users,username|regex:/^[a-zA-Z]+$/',
             'email' => 'required|email|unique:users,email',
             'nomor_telepon' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:13',
@@ -25,7 +25,6 @@ class DaftarController extends Controller
         ],
         [
             'nama.required' => 'Kolom nama harus terisi',
-            'nama.unique' => 'Nama sudah digunakan',
             'nama.regex' => 'Nama harus terdapat huruf kecil atau huruf besar',
             'username.required' => 'Kolom username harus terisi',
             'username.unique' => 'Username sudah digunakan',
