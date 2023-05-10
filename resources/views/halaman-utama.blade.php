@@ -4,7 +4,7 @@
     <div class="bg-home d-flex align-items-center justify-content-center">
         <div class="greet">
             @if (Auth::check())
-                <h2><b>Selamat datang, {{ Auth::user()->nama }}...
+                <h2><b>Selamat datang, {{ Auth::user()->nama }}...</b></h2>
                     @else
                         @guest
                             <h2><b> Selamat datang, Pengunjung...</b></h2>

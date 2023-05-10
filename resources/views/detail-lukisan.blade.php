@@ -21,7 +21,8 @@
                     <span><b> Atur jumlah dan catatan </b></span>
                     <div class="d-flex align-items-center mt-1">
                         <div class="d-flex me-2">
-                            <input class="quantity text-center" type="number" id="quantity" value="1" min="1" max="10">
+                            <input class="quantity text-center" type="number" id="quantity" value="1" min="1"
+                                max="10">
                         </div>
                         <div>Stock Total:</div>
                     </div>
@@ -37,8 +38,19 @@
                     </div>
                 </div>
                 <div>
-                    <button class="btn-tambah-keranjang text-white fw-bold mt-4"> +Keranjang</button>
-                    <button class="btn-beli-langsung fw-bold mt-2">Beli Langsung</button>
+                    @if (Auth::check())
+                        <a href=""><button class="btn-tambah-keranjang text-white fw-bold mt-4">
+                                +Keranjang</button></a>
+                        <a class="text-decoration-none" href=""><button class="btn-beli-langsung fw-bold mt-2">Beli
+                                Langsung</button></a>
+                    @else
+                        @guest
+                            <a href="/loginPage"><button class="btn-tambah-keranjang text-white fw-bold mt-4">
+                                    +Keranjang</button></a>
+                            <a class="text-decoration-none" href="/loginPage"><button
+                                    class="btn-beli-langsung fw-bold mt-2">Beli Langsung</button></a>
+                        @endguest
+                    @endif
                 </div>
             </div>
             <div class="box-deskripsi shadow mt-4 p-5">
