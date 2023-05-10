@@ -15,10 +15,16 @@
 .card-daftar{
     width: 450px;
 }
+
+.card-unggah-lukisan{
+    width: 1300px;
+}
+
 .greet{
     color: white;
     font-size: larger;
 }
+
 .btn-daftar{
     background: #363636;
 }
@@ -145,3 +151,4 @@ input[type=number]::-webkit-inner-spin-button{
 .bg-dropdown{
     background-color: #444444;
 }
+

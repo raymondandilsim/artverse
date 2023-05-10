@@ -20,7 +20,12 @@ Route::get('/loginPage', 'App\Http\Controllers\LoginController@LoginPage');
 Route::post('/login', 'App\Http\Controllers\LoginController@Login');
 Route::get('/logout','App\Http\Controllers\LoginController@Logout');
 
+// Route::get('/', 'App\Http\Controllers\HalamanUtamaController@HomePage');
+
 Route::get('/', 'App\Http\Controllers\HalamanUtamaController@HomePage');
 
 Route::get('/detailLukisanPage', 'App\Http\Controllers\DetailLukisanController@LukisanPage');
+
+Route::get('/unggahLukisan', 'App\Http\Controllers\LukisanController@UnggahLukisanPage');
+
 

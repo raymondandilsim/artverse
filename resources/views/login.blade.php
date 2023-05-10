@@ -35,14 +35,18 @@
                         <input class="form-control" type="password" id="password" name="password">
                     </div>
                     @if ($errors->any())
-                        <tr>
-                            <td colspan="2" class="px-5 py-2">
+                        {{-- <tr>
+                            <td colspan="2" class="px-5 py-2"> --}}
+                        <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
+                            <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
-                                </ul>
-                            </td>
-                        </tr>
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                            {{-- </td>
+                        </tr> --}}
                     @endif
                     <input class="btn-masuk text-white form-control mt-5" type="submit" value="Masuk">
                     <h6>Belum mempunyai akun? <a class="text-decoration-none" href="/daftarPage">Daftar</a></h6>
