@@ -29,7 +29,7 @@
             </div>
             @auth
                 <div class="d-flex align-items-center">
-                    @if (Auth::check() && Auth::user()->role === 'Member')
+                    @if (Auth::check() && Auth::user()->role_id === 2)
                         <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu bg-dropdown">
@@ -37,7 +37,7 @@
                             <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
                             <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
                         </ul>
-                    @else
+                    @elseif (Auth::check() && Auth::user()->role_id === 1)
                         <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu bg-dropdown">
@@ -45,6 +45,13 @@
                             <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
                             <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
                         </ul>
+                    @else
+                    <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
+                    <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
+                    <ul class="dropdown-menu bg-dropdown">
+                        <li><a class="dropdown-item text-white hover" href="">Profil</a></li>
+                        <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
+                    </ul>
                     @endif
                 </div>
             @endauth

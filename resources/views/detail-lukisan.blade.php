@@ -4,42 +4,40 @@
     <div class="p-5 d-flex justify-content-center">
         <div>
             <div class="art border">
-                <img src="\asset\profile.png" alt="">
+                <img src="\asset\profile.png">
             </div>
             <div class="d-flex mt-3">
                 <div class="tampilan-lukisan border">
-                    <img src="\asset\profile.png" alt="">
+                    <img src="\asset\profile.png">
                 </div>
                 <div class="tampilan-lukisan border mx-4">
-                    <img src="\asset\profile.png" alt="">
+                    <img src="\asset\profile.png">
                 </div>
             </div>
         </div>
         <div class="ms-5">
             <div class="box-stock d-flex justify-content-between shadow px-5 pt-4">
-                <div>
+                <div class="box-quantity">
                     <span><b> Atur jumlah dan catatan </b></span>
                     <div class="d-flex align-items-center mt-1">
-                        <div class="box-add d-flex me-1">
-                            <button class="plus-btn border-0 pt-0">-</button>
-                            <input class="quantity text-center border-0" type="text" id="quantity" value="1">
-                            <button class="min-btn border-0 pt-0">+</button>
+                        <div class="d-flex me-2">
+                            <input class="quantity text-center" type="number" id="quantity" value="1" min="1" max="10">
                         </div>
                         <div>Stock Total:</div>
                     </div>
-                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle">
-                        <textarea class="form-control ml-1 shadow-none "></textarea>
+                    <div class="d-flex flex-row align-items-start mt-2"><img class="rounded-circle">
+                        <textarea class="form-control shadow-none"></textarea>
                     </div>
-                    <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="button">Post
-                            comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none"
-                            type="button">Cancel</button></div>
-                    <div class="d-flex justify-content-between mt-4">
+                    <div class="mt-2 text-right">
+                        <button class="btn-primary btn-sm shadow-none">Post comment</button>
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
                         <span>Subtotal</span>
                         <span><b>Rp 224.242</b></span>
                     </div>
                 </div>
                 <div>
-                    <button class="btn-tambah-keranjang text-white fw-bold mt-2"> +Keranjang</button>
+                    <button class="btn-tambah-keranjang text-white fw-bold mt-4"> +Keranjang</button>
                     <button class="btn-beli-langsung fw-bold mt-2">Beli Langsung</button>
                 </div>
             </div>
