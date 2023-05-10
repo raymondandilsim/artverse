@@ -23,10 +23,10 @@
                 @csrf
                 <div>
                     <div>
-                        <label for="Nama" class="form-label">Nama</label>
+                        <label for="Username" class="form-label">Username</label>
                     </div>
                     <div>
-                        <input class="form-control" type="text" id="nama" name="nama">
+                        <input class="form-control" type="text" id="username" name="username">
                     </div>
                     <div>
                         <label for="Kata Sandi" class="form-label">Kata Sandi</label>

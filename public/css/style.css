@@ -20,6 +20,11 @@
     width: 1300px;
 }
 
+.greet{
+    color: white;
+    font-size: larger;
+}
+
 .btn-daftar{
     background: #363636;
 }
@@ -87,6 +92,9 @@
     background-color: #EEEEEE;
     border-radius: 15px;
 }
+.box-quantity{
+    width: 240px;
+}
 .box-deskripsi{
     min-width: 40vw;
     min-height: 80vh;
@@ -97,8 +105,8 @@
     font-size: small;
     background: #363636;
     border-radius: 10px;
-    width: 200px;
-    height: 40px;
+    width: 230px;
+    height: 45px;
 }
 .btn-beli-langsung{
     background-color: white;
@@ -108,12 +116,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 40px;
+    width: 230px;
+    height: 45px;
 }
-.box-add{
-    border-style: groove;
-}
+
 .search{
     background-color: white;
     min-width: 40vw;
@@ -124,7 +130,11 @@
     align-items: center;
 }
 .quantity{
-    width: 25px;
+    width: 65px;
+}
+
+input[type=number]::-webkit-inner-spin-button{
+   opacity: 1;
 }
 .btn-diskusi{
     background-color: #444444;
@@ -142,6 +152,3 @@
     background-color: #444444;
 }
 
-.label-tambah-lukisan{
-    margin-left: 115px;
-}
