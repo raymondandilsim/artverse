@@ -15,6 +15,7 @@ class DaftarController extends Controller
     public function Daftar(Request $request){
         $request->validate([
             'nama' => 'required|unique:users,nama|regex:/^[a-zA-Z]+$/',
+            'username' => 'required|unique:users,username|regex:/^[a-zA-Z]+$/',
             'email' => 'required|email|unique:users,email',
             'nomor_telepon' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:13',
             'nama_provinsi' => 'required',
@@ -24,11 +25,13 @@ class DaftarController extends Controller
         ],
         [
             'nama.required' => 'Kolom nama harus terisi',
-            'nama.unique' => 'Nama sudah digunakkan',
+            'nama.unique' => 'Nama sudah digunakan',
             'nama.regex' => 'Nama harus terdapat huruf kecil atau huruf besar',
+            'username.required' => 'Kolom username harus terisi',
+            'username.unique' => 'Username sudah digunakan',
             'email.required' => 'Kolom email harus terisi',
             'email.email' => 'Email yang dimasukkan harus sesuai',
-            'email.unique' => 'Email sudah digunakkan',
+            'email.unique' => 'Email sudah digunakan',
             'nomor_telepon.required' => 'Kolom telepon harus terisi',
             'nomor_telepon.regex' => 'Telepon harus terisi angka',
             'nomor_telepon.min' => 'Telepon harus terdapat 10 digit',
@@ -46,12 +49,13 @@ class DaftarController extends Controller
 
         $user = new User();
         $user->nama = $request->nama;
+        $user->username = $request->username;
         $user->email = $request->email;
         $user->nomor_telepon = $request->nomor_telepon;
         $user->nama_provinsi = $request->nama_provinsi;
         $user->nama_kota = $request->nama_kota;
         $user->password = Hash::make($request->password);
-        $user->role = "Member";
+        $user->role_id = 2;
         $user->save();
 
          return redirect('/loginPage');

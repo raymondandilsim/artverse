@@ -29,6 +29,12 @@
                         <input class="form-control" type="text" id="nama" name="nama">
                     </div>
                     <div>
+                        <label for="Username" class="form-label">Username</label>
+                    </div>
+                    <div>
+                        <input class="form-control" type="text" id="username" name="username">
+                    </div>
+                    <div>
                         <label for="Email" class="form-label">Email</label>
                     </div>
                     <div>
