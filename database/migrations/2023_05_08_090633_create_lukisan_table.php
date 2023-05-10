@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('lukisan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('pengguna_id');
-            $table->foreign('pengguna_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('nama_lukisan');
             $table->string('gambar');
             $table->double('harga');
-            $table->text('deskripsi');
+            $table->longText('deskripsi');
             $table->integer('kuantitas');
             $table->timestamps();
         });

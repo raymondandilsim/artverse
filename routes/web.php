@@ -21,6 +21,6 @@ Route::post('/login', 'App\Http\Controllers\LoginController@Login');
 Route::get('/logout','App\Http\Controllers\LoginController@Logout');
 
 // Route::get('/', 'App\Http\Controllers\HalamanUtamaController@HomePage');
-
+Route::get('/unggahLukisan', 'App\Http\Controllers\LukisanController@UnggahLukisanPage');
 Route::get('/', 'App\Http\Controllers\DetailLukisanController@LukisanPage');
 

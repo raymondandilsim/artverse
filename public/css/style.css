@@ -16,6 +16,10 @@
     width: 450px;
 }
 
+.card-unggah-lukisan{
+    width: 1300px;
+}
+
 .btn-daftar{
     background: #363636;
 }
@@ -136,4 +140,8 @@
 }
 .bg-dropdown{
     background-color: #444444;
+}
+
+.label-tambah-lukisan{
+    margin-left: 115px;
 }

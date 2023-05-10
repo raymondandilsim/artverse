@@ -71,14 +71,18 @@
                         <input class="form-control" type="password" id="confirm_password" name="confirm_password">
                     </div>
                     @if ($errors->any())
-                        <tr>
-                            <td colspan="2" class="px-5 py-2">
+                        {{-- <tr>
+                            <td colspan="2" class="px-5 py-2"> --}}
+                        <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
+                            <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
-                                </ul>
-                            </td>
-                        </tr>
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                            {{-- </td>
+                        </tr> --}}
                     @endif
                     <input class="btn-daftar text-white form-control mt-5" type="submit" value="Daftar">
                     <h6>Sudah punya akun? <a class="text-decoration-none" href="/loginPage">Masuk</a></h6>
