@@ -23,7 +23,7 @@
                 @csrf
                 <div>
                     <div>
-                        <label for="Username" class="form-label">Username</label>
+                        <label for="Username" class="form-label">Nama Pengguna</label>
                     </div>
                     <div>
                         <input class="form-control" type="text" id="username" name="username">
