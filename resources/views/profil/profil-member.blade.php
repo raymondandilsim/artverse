@@ -5,8 +5,8 @@
 @endsection
 
 @section('Page-Contents')
-    <div class="container-fluid mt-5 mb-5 ms-5 d-flex flex-wrap">
-        <div class="row justify-content-start wrap d-flex flex-wrap me-5">
+    <div class="container-xl mt-5 mb-5 ms-5 pe-5">
+        <div class="row justify-content-start ms-5 container-xl">
             <div class="col-md-3 mb-5">
                 <div class="card">
                     <div class="card-body">
@@ -16,8 +16,7 @@
                             </div>
 
                             <div class="col-md-8 mt-4">
-                                <h4>{{ $user->nama }}</h4>
-                                <p><a href=""></a></p>
+                                <h3>{{ $user->nama }}</h3>
                             </div>
                         </div>
                         <form action="/ubahPeran" method="">
@@ -26,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 mb-5">
+            <div class="col-md-8 mb-5 ms-5">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -36,12 +35,8 @@
 
                             <div class="col-md-8">
 
-                                <div class="mb-1 row">
-                                    <h3 class="col-sm-4">Biodata Diri</h3>
-                                    <form class="col-sm-4" action="" method="">
-                                        <button class="btn btn-dark btn-sm" type="submit">Ubah Profil</button>
-                                    </form>
-                                </div>
+                                <h3 class="col-sm-5">Biodata Diri</h3>
+                    
                                 <div class="mb-1 row">
                                     <label class="col-sm-4 col-form-label fs-5">Nama</label>
                                     <label class="col-sm-8 col-form-label fs-5">{{ $user->nama }}</label> <br>
@@ -64,6 +59,11 @@
                                     <label class="col-sm-4 col-form-label fs-5">Nomor HP</label>
                                     <label class="col-sm-8 col-form-label fs-5">{{ $user->nomor_telepon }}</label> <br>
                                 </div>
+                                
+                                
+                                <form class="col-sm-5 mt-5" action="" method="">
+                                    <button class="btn btn-dark" type="submit" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Ubah Profil</button>
+                                </form>
                             </div>
                         </div>
                     </div>
