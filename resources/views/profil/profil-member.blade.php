@@ -5,9 +5,8 @@
 @endsection
 
 @section('Page-Contents')
-    {{-- <img class="mx-3"src="{{ $user->foto_profil }}" data-bs-toggle="dropdown">    --}}
-    <div class="container-fluid mt-5 mb-5 ms-5">
-        <div class="row justify-content-start">
+    <div class="container-fluid mt-5 mb-5 ms-5 d-flex flex-wrap">
+        <div class="row justify-content-start wrap d-flex flex-wrap me-5">
             <div class="col-md-3 mb-5">
                 <div class="card">
                     <div class="card-body">
@@ -39,7 +38,7 @@
 
                                 <div class="mb-1 row">
                                     <h3 class="col-sm-4">Biodata Diri</h3>
-                                    <form class="col-sm-2" action="" method="">
+                                    <form class="col-sm-4" action="" method="">
                                         <button class="btn btn-dark btn-sm" type="submit">Ubah Profil</button>
                                     </form>
                                 </div>
