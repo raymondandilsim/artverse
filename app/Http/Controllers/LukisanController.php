@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class LukisanController extends Controller
 {
-    public function UnggahLukisanPage()
+    public function unggahLukisanPage()
     {
         return view('lukisan.unggah-lukisan');
     }
 
-    public function UnggahLukisan(Request $request){
+    public function unggahLukisan(Request $request){
         $request->validate([
             'namaLukisan' =>'required|string',
             'hargaLukisan' => 'required|numeric|min:0',
@@ -37,16 +37,17 @@ class LukisanController extends Controller
         ]);
         
         $lukisan = new Lukisan();
-        $lukisan->user_id = Auth::user()->id;
-        $lukisan->nama_lukisan = $request->namaLukisan;
-        $lukisan->harga = $request->hargaLukisan;
-        $lukisan->deskripsi = $request->deskripsiLukisan;
-        $lukisan->stok = $request->stokLukisan;
-        $gambar = $request->file('gambarLukisan');
-        $gambar->store('/public/gambar-lukisan');
-        $gambar = asset('storage/gambar-lukisan/'.$gambar->hashName());
-        $lukisan->gambar = $gambar;
-        $lukisan->save();
+        $user_id = Auth::user()->id;
+        $nama_lukisan = $request->namaLukisan;
+        $harga = $request->hargaLukisan;
+        $deskripsi = $request->deskripsiLukisan;
+        $stok = $request->stokLukisan;
+        $gambarLukisan = $request->file('gambarLukisan');
+        $gambarLukisan->store('/public/gambar-lukisan');
+        $gambarLukisan = asset('storage/gambar-lukisan/'.$gambarLukisan->hashName());
+        $gambar = $gambarLukisan;
+
+        $lukisan->unggahLukisan($user_id, $nama_lukisan, $harga, $deskripsi, $stok, $gambar);
 
         return redirect('/unggahLukisanPage')->with('status', "Lukisan Berhasil Ditambahkan");
     }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('Page-Title') ArtVerse</title>
+    <title>@yield('Page-Title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -54,7 +54,7 @@
                         <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu bg-dropdown">
-                            <li><a class="dropdown-item text-white hover" href="">Profil</a></li>
+                            <li><a class="dropdown-item text-white hover" href="/profilPage">Profil</a></li>
                             <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
                             <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
                         </ul>
@@ -66,11 +66,12 @@
                             <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
                             <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
                         </ul>
-                    @else
+                    @elseif (Auth::check() && Auth::user()->role_id === 3)
                         <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu bg-dropdown">
-                            <li><a class="dropdown-item text-white hover" href="">Profil</a></li>
+                            <li><a class="dropdown-item text-white hover" href="/profilPage">Profil</a></li>
+                            <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
                             <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
                         </ul>
                     @endif

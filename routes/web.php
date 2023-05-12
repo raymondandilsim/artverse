@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LukisanController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,10 @@ Route::get('/', 'App\Http\Controllers\HalamanUtamaController@HomePage');
 
 Route::get('/detailLukisanPage', 'App\Http\Controllers\DetailLukisanController@LukisanPage');
 
-Route::get('/unggahLukisanPage', [LukisanController::class, 'UnggahLukisanPage']);
-Route::post('/unggahLukisan', [LukisanController::class, 'UnggahLukisan']);
+Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage']);
+Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan']);
+
+Route::get('/profilPage', [UserController::class, 'profilPage']);
+
 
 

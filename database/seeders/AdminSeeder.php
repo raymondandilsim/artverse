@@ -25,6 +25,7 @@ class AdminSeeder extends Seeder
             'nama_kota' => 'admin',
             'password' => Hash::make('iniakunadmin'),
             'role_id'=>1,
+            'foto_profil'=>'/asset/profile.png'
         ]);
     }
 }

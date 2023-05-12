@@ -1,7 +1,7 @@
 @extends('Master')
 
 @section('Page-Title')
-    Unggah Lukisan -
+    Tambah Lukisan -
 @endsection
 
 @section('Page-Contents')

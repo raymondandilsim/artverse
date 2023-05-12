@@ -1,5 +1,9 @@
 @extends('Master')
 
+@section('Page-Title')
+    Halaman Utama
+@endsection
+
 @section('Page-Contents')
     <div class="bg-home d-flex align-items-center justify-content-center">
         <div class="greet">

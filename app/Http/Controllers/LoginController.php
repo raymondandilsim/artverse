@@ -17,12 +17,11 @@ class LoginController extends Controller
 
     public function Login(Request $request){
         $request->validate([
-            'username' => 'required|regex:/^[a-zA-Z]+$/',
+            'username' => 'required',
             'password' => 'required|min:5|max:20',
         ],
         [
-            'username.required' => 'Kolom nama harus terisi',
-            'username.regex' => 'Nama pengguna harus terdapat huruf kecil atau huruf besar',
+            'username.required' => 'Kolom Nama Pengguna harus terisi',
             'password.required' => 'Kolom kata sandi harus terisi',
             'password.min' => 'Kata sandi harus terdapat minimal 5 karakter',
             'password.max' => 'Kata sandi harus terdapat maksimal 20 karakter',
