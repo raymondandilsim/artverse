@@ -21,7 +21,7 @@
                                 <p><a href=""></a></p>
                             </div>
                         </div>
-                        <form action="/ubahPeran" method=""> 
+                        <form action="/ubahPeran" method="">
                             <input class="btn-masuk text-white form-control mt-4" type="submit" value="Jadi Penjual">
                         </form>
                     </div>
@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="col-md-8">
-                                
+
                                 <div class="mb-1 row">
                                     <h3 class="col-sm-4">Biodata Diri</h3>
                                     <form class="col-sm-2" action="" method="">
@@ -44,34 +44,34 @@
                                     </form>
                                 </div>
                                 <div class="mb-1 row">
-                                    <label class="col-sm-4 col-form-label fs-5">Nama</label> 
+                                    <label class="col-sm-4 col-form-label fs-5">Nama</label>
                                     <label class="col-sm-8 col-form-label fs-5">{{ $user->nama }}</label> <br>
                                 </div>
                                 <div class="mb-1 row">
-                                    <label class="col-sm-4 col-form-label fs-5">Nama Pengguna</label> 
+                                    <label class="col-sm-4 col-form-label fs-5">Nama Pengguna</label>
                                     <label class="col-sm-8 col-form-label fs-5">{{ $user->username }}</label> <br>
                                 </div>
                                 <div class="mb-1 row">
-                                    <label class="col-sm-4 col-form-label fs-5">Alamat</label> 
+                                    <label class="col-sm-4 col-form-label fs-5">Alamat</label>
                                     <label class="col-sm-8 col-form-label fs-5">{{ $user->nama_kota }}, {{ $user->nama_provinsi }}</label> <br>
                                 </div>
                                 <br>
                                 <h3>Kontak</h3>
                                 <div class="mb-1 row">
-                                    <label class="col-sm-4 col-form-label fs-5">Email</label> 
+                                    <label class="col-sm-4 col-form-label fs-5">Email</label>
                                     <label class="col-sm-8 col-form-label fs-5">{{ $user->email }}</label> <br>
                                 </div>
                                 <div class="mb-1 row">
-                                    <label class="col-sm-4 col-form-label fs-5">Nomor HP</label> 
+                                    <label class="col-sm-4 col-form-label fs-5">Nomor HP</label>
                                     <label class="col-sm-8 col-form-label fs-5">{{ $user->nomor_telepon }}</label> <br>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>   
-            
-            
+            </div>
+
+
         </div>
     </div>
 @endsection
