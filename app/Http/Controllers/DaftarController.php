@@ -24,11 +24,11 @@ class DaftarController extends Controller
             'confirm_password' => 'required|same:password|min:5|max:20'
         ],
         [
-            'nama.required' => 'Kolom nama harus terisi',
+            'nama.required' => 'Kolom Nama harus terisi',
             'nama.regex' => 'Nama harus terdapat huruf kecil atau huruf besar',
-            'username.required' => 'Kolom username harus terisi',
-            'username.unique' => 'Username sudah digunakan',
-            'username.regex' => 'Username harus terdapat huruf atau angka',
+            'username.required' => 'Kolom Nama Pengguna harus terisi',
+            'username.unique' => 'Nama Pengguna sudah digunakan',
+            'username.regex' => 'Nama Pengguna harus terdapat huruf atau angka',
             'email.required' => 'Kolom email harus terisi',
             'email.email' => 'Email yang dimasukkan harus sesuai',
             'email.unique' => 'Email sudah digunakan',
@@ -58,7 +58,7 @@ class DaftarController extends Controller
         $user->role_id = 2;
         $user->save();
 
-         return redirect('/loginPage');
+        return redirect('/loginPage');
     }
 }
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArtVerse</title>
+    <title>@yield('Page-Title') ArtVerse</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -16,6 +16,27 @@
 </head>
 
 <body>
+
+    {{-- success --}}
+    @if(Session::has('status'))
+        <div class="alert alert-success alert-dismissible fade show fixed-top m-5" role="alert">
+            {{Session::get('status')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    {{-- error handling --}}
+    @if($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li class="p-2">{{$error}}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
     <header class="bg-header">
         <nav class="d-flex justify-content-around py-4">
             <div class="align-items-center justify-content-center">
@@ -46,12 +67,12 @@
                             <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
                         </ul>
                     @else
-                    <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
-                    <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
-                    <ul class="dropdown-menu bg-dropdown">
-                        <li><a class="dropdown-item text-white hover" href="">Profil</a></li>
-                        <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
-                    </ul>
+                        <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
+                        <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
+                        <ul class="dropdown-menu bg-dropdown">
+                            <li><a class="dropdown-item text-white hover" href="">Profil</a></li>
+                            <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
+                        </ul>
                     @endif
                 </div>
             @endauth

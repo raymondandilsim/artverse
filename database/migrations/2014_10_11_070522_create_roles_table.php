@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lukisan', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->string('nama_lukisan');
-            $table->string('gambar');
-            $table->double('harga');
-            $table->longText('deskripsi');
-            $table->integer('kuantitas');
+            $table->string('nama_role');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lukisan');
+        Schema::dropIfExists('roles');
     }
 };

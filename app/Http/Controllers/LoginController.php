@@ -22,7 +22,7 @@ class LoginController extends Controller
         ],
         [
             'username.required' => 'Kolom nama harus terisi',
-            'username.regex' => 'Nama harus terdapat huruf kecil atau huruf besar',
+            'username.regex' => 'Nama pengguna harus terdapat huruf kecil atau huruf besar',
             'password.required' => 'Kolom kata sandi harus terisi',
             'password.min' => 'Kata sandi harus terdapat minimal 5 karakter',
             'password.max' => 'Kata sandi harus terdapat maksimal 20 karakter',
@@ -40,7 +40,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'password' => 'Nama atau kata sandi salah',
+            'password' => 'Nama pengguna atau kata sandi salah',
         ]);
     }
 

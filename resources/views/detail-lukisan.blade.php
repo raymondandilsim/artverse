@@ -1,5 +1,9 @@
 @extends('Master')
 
+@section('Page-Title')
+    Detail Lukisan -
+@endsection
+
 @section('Page-Contents')
     <div class="p-5 d-flex justify-content-center">
         <div>

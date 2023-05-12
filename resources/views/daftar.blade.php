@@ -23,49 +23,49 @@
                 @csrf
                 <div>
                     <div>
-                        <label for="Nama" class="form-label">Nama</label>
+                        <label for="Nama" class="form-label">Nama <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="text" id="nama" name="nama">
                     </div>
                     <div>
-                        <label for="Username" class="form-label">Nama Pengguna</label>
+                        <label for="Username" class="form-label">Nama Pengguna <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="text" id="username" name="username">
                     </div>
                     <div>
-                        <label for="Email" class="form-label">Email</label>
+                        <label for="Email" class="form-label">Email <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="Email" id="email" name="email">
                     </div>
                     <div>
-                        <label for="Nomor Telepon" class="form-label">Nomor Telepon</label>
+                        <label for="Nomor Telepon" class="form-label">Nomor Telepon <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="text" id="nomor_telepon" name="nomor_telepon">
                     </div>
                     <div>
-                        <label for="Nama Provinsi" class="form-label">Nama Provinsi</label>
+                        <label for="Nama Provinsi" class="form-label">Nama Provinsi <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="text" id="nama_provinsi" name="nama_provinsi">
                     </div>
                     <div>
-                        <label for="Nama Kota" class="form-label">Nama Kota</label>
+                        <label for="Nama Kota" class="form-label">Nama Kota <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="text" id="nama_kota" name="nama_kota">
                     </div>
                     <div>
-                        <label for="Kata Sandi" class="form-label">Kata Sandi</label>
+                        <label for="Kata Sandi" class="form-label">Kata Sandi <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="password" id="password" name="password">
                     </div>
                     <div>
-                        <label for="Masukkan Sandi Ulang" class="form-label">Masukkan Sandi Ulang</label>
+                        <label for="Masukkan Sandi Ulang" class="form-label">Masukkan Sandi Ulang <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="password" id="confirm_password" name="confirm_password">
@@ -84,8 +84,9 @@
                             {{-- </td>
                         </tr> --}}
                     @endif
-                    <input class="btn-daftar text-white form-control mt-5" type="submit" value="Daftar">
-                    <h6>Sudah punya akun? <a class="text-decoration-none" href="/loginPage">Masuk</a></h6>
+                    <br><label><label class="text-danger">*</label> Wajib diisi</label>
+                    <input class="btn-daftar text-white form-control mt-4" type="submit" value="Daftar">
+                    <h6 class="mt-2">Sudah punya akun? <a class="text-decoration-none" href="/loginPage">Masuk</a></h6>
                 </div>
             </form>
         </div>
