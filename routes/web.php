@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LukisanController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Tentang;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,8 @@ Route::get('/logout','App\Http\Controllers\LoginController@Logout');
 Route::get('/', 'App\Http\Controllers\HalamanUtamaController@HomePage');
 
 Route::get('/detailLukisanPage', 'App\Http\Controllers\DetailLukisanController@LukisanPage');
+
+Route::get('/tentang', 'App\Http\Controllers\TentangController@TentangPage');
 
 Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage']);
 Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan']);

@@ -90,7 +90,7 @@
         <div class="section-footer bg-footer text-center">
             <div class="text-white"><b>ArtVerse</b></div>
             <div class="fw-bold">
-                <a class="text-decoration-none text-white me-3" href="">Tentang</a>
+                <a class="text-decoration-none text-white me-3" href="/tentang">Tentang</a>
                 <span class="text-white">|</span>
                 <a class="text-decoration-none text-white mx-3" href="">Kontak</a>
                 <span class="text-white">|</span>
