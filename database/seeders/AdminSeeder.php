@@ -17,14 +17,16 @@ class AdminSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+            'role_id' => 1,
             'nama' => 'Admin',
             'username' => 'Admin',
             'email' => 'admin@gmail.com',
             'nomor_telepon' => '081384929223',
             'nama_provinsi' => 'admin',
             'nama_kota' => 'admin',
+            'nama_jalan' => 'admin',
+            'kode_pos' => 'admin',
             'password' => Hash::make('iniakunadmin'),
-            'role_id'=>1,
             'foto_profil'=>'/asset/avatar.png'
         ]);
     }

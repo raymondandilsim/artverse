@@ -18,4 +18,8 @@ class UserController extends Controller
             return view('profil.profil-seniman', ['user' => $user]);
         }
     }
+
+    public function ubahPeran(){
+        
+    }
 }

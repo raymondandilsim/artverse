@@ -16,6 +16,15 @@
 </head>
 
 <body>
+
+    {{-- success --}}
+    @if(Session::has('status'))
+        <div class="alert alert-success alert-dismissible fade show fixed-top m-5" role="alert">
+            {{Session::get('status')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="d-flex bg-login bg-secondary justify-content-center align-items-center">
         <div class="card-login bg-white px-5 py-5 rounded-3 shadow">
             <h2 class="text-center"><b>MASUK</b></h2>
@@ -26,13 +35,13 @@
                         <label for="Username" class="form-label">Nama Pengguna</label>
                     </div>
                     <div>
-                        <input class="form-control" type="text" id="username" name="username">
+                        <input class="form-control" type="text" id="username" name="username" value="{{ old('username') }}" placeholder="Masukkan nama pengguna">
                     </div>
                     <div>
                         <label for="Kata Sandi" class="form-label">Kata Sandi</label>
                     </div>
                     <div>
-                        <input class="form-control" type="password" id="password" name="password">
+                        <input class="form-control" type="password" id="password" name="password" placeholder="Masukkan kata sandi">
                     </div>
                     @if ($errors->any())
                         {{-- <tr>

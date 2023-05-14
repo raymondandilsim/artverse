@@ -26,49 +26,61 @@
                         <label for="Nama" class="form-label">Nama <label class="text-danger">*</label></label>
                     </div>
                     <div>
-                        <input class="form-control" type="text" id="nama" name="nama">
+                        <input class="form-control" type="text" id="nama" name="nama" value="{{ old('nama') }}" placeholder="Masukkan nama anda">
                     </div>
                     <div>
                         <label for="Username" class="form-label">Nama Pengguna <label class="text-danger">*</label></label>
                     </div>
                     <div>
-                        <input class="form-control" type="text" id="username" name="username">
+                        <input class="form-control" type="text" id="username" name="username" value="{{ old('username') }}" placeholder="Masukkan nama pengguna">
                     </div>
                     <div>
                         <label for="Email" class="form-label">Email <label class="text-danger">*</label></label>
                     </div>
                     <div>
-                        <input class="form-control" type="Email" id="email" name="email">
+                        <input class="form-control" type="Email" id="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email anda">
                     </div>
                     <div>
                         <label for="Nomor Telepon" class="form-label">Nomor Telepon <label class="text-danger">*</label></label>
                     </div>
                     <div>
-                        <input class="form-control" type="text" id="nomor_telepon" name="nomor_telepon">
+                        <input class="form-control" type="text" id="nomor_telepon" name="nomor_telepon" value="{{ old('nomor_telepon') }}" placeholder="Masukkan nomor telepon">
                     </div>
                     <div>
                         <label for="Nama Provinsi" class="form-label">Nama Provinsi <label class="text-danger">*</label></label>
                     </div>
                     <div>
-                        <input class="form-control" type="text" id="nama_provinsi" name="nama_provinsi">
+                        <input class="form-control" type="text" id="nama_provinsi" name="nama_provinsi" value="{{ old('nama_provinsi') }}" placeholder="Masukkan nama provinsi">
                     </div>
                     <div>
                         <label for="Nama Kota" class="form-label">Nama Kota <label class="text-danger">*</label></label>
                     </div>
                     <div>
-                        <input class="form-control" type="text" id="nama_kota" name="nama_kota">
+                        <input class="form-control" type="text" id="nama_kota" name="nama_kota" value="{{ old('nama_kota') }}" placeholder="Masukkan nama kota">
+                    </div>
+                    <div>
+                        <label for="Nama Jalan" class="form-label">Nama Jalan <label class="text-danger">*</label></label>
+                    </div>
+                    <div>
+                        <input class="form-control" type="text" id="nama_jalan" name="nama_jalan" value="{{ old('nama') }}" placeholder="Masukkan Jalan, Kecamatan, dan Kelurahan">
+                    </div>
+                    <div>
+                        <label for="Kode Pos" class="form-label">Kode Pos <label class="text-danger">*</label></label>
+                    </div>
+                    <div>
+                        <input class="form-control" type="text" id="kode_pos" name="kode_pos" value="{{ old('kode_pos') }}" placeholder="Masukkan kode pos">
                     </div>
                     <div>
                         <label for="Kata Sandi" class="form-label">Kata Sandi <label class="text-danger">*</label></label>
                     </div>
                     <div>
-                        <input class="form-control" type="password" id="password" name="password">
+                        <input class="form-control" type="password" id="password" name="password" placeholder="Masukkan kata sandi">
                     </div>
                     <div>
                         <label for="Masukkan Sandi Ulang" class="form-label">Masukkan Sandi Ulang <label class="text-danger">*</label></label>
                     </div>
                     <div>
-                        <input class="form-control" type="password" id="confirm_password" name="confirm_password">
+                        <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="Masukkan ulang kata sandi">
                     </div>
                     @if ($errors->any())
                         {{-- <tr>
