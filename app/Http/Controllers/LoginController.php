@@ -37,15 +37,15 @@ class LoginController extends Controller
             $request->session()->put('session', $credentials);
             return redirect('/');
         }
-
+        
         return back()->withErrors([
             'password' => 'Nama pengguna atau kata sandi salah',
         ]);
     }
-
+    
     public function Logout(){
         if(Auth::check()){
-           Auth::logout();
+            Auth::logout();
         }
         return redirect('/loginPage');
     }
