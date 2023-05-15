@@ -19,7 +19,8 @@
                                 <h3>{{ $user->nama }}</h3>
                             </div>
                         </div>
-                        <form action="/ubahPeran" method="">
+                        <form action="/ubahPeran/{{ $user->id }}" method="POST">
+                            @csrf
                             <input class="btn-masuk text-white form-control mt-4" type="submit" value="Jadi Penjual">
                         </form>
                     </div>

@@ -32,7 +32,8 @@ Route::get('/tentang', 'App\Http\Controllers\TentangController@TentangPage');
 Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage']);
 Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan']);
 
-Route::get('/profilPage', [UserController::class, 'profilPage']);
+Route::get('/profilPage/{id}', [UserController::class, 'profilPage']);
 
 
+Route::post('/ubahPeran/{id}', [UserController::class, 'ubahPeran']);
 
