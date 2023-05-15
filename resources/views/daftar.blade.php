@@ -62,13 +62,13 @@
                         <label for="Nama Jalan" class="form-label">Nama Jalan <label class="text-danger">*</label></label>
                     </div>
                     <div>
-                        <input class="form-control" type="text" id="nama_jalan" name="nama_jalan" value="{{ old('nama') }}" placeholder="Masukkan Jalan, Kecamatan, dan Kelurahan">
+                        <input class="form-control" type="text" id="nama_jalan" name="nama_jalan" value="{{ old('nama_jalan') }}" placeholder="Masukkan Jalan, Kecamatan, dan Kelurahan">
                     </div>
                     <div>
                         <label for="Kode Pos" class="form-label">Kode Pos <label class="text-danger">*</label></label>
                     </div>
                     <div>
-                        <input class="form-control" type="text" id="kode_pos" name="kode_pos" value="{{ old('kode_pos') }}" placeholder="Masukkan kode pos">
+                        <input class="form-control" type="text" id="kode_pos" maxlength="5" name="kode_pos" value="{{ old('kode_pos') }}" placeholder="Masukkan kode pos">
                     </div>
                     <div>
                         <label for="Kata Sandi" class="form-label">Kata Sandi <label class="text-danger">*</label></label>
