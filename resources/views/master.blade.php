@@ -70,7 +70,7 @@
                         <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu bg-dropdown">
-                            <li><a class="dropdown-item text-white hover" href="/profilPage/{{ Auth::user()->id }}">Profil</a></li>
+                            <li><a class="dropdown-item text-white hover" href="/profilPage/{{ Auth::user()->id }}">Profil (Seniman)</a></li>
                             <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
                             <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
                         </ul>

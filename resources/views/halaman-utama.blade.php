@@ -32,6 +32,9 @@
         <div class="border-bottom border-dark">
             <div class="d-flex align-items-center">
                 <h2 class="fw-bolder">Dapatkan Lukisan</h2>
+                <button class="btn-secondary border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+            aria-controls="offcanvasExample"><i class="bi bi-caret-right-fill"></i>
+        </button>
                 <a class="fw-bolder text-danger text-decoration-none ms-3" href="">Lihat Semua</a>
             </div>
             <div class="d-flex my-3">

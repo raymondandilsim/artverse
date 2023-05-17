@@ -151,4 +151,15 @@ input[type=number]::-webkit-inner-spin-button{
 .bg-dropdown{
     background-color: #444444;
 }
+.bg-isi{
+    background-color: #DFE0E0;
+    min-width: 90.5vw;
+    min-height: 100vh;
+}
+.btn-jadi-member{
+    background-color: #363636;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+}
 
