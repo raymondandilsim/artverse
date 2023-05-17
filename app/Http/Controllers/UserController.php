@@ -25,12 +25,13 @@ class UserController extends Controller
         if($user->role_id === 2){
             $user->role_id = 3;
             $user->save();
-            return redirect('/profilPage')->with('status', "Berhasil");
+            return back()->with('status', "Status Anda Berubah Menjadi Seniman");
+            // return redirect('/profilPage')->with('status', "Berhasil")->with('user', $user);
         }
         elseif($user->role_id === 3){
             $user->role_id = 2;
             $user->save();
-            return redirect('/profilPage')->with('status', "Berhasil");;
+            return redirect('/')->with('status', "Anda Kembali Menjadi Member");
         }
     }
 }
