@@ -39,6 +39,51 @@
 
     <header class="bg-header">
         <nav class="d-flex justify-content-around py-4">
+            {{-- Menu Offcanvas --}}
+            @if (Auth::check() && Auth::user()->role_id === 3)
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                        aria-controls="offcanvasExample"><i class="bi bi-caret-right-fill"></i>
+                    </button>
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-header">
+                            <img src="{{ $user->foto_profil }}" alt="Profile Picture" class="img-fluid" width="80" height="80">
+                            <h5>{{ $user->nama }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="p-3 ms-4 mt-3">
+                            <div>
+                                <a class="text-decoration-none text-dark" href=""><i
+                                        class="bi-chat-left-text me-4"></i><b>Obrolan</b></a>
+                            </div>
+                            <div class="my-4">
+                                <a class="text-decoration-none text-dark" href=""><i
+                                        class="bi bi-chat-left-quote me-4"></i><b>Diskusi</b></a>
+                            </div>
+                            <div class="my-4">
+                                <a class="dropdown-toggle link-dark text-decoration-none" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-archive me-4"></i><b>Product</b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Tambah Produk</a></li>
+                                    <li><a class="dropdown-item" href="#">Daftar Produk</a></li>
+                                </ul>
+                            </div>
+                            <div class="my-4">
+                                <a class="text-decoration-none text-dark" href=""><i
+                                        class="bi bi-bag-check me-4"></i><b>Pesanan</b></a>
+                            </div>
+                        </div>
+                        <form action="/ubahPeran/{{ $user->id }}" method="POST">
+                            @csrf
+                            <div class="d-flex justify-content-center">
+                                <input class="btn-jadi-member text-white mt-3" type="submit" value="Jadi Member">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endif
             <div class="align-items-center justify-content-center">
                 <a href="/"><img src="\asset\logoArtverse.png"></a>
             </div>
@@ -54,10 +99,9 @@
                         <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu mt-2">
-                            <ul class="dropdown-menu">
-                            <li><a class="dropdown-item text-white dark" href="/profilPage/{{ Auth::user()->id }}">Profil Member</a></li>
-                            <li><a class="dropdown-item text-white dark" href="">Riwayat Transaksi</a></li>
-                            <li><a class="dropdown-item text-white dark" href="/logout">Logout</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="/profilPage/{{ Auth::user()->id }}">Profil (Member)</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="">Riwayat Transaksi</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="/logout">Logout</a></li>
                         </ul>
                     @elseif (Auth::check() && Auth::user()->role_id === 1)
                         <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
@@ -69,10 +113,10 @@
                         </ul>
                     @elseif (Auth::check() && Auth::user()->role_id === 3)
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
-                        <ul class="dropdown-menu bg-dropdown">
-                            <li><a class="dropdown-item text-white hover" href="/profilPage/{{ Auth::user()->id }}">Profil (Seniman)</a></li>
-                            <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
-                            <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
+                        <ul class="dropdown-menu mt-2">
+                            <li><a class="dropdown-item text-dark hover" href="/profilPage/{{ Auth::user()->id }}">Profil (Seniman)</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="">Riwayat Transaksi</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="/logout">Logout</a></li>
                         </ul>
                     @endif
                 </div>
