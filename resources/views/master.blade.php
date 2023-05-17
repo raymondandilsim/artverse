@@ -53,26 +53,27 @@
                     @if (Auth::check() && Auth::user()->role_id === 2)
                         <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
-                        <ul class="dropdown-menu bg-dropdown">
-                            <li><a class="dropdown-item text-white hover" href="/profilPage/{{ Auth::user()->id }}">Profil</a></li>
-                            <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
-                            <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
+                        <ul class="dropdown-menu mt-2">
+                            <ul class="dropdown-menu">
+                            <li><a class="dropdown-item text-white dark" href="/profilPage/{{ Auth::user()->id }}">Profil Member</a></li>
+                            <li><a class="dropdown-item text-white dark" href="">Riwayat Transaksi</a></li>
+                            <li><a class="dropdown-item text-white dark" href="/logout">Logout</a></li>
                         </ul>
                     @elseif (Auth::check() && Auth::user()->role_id === 1)
                         <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
-                        <ul class="dropdown-menu bg-dropdown">
-                            <li><a class="dropdown-item text-white hover" href="">Lihat Semua Akun</a></li>
-                            <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
-                            <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
+                        <ul class="dropdown-menu mt-2">
+                            <li><a class="dropdown-item text-dark hover" href="">Lihat Semua Akun</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="">Riwayat Transaksi</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="/logout">Logout</a></li>
                         </ul>
                     @elseif (Auth::check() && Auth::user()->role_id === 3)
                         <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
-                        <ul class="dropdown-menu bg-dropdown">
-                            <li><a class="dropdown-item text-white hover" href="/profilPage/{{ Auth::user()->id }}">Profil</a></li>
-                            <li><a class="dropdown-item text-white hover" href="">Riwayat Transaksi</a></li>
-                            <li><a class="dropdown-item text-white hover" href="/logout">Logout</a></li>
+                        <ul class="dropdown-menu mt-2">
+                            <li><a class="dropdown-item text-dark hover" href="/profilPage/{{ Auth::user()->id }}">Profil Seniman</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="">Riwayat Transaksi</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="/logout">Logout</a></li>
                         </ul>
                     @endif
                 </div>
@@ -87,7 +88,7 @@
     </header>
     @yield('Page-Contents')
     <footer>
-        <div class="section-footer bg-footer text-center">
+        <div class="section-footer bg-footer text-center fixed-bottom">
             <div class="text-white"><b>ArtVerse</b></div>
             <div class="fw-bold">
                 <a class="text-decoration-none text-white me-3" href="/tentang">Tentang</a>
