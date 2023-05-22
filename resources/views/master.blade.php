@@ -96,7 +96,7 @@
             @auth
                 <div class="d-flex align-items-center">
                     @if (Auth::check() && Auth::user()->role_id === 2)
-                        <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
+                        <a href="/keranjang"><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu mt-2">
                             <li><a class="dropdown-item text-dark hover" href="/profilPage/{{ Auth::user()->id }}">Profil (Member)</a></li>
@@ -123,7 +123,7 @@
             @endauth
             @guest
                 <div class="d-flex align-items-center">
-                    <a href="/loginPage"><img class="mx-4"src="\asset\cartwhite.png"></a>
+                    <a href="/keranjang"><img class="mx-4"src="\asset\cartwhite.png"></a>
                     <a href="/loginPage"><img class="mx-3"src="\asset\profilewhite.png"></a>
                 </div>
             @endguest

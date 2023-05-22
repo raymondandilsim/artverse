@@ -29,6 +29,8 @@ Route::get('/detailLukisanPage', 'App\Http\Controllers\DetailLukisanController@L
 
 Route::get('/tentang', 'App\Http\Controllers\TentangController@TentangPage');
 
+Route::get('/keranjang', 'App\Http\Controllers\KeranjangController@KeranjangPage');
+
 Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage'])->middleware(3);
 Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan'])->middleware(3);
 
