@@ -29,11 +29,12 @@ Route::get('/detailLukisanPage', 'App\Http\Controllers\DetailLukisanController@L
 
 Route::get('/tentang', 'App\Http\Controllers\TentangController@TentangPage');
 
-Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage']);
-Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan']);
+Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage'])->middleware(3);
+Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan'])->middleware(3);
 
 Route::get('/profilPage/{id}', [UserController::class, 'profilPage']);
 
 
 Route::post('/ubahPeran/{id}', [UserController::class, 'ubahPeran']);
 
+Route::get('/errorPage','App\Http\Controllers\Controller@errorPage') ;

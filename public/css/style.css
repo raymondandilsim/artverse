@@ -162,4 +162,7 @@ input[type=number]::-webkit-inner-spin-button{
     height: 40px;
     border-radius: 10px;
 }
-
+.logo-error{
+    width: 150px;
+    height: 150px;
+}

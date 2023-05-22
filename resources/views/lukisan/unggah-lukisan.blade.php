@@ -9,7 +9,7 @@
     <div class="mt-5 d-flex justify-content-center">
         <h3 class=""><b>Tambah Lukisan</b></h3>
     </div>
-    
+
     <div class="d-flex bg-daftar justify-content-center align-items-center p-2">
         <div class="card-unggah-lukisan bg-white px-5 py-5 rounded-3 shadow">
             <h5 class="text-start mb-4"><b>Informasi Produk</b></h5>
@@ -20,15 +20,16 @@
                 @csrf
                 <div>
                     <div class="mb-3 row">
-                        <label for="namaLukisan" class="col-sm-2 col-form-label">Nama Lukisan <label class="text-danger">*</label></label> 
+                        <label for="namaLukisan" class="col-sm-2 col-form-label">Nama Lukisan <label class="text-danger">*</label></label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" id="namaLukisan" name="namaLukisan">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="hargaLukisan" class="col-sm-2 col-form-label">Harga <label class="text-danger">*</label></label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="number" id="hargaLukisan" name="hargaLukisan">
+                        <div class="col-sm-10 d-flex align-items-center">
+                            <span>Rp. </span>
+                            <input class="form-control ms-2" type="number" id="hargaLukisan" name="hargaLukisan">
                         </div>
                     </div>
                     <div class="mb-3 row">
