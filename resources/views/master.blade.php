@@ -47,8 +47,8 @@
                     </button>
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                         <div class="offcanvas-header">
-                            <img src="{{ Auth::user()->foto_profil }}" alt="Profile Picture" class="img-fluid" width="80" height="80">
-                            <h5>{{ Auth::user()->nama }}</h5>
+                            <img src="{{ auth()->user()->foto_profil }}" alt="Profile Picture" class="img-fluid" width="80" height="80">
+                            <h5>{{ auth()->user()->nama }}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="p-3 ms-4 mt-3">
@@ -75,7 +75,7 @@
                                         class="bi bi-bag-check me-4"></i><b>Pesanan</b></a>
                             </div>
                         </div>
-                        <form action="/ubahPeran/{{ Auth::user()->id }}" method="POST">
+                        <form action="/ubahPeran/{{ auth()->user()->id }}" method="POST">
                             @csrf
                             <div class="d-flex justify-content-center">
                                 <input class="btn-jadi-member text-white mt-3" type="submit" value="Jadi Member">
@@ -96,7 +96,7 @@
             @auth
                 <div class="d-flex align-items-center">
                     @if (Auth::check() && Auth::user()->role_id === 2)
-                        <a href=""><img class="mx-4"src="\asset\cartwhite.png"></a>
+                        <a href="/keranjang"><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu mt-2">
                             <li><a class="dropdown-item text-dark hover" href="/profilPage/{{ Auth::user()->id }}">Profil (Member)</a></li>
@@ -123,7 +123,7 @@
             @endauth
             @guest
                 <div class="d-flex align-items-center">
-                    <a href="/loginPage"><img class="mx-4"src="\asset\cartwhite.png"></a>
+                    <a href="/keranjang"><img class="mx-4"src="\asset\cartwhite.png"></a>
                     <a href="/loginPage"><img class="mx-3"src="\asset\profilewhite.png"></a>
                 </div>
             @endguest

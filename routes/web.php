@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\HalamanUtamaController;
+use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LukisanController;
 use App\Http\Controllers\UserController;
@@ -30,13 +32,16 @@ Route::get('/logout', [LoginController::class, 'Logout']);
 Route::get('/', [HalamanUtamaController::class, 'HomePage']);
 Route::get('/tentang', [TentangController::class, 'TentangPage']);
 
-// Profil
+// Lukisan
+Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage'])->middleware(3);
+Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan'])->middleware(3);
+
 Route::get('/profilPage/{id}', [UserController::class, 'profilPage']);
 Route::post('/ubahPeran/{id}', [UserController::class, 'ubahPeran']);
 
 // Lukisan
-Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage']);
-Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan']);
+Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage'])->middleware(3);
+Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan'])->middleware(3);
 
 Route::get('/daftarLukisanPage', [LukisanController::class, 'daftarLukisanPage']);
 
@@ -49,3 +54,6 @@ Route::post('/hapusLukisan/{id}', [LukisanController::class, 'hapusLukisan']);
 // Transaksi
 Route::get('/checkoutPage', [TransaksiController::class, 'checkoutPage']);
 
+Route::get('/errorPage',[Controller::class, 'errorPage']);
+
+Route::get('/keranjang', [KeranjangController::class, 'KeranjangPage']);

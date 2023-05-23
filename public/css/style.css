@@ -60,7 +60,6 @@
     background: #363636;
     padding: 20px 50px 20px;
     font-size: small;
-    ;
     min-width: 100vw;
 }
 
@@ -187,6 +186,9 @@ input[type=number]::-webkit-inner-spin-button {
     width: 200px;
     height: 40px;
     border-radius: 10px;
+}
+.logo-error {
+    width: 150px;
 }
 
 .myCaraousel {

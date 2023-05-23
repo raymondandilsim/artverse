@@ -30,7 +30,7 @@
                                     class="text-danger">*</label></label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="number" id="hargaLukisan" name="hargaLukisan"
-                                    value="{{ old('hargaLukisan') }}"placeholder="Masukkan Harga">
+                                    value="{{ old('hargaLukisan') }}"placeholder="Masukkan Harga dalam Bentuk Rupiah">
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -109,3 +109,4 @@
         </div>
     </div>
 @endsection
+
