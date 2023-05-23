@@ -12,10 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    
-
-
-
+    public function lukisans()
+    {
+        return $this->hasMany(Lukisan::class);
+    }
 
     /**
      * The attributes that are mass assignable.

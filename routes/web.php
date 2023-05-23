@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\DaftarController;
+use App\Http\Controllers\HalamanUtamaController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LukisanController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Tentang;
+use App\Http\Controllers\TentangController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,25 +19,33 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Auth (Login & Register)
+Route::get('/daftarPage', [DaftarController::class, 'DaftarPage']);
+Route::post('/daftar', [DaftarController::class, 'Daftar']);
 
-Route::get('/daftarPage', 'App\Http\Controllers\DaftarController@DaftarPage');
-Route::post('/daftar', 'App\Http\Controllers\DaftarController@Daftar');
+Route::get('/loginPage', [LoginController::class, 'LoginPage']);
+Route::post('/login', [LoginController::class, 'Login']);
+Route::get('/logout', [LoginController::class, 'Logout']);
 
-Route::get('/loginPage', 'App\Http\Controllers\LoginController@LoginPage');
-Route::post('/login', 'App\Http\Controllers\LoginController@Login');
-Route::get('/logout','App\Http\Controllers\LoginController@Logout');
+Route::get('/', [HalamanUtamaController::class, 'HomePage']);
+Route::get('/tentang', [TentangController::class, 'TentangPage']);
 
-Route::get('/', 'App\Http\Controllers\HalamanUtamaController@HomePage');
+// Profil
+Route::get('/profilPage/{id}', [UserController::class, 'profilPage']);
+Route::post('/ubahPeran/{id}', [UserController::class, 'ubahPeran']);
 
-Route::get('/detailLukisanPage', 'App\Http\Controllers\DetailLukisanController@LukisanPage');
-
-Route::get('/tentang', 'App\Http\Controllers\TentangController@TentangPage');
-
+// Lukisan
 Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage']);
 Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan']);
 
-Route::get('/profilPage/{id}', [UserController::class, 'profilPage']);
+Route::get('/daftarLukisanPage', [LukisanController::class, 'daftarLukisanPage']);
 
+Route::get('/detailLukisanSenimanPage/{id}', [LukisanController::class, 'detailLukisanSenimanPage']);
+Route::get('/detailLukisanMemberPage/{id}', [LukisanController::class, 'detailLukisanMemberPage']);
+Route::get('/perbaruiLukisanPage/{id}', [LukisanController::class, 'perbaruiLukisanPage']);
+Route::post('/perbaruiLukisan/{id}', [LukisanController::class, 'perbaruiLukisan']);
+Route::post('/hapusLukisan/{id}', [LukisanController::class, 'hapusLukisan']);
 
-Route::post('/ubahPeran/{id}', [UserController::class, 'ubahPeran']);
+// Transaksi
+Route::get('/checkoutPage', [TransaksiController::class, 'checkoutPage']);
 

@@ -47,8 +47,8 @@
                     </button>
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                         <div class="offcanvas-header">
-                            <img src="{{ $user->foto_profil }}" alt="Profile Picture" class="img-fluid" width="80" height="80">
-                            <h5>{{ $user->nama }}</h5>
+                            <img src="{{ Auth::user()->foto_profil }}" alt="Profile Picture" class="img-fluid" width="80" height="80">
+                            <h5>{{ Auth::user()->nama }}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="p-3 ms-4 mt-3">
@@ -63,11 +63,11 @@
                             <div class="my-4">
                                 <a class="dropdown-toggle link-dark text-decoration-none" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-archive me-4"></i><b>Product</b>
+                                    <i class="bi bi-archive me-4"></i><b>Produk</b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Tambah Produk</a></li>
-                                    <li><a class="dropdown-item" href="#">Daftar Produk</a></li>
+                                    <li><a class="dropdown-item" href="/unggahLukisanPage">Tambah Produk</a></li>
+                                    <li><a class="dropdown-item" href="/daftarLukisanPage">Daftar Produk</a></li>
                                 </ul>
                             </div>
                             <div class="my-4">
@@ -75,7 +75,7 @@
                                         class="bi bi-bag-check me-4"></i><b>Pesanan</b></a>
                             </div>
                         </div>
-                        <form action="/ubahPeran/{{ $user->id }}" method="POST">
+                        <form action="/ubahPeran/{{ Auth::user()->id }}" method="POST">
                             @csrf
                             <div class="d-flex justify-content-center">
                                 <input class="btn-jadi-member text-white mt-3" type="submit" value="Jadi Member">

@@ -18,10 +18,15 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('nama_lukisan');
-            $table->string('gambar');
             $table->double('harga');
             $table->longText('deskripsi');
             $table->integer('stok');
+            $table->string('kondisi');
+            $table->string('berat');
+            $table->string('ukuran');
+            $table->string('gambar_pertama');
+            $table->string('gambar_kedua')->nullable();
+            $table->string('gambar_ketiga')->nullable();
             $table->timestamps();
         });
     }
