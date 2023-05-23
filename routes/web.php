@@ -32,10 +32,7 @@ Route::get('/logout', [LoginController::class, 'Logout']);
 Route::get('/', [HalamanUtamaController::class, 'HomePage']);
 Route::get('/tentang', [TentangController::class, 'TentangPage']);
 
-// Lukisan
-Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage'])->middleware(3);
-Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan'])->middleware(3);
-
+// Profil
 Route::get('/profilPage/{id}', [UserController::class, 'profilPage']);
 Route::post('/ubahPeran/{id}', [UserController::class, 'ubahPeran']);
 
