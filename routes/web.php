@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LukisanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TentangController;
+use App\Http\Controllers\KontakController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::get('/logout', [LoginController::class, 'Logout']);
 
 Route::get('/', [HalamanUtamaController::class, 'HomePage']);
 Route::get('/tentang', [TentangController::class, 'TentangPage']);
+Route::get('/kontak', [KontakController::class, 'KontakPage']);
 
 // Profil
 Route::get('/profilPage/{id}', [UserController::class, 'profilPage']);
