@@ -5,9 +5,11 @@
 @endsection
 
 @section('Page-Contents')
-    <div class="my-5 text-center">
-        <img src="{{ url('asset/error.png') }}" class="p-2 logo-error ">
-        <h4 class="mt-4">Mohon maaf halaman tidak dapat diakses </h4>
-        <h4>Silahkan kembali ke halaman utama</h4>
+    <div class="p-5 d-flex align-items-center justify-content-center">
+        <div class="p-5 text-center">
+            <img src="{{ url('asset/error.png') }}" class="logo-error mb-3">
+            <h4 class="mt-4">Mohon maaf halaman tidak dapat diakses </h4>
+            <h4>Silahkan kembali ke halaman utama</h4>
+        </div>
     </div>
 @endsection
