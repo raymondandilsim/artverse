@@ -62,12 +62,12 @@
     <div class="border-bottom border-dark mb-5 px-5 py-3 pb-5">
         <div class="d-flex align-items-center">
             <h2 class="fw-bolder me-3">Seniman</h2>
-            <a class="fw-bolder text-danger text-decoration-none" href="">Lihat Semua</a>
+            <a class="fw-bolder text-danger text-decoration-none" href="/showSemuaSeniman">Lihat Semua</a>
         </div>
         <div class="d-flex my-3 mb-5">
             @foreach ($users as $user)
                 <div class="card text-center mt-2 me-4" style="width: 18rem;">
-                    <a href="/detailLukisanMemberPage/{{ $user->id }}" class="text-decoration-none text-dark">
+                    <a href="/detailSenimanPage/{{ $user->id }}" class="text-decoration-none text-dark">
                         <img src="{{ $user->foto_profil }}" class="card-img-top" alt="{{ $user->foto_profil }}"
                             height="270">
                         <div class="card-body">

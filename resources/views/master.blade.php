@@ -99,7 +99,7 @@
                 <form action="/search" method="GET">
                 <div class="search">
                     <i class="ms-4 bi-search"></i>
-                    <input class="ps-3 border-0 form-control" type="search" name="search" placeholder="Mencari...">
+                    <input class="ps-3 border-0 form-control" type="search" name="search" placeholder="Cari Lukisan...">
                 </div>
             </form>
             </div>

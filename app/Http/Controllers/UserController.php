@@ -34,4 +34,12 @@ class UserController extends Controller
             return redirect('/')->with('status', "Anda Kembali Menjadi Member");
         }
     }
+    public function showSeniman(){
+        $users = User::where('id', '<>', 1)->where('role_id',3)->Paginate(6);
+        return view('lihat-semua-seniman',['users'=> $users]);
+    }
+    public function detailSeniman($id){
+        $user = User::findOrFail($id);
+        return view('detail-seniman', compact('user'));
+    }
 }

@@ -36,6 +36,10 @@ Route::get('/tentang', [TentangController::class, 'TentangPage']);
 Route::get('/profilPage/{id}', [UserController::class, 'profilPage']);
 Route::post('/ubahPeran/{id}', [UserController::class, 'ubahPeran']);
 
+Route::get('/showSemuaSeniman', [UserController::class, 'showSeniman']);
+
+Route::get('/detailSenimanPage/{id}', [UserController::class, 'detailSeniman']);
+
 // Lukisan
 Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage'])->middleware(3);
 Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan'])->middleware(3);

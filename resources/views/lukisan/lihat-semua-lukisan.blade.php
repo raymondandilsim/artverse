@@ -1,12 +1,12 @@
 @extends('Master')
 
 @section('Page-Title')
-    Lihat Semua
+    Lihat Semua Lukisan
 @endsection
 
 @section('Page-Contents')
     <div class="container p-5">
-        <h3><b>Lihat Semua</b></h3>
+        <h3><b>Lihat Semua Lukisan</b></h3>
         <div class="row p-4">
             @forelse ($lukisan as $lukisans)
                 <div class="col-4 my-4">
