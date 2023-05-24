@@ -38,8 +38,8 @@
                 <div class="bgcard-art text-white d-flex align-items-center">
                     <p class="ms-5"><b>Bermacam <br> Lukisan</b></p>
                 </div>
-                <div class="box-card d-flex">
-                    @if ($lukisans->count() > 0)
+                @if ($lukisans->count() > 0)
+                    <div class="box-card d-flex">
                         @foreach ($lukisans as $lukisan)
                             <div class="card text-center mt-2 me-4" style="width: 18rem;">
                                 <a href="/detailLukisanMemberPage/{{ $lukisan->id }}"
@@ -53,29 +53,33 @@
                             </div>
                         @endforeach
                     @else
-                        <h1 class="display-6 ms-5 pb-4">Belum ada lukisan yang terdaftar</h1>
-                    @endif
-                </div>
+                        <h1 class="display-6 mt-5 ms-5 pt-5">Belum ada lukisan yang terdaftar</h1>
+                @endif
             </div>
         </div>
+    </div>
     </div>
     <div class="border-bottom border-dark mb-5 px-5 py-3 pb-5">
         <div class="d-flex align-items-center">
             <h2 class="fw-bolder me-3">Seniman</h2>
             <a class="fw-bolder text-danger text-decoration-none" href="">Lihat Semua</a>
         </div>
-        <div class="d-flex my-3 mb-5">
-            @foreach ($users as $user)
-                <div class="card text-center mt-2 me-4" style="width: 18rem;">
-                    <a href="/detailLukisanMemberPage/{{ $user->id }}" class="text-decoration-none text-dark">
-                        <img src="{{ $user->foto_profil }}" class="card-img-top" alt="{{ $user->foto_profil }}"
-                            height="200">
-                        <div class="card-body">
-                            <h6 class="card-text">{{ $user->username }}</h6>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
+        @if ($users->count() > 0)
+            <div class="d-flex my-3 mb-5">
+                @foreach ($users as $user)
+                    <div class="card text-center mt-2 me-4" style="width: 18rem;">
+                        <a href="/detailLukisanMemberPage/{{ $user->id }}" class="text-decoration-none text-dark">
+                            <img src="{{ $user->foto_profil }}" class="card-img-top" alt="{{ $user->foto_profil }}"
+                                height="200">
+                            <div class="card-body">
+                                <h6 class="card-text">{{ $user->username }}</h6>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            @else
+                <h1 class="display-6 mt-5 mb-5 pt-3 pb-5">Belum ada seniman yang terdaftar</h1>
+        @endif
+    </div>
     </div>
 @endsection

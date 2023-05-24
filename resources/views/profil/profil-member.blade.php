@@ -61,7 +61,7 @@
                                     <label class="col-sm-8 col-form-label fs-5">{{ $user->nomor_telepon }}</label> <br>
                                 </div>
                                   
-                                <form class="col-sm-5 mt-5" action="" method="">
+                                <form class="col-sm-5 mt-5" action="/ubahProfilPage/{{ $user->id }}" method="GET">
                                     <button class="btn btn-dark" type="submit" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Ubah Profil</button>
                                 </form>
                             </div>

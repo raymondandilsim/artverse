@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 // Auth (Login & Register)
 Route::get('/daftarPage', [DaftarController::class, 'DaftarPage']);
 Route::post('/daftar', [DaftarController::class, 'Daftar']);
+Route::get('/get-cities/{provinceId}', [DaftarController::class, 'getKotaByProvinsi']);
 
 Route::get('/loginPage', [LoginController::class, 'LoginPage']);
 Route::post('/login', [LoginController::class, 'Login']);
@@ -34,6 +35,8 @@ Route::get('/tentang', [TentangController::class, 'TentangPage']);
 
 // Profil
 Route::get('/profilPage/{id}', [UserController::class, 'profilPage']);
+Route::get('/ubahProfilPage/{id}', [UserController::class, 'ubahProfilPage']);
+Route::post('/ubahProfil/{id}', [UserController::class, 'ubahProfil']);
 Route::post('/ubahPeran/{id}', [UserController::class, 'ubahPeran']);
 
 // Lukisan
@@ -49,7 +52,7 @@ Route::post('/perbaruiLukisan/{id}', [LukisanController::class, 'perbaruiLukisan
 Route::post('/hapusLukisan/{id}', [LukisanController::class, 'hapusLukisan']);
 
 // Transaksi
-Route::get('/checkoutPage', [TransaksiController::class, 'checkoutPage']);
+Route::get('/checkoutPage/{id}', [TransaksiController::class, 'checkoutPage']);
 
 Route::get('/errorPage',[Controller::class, 'errorPage']);
 

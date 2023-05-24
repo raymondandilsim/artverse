@@ -1,60 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('Master')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar - ArtVerse</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="{{ url('css/style.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
+@section('Page-Title')
+    Profil - {{ $user->username }}
+@endsection
 
-<body>
+@section('Page-Contents')
     <div class="d-flex bg-daftar bg-secondary justify-content-center align-items-center p-5">
         <div class="card-daftar bg-white px-5 py-5 rounded-3 shadow">
-            <h2 class="text-center"><b>DAFTAR</b></h2>
-            <form action="/daftar" method="POST">
+            <h2 class="text-center"><b>Perbarui Profil</b></h2>
+            <form action="/ubahProfil/{{ $user->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <div>
-                        <label for="Nama" class="form-label">Nama <label class="text-danger">*</label></label>
+                        <label for="Nama" class="form-label mt-3">Nama <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="text" id="nama" name="nama"
-                            value="{{ old('nama') }}" placeholder="Masukkan nama anda">
+                            value="{{ $user->nama }}" placeholder="Masukkan nama anda">
                     </div>
                     <div>
-                        <label for="Username" class="form-label">Nama Pengguna <label
+                        <label for="Username" class="form-label mt-3">Nama Pengguna <label
                                 class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="text" id="username" name="username"
-                            value="{{ old('username') }}" placeholder="Masukkan nama pengguna">
+                            value="{{ $user->username }}" placeholder="Masukkan nama pengguna">
                     </div>
                     <div>
-                        <label for="Email" class="form-label">Email <label class="text-danger">*</label></label>
+                        <label for="Email" class="form-label mt-3">Email <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="Email" id="email" name="email"
-                            value="{{ old('email') }}" placeholder="Masukkan email anda">
+                            value="{{ $user->email }}" placeholder="Masukkan email anda">
                     </div>
                     <div>
-                        <label for="Nomor Telepon" class="form-label">Nomor Telepon <label
+                        <label for="Nomor Telepon" class="form-label mt-3">Nomor Telepon <label
                                 class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="text" id="nomor_telepon" name="nomor_telepon"
-                            value="{{ old('nomor_telepon') }}" placeholder="Masukkan nomor telepon">
+                            value="{{ $user->nomor_telepon }}" placeholder="Masukkan nomor telepon">
                     </div>
                     <div>
-                        <label for="Nama Provinsi" class="form-label">Nama Provinsi <label
+                        <label for="Nama Provinsi" class="form-label mt-3">Nama Provinsi <label
                                 class="text-danger">*</label></label>
                     </div>
                     <div>
@@ -67,7 +55,7 @@
                         </select>
                     </div>
                     <div>
-                        <label for="Nama Kota" class="form-label">Nama Kota <label class="text-danger">*</label></label>
+                        <label for="Nama Kota" class="form-label mt-3">Nama Kota <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         {{-- <input class="form-control" type="text" id="nama_kota" name="nama_kota"
@@ -104,22 +92,22 @@
                         </script>
                     </div>
                     <div>
-                        <label for="Nama Jalan" class="form-label">Nama Jalan <label
+                        <label for="Nama Jalan" class="form-label mt-3">Nama Jalan <label
                                 class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="text" id="nama_jalan" name="nama_jalan"
-                            value="{{ old('nama_jalan') }}" placeholder="Masukkan Jalan, Kecamatan, dan Kelurahan">
+                            value="{{ $user->nama_jalan }}" placeholder="Masukkan Jalan, Kecamatan, dan Kelurahan">
                     </div>
                     <div>
-                        <label for="Kode Pos" class="form-label">Kode Pos <label class="text-danger">*</label></label>
+                        <label for="Kode Pos" class="form-label mt-3">Kode Pos <label class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="text" id="kode_pos" maxlength="5" name="kode_pos"
-                            value="{{ old('kode_pos') }}" placeholder="Masukkan kode pos">
+                            value="{{ $user->kode_pos }}" placeholder="Masukkan kode pos">
                     </div>
                     <div>
-                        <label for="Kata Sandi" class="form-label">Kata Sandi <label
+                        <label for="Kata Sandi" class="form-label mt-3">Kata Sandi <label
                                 class="text-danger">*</label></label>
                     </div>
                     <div>
@@ -127,36 +115,24 @@
                             placeholder="Masukkan kata sandi">
                     </div>
                     <div>
-                        <label for="Masukkan Sandi Ulang" class="form-label">Masukkan Sandi Ulang <label
+                        <label for="Masukkan Sandi Ulang" class="form-label mt-3">Masukkan Sandi Ulang <label
                                 class="text-danger">*</label></label>
                     </div>
                     <div>
                         <input class="form-control" type="password" id="confirm_password" name="confirm_password"
                             placeholder="Masukkan ulang kata sandi">
                     </div>
-                    @if ($errors->any())
-                        {{-- <tr>
-                            <td colspan="2" class="px-5 py-2"> --}}
-                        <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                aria-label="Close"></button>
+                    <div class="mb-3">
+                            <label for="fotoProfil" class="form-label mt-3">Foto Profil</label>
+                            <br><img class="mt-1 mb-3" src="{{ $user->foto_profil }}" alt="Foto Profil belum terdaftar" width="100">
+                            <input class="form-control mb-1" type="file" id="fotoProfil" name="fotoProfil">
                         </div>
-                        {{-- </td>
-                        </tr> --}}
-                    @endif
+
+        
                     <br><label><label class="text-danger">*</label> Wajib diisi</label>
-                    <input class="btn-daftar text-white form-control mt-4" type="submit" value="Daftar">
-                    <h6 class="mt-2">Sudah punya akun? <a class="text-decoration-none" href="/loginPage">Masuk</a>
-                    </h6>
+                    <input class="btn-daftar text-white form-control mt-4 mb-5" type="submit" value="Perbarui">
                 </div>
             </form>
         </div>
     </div>
-</body>
-
-</html>
+@endsection

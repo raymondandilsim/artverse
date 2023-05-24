@@ -121,7 +121,7 @@ class LukisanController extends Controller
     public function detailLukisanMemberPage($id)
     {
         $lukisan = Lukisan::findOrFail($id);
-        
+
         return view('lukisan.detail-lukisan-member', compact('lukisan'));
     }
 
@@ -200,7 +200,6 @@ class LukisanController extends Controller
         $this->deleteGambarPertamaFromDB($lukisanLama);
         $gambarLukisan1Baru->store('/public/gambar-lukisan');
         $gambarLukisan1Baru = asset('storage/gambar-lukisan/' . $gambarLukisan1Baru->hashName());
-        $gambar1 = $gambarLukisan1Baru;
 
         $gambarLukisan2Baru = $request->file('gambarLukisan2');
         if ($gambarLukisan2Baru == null) {

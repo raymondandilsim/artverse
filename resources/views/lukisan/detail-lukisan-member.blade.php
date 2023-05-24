@@ -57,7 +57,7 @@
                     @if (Auth::check())
                         <a href=""><button class="btn-tambah-keranjang text-white fw-bold mt-4">
                                 +Keranjang</button></a>
-                        <a class="text-decoration-none" href="/checkoutPage"><button class="btn-beli-langsung fw-bold mt-2">Beli
+                        <a class="text-decoration-none" href="/checkoutPage/{{ $lukisan->id }}"><button class="btn-beli-langsung fw-bold mt-2">Beli
                                 Langsung</button></a>
                     @else
                         @guest

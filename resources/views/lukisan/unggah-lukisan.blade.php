@@ -30,7 +30,7 @@
                                     class="text-danger">*</label></label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="number" id="hargaLukisan" name="hargaLukisan"
-                                    value="{{ old('hargaLukisan') }}"placeholder="Masukkan Harga dalam Bentuk Rupiah">
+                                    value="{{ old('hargaLukisan') }}" placeholder="Masukkan Harga dalam Bentuk Rupiah">
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -48,7 +48,7 @@
                                     class="text-danger">*</label></label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="number" id="stokLukisan" name="stokLukisan"
-                                    value="{{ old('stokLukisan') }}"placeholder="Masukkan Stok Produk">
+                                    value="{{ old('stokLukisan') }}" placeholder="Masukkan Stok Produk">
                             </div>
                         </div>
                         <div class="mb-3 row">

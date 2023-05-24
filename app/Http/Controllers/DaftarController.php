@@ -2,55 +2,120 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kota;
+use App\Models\Provinsi;
 use App\Models\User;
+use App\Services\RajaOngkirService;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Kodepandai\LaravelRajaOngkir\RajaOngkir;
 
 class DaftarController extends Controller
 {
+    protected $rajaOngkirService;
+
+    public function __construct(RajaOngkirService $rajaOngkirService)
+    {
+        $this->rajaOngkirService = $rajaOngkirService;
+    }
+
+    // public function DaftarPage()
+    // {
+    //     $data['provinsi'] = $this->rajaOngkirService->getProvinces();
+
+    //     return view('daftar', $data);
+    // }
     public function DaftarPage()
     {
-        return view('daftar');
+        $provinsis = Provinsi::all();
+
+        return view('daftar', compact('provinsis'));
     }
-    public function Daftar(Request $request){
-        $request->validate([
-            'nama' => 'required|regex:/^[a-zA-Z ]+$/',
-            'username' => 'required|unique:users,username|regex:/^[a-zA-Z\0-9]+$/',
-            'email' => 'required|email|unique:users,email',
-            'nomor_telepon' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:13',
-            'nama_provinsi' => 'required',
-            'nama_kota' => 'required',
-            'nama_jalan' => 'required',
-            'kode_pos' => 'required|min:5',
-            'password' => 'required|min:5|max:20',
-            'confirm_password' => 'required|same:password|min:5|max:20'
-        ],
-        [
-            'nama.required' => 'Kolom Nama harus terisi',
-            'nama.regex' => 'Nama harus terdapat huruf kecil atau huruf besar',
-            'username.required' => 'Kolom Nama Pengguna harus terisi',
-            'username.unique' => 'Nama Pengguna sudah digunakan',
-            'username.regex' => 'Nama Pengguna harus terdapat huruf atau angka',
-            'email.required' => 'Kolom Email harus terisi',
-            'email.email' => 'Email yang dimasukkan harus sesuai',
-            'email.unique' => 'Email sudah digunakan',
-            'nomor_telepon.required' => 'Kolom Telepon harus terisi',
-            'nomor_telepon.regex' => 'Telepon harus terisi angka',
-            'nomor_telepon.min' => 'Telepon harus terdapat 10 digit',
-            'nomor_telepon.max' => 'Telepon harus terdapat 13 digit',
-            'nama_provinsi.required' => 'Kolom Provinsi harus terisi',
-            'nama_kota.required' => 'Kolom Kota harus terisi',
-            'nama_jalan.required' => 'Kolom Nama Jalan harus terisi',
-            'kode_pos.required' => 'Kolom Kode Pos harus terisi',
-            'kode_pos.min' => 'Kode Pos wajib 5 digit angka',
-            'password.required' => 'Kolom Kata Sandi harus terisi',
-            'password.min' => 'Kata Sandi harus terdapat minimal 5 karakter',
-            'password.max' => 'Kata Sandi harus terdapat maksimal 20 karakter',
-            'confirm_password.required' => 'Kolom Kata Sandi harus terisi',
-            'confirm_password.same' => 'Kolom Sandi Ulang harus sama dengan Kata Sandi',
-            'confirm_password.min' => 'Kata Sandi harus terdapat minimal 5 karakter',
-            'confirm_password.max' => 'Kata Sandi harus terdapat maksimal 20 karakter',
-        ]);
+
+    // public function DaftarPage()
+    // {
+    //     $origin = 501;
+    //     $destination = 114;
+    //     $weight = 1700;
+    //     $courier = "jne";
+
+    //     $response = Http::asForm()->withHeaders([
+    //         'key' => 'a6af13d8694b086e5148df4cb5693e79'
+    //     ])->post('https://api.rajaongkir.com/starter/cost',[
+    //         'origin' => $origin,
+    //         'destination' => $destination,
+    //         'weight' => $weight,
+    //         'courier' => $courier
+    //     ]);
+
+    //     // return $response['rajaongkir']['results'][0];
+    //     return view('daftar');
+    // }
+
+    // public function getCities($provinceId)
+    // {
+    //     $cities = $this->rajaOngkirService->getCitiesByProvince($provinceId);
+
+    //     return response()->json($cities);
+    // }
+    public function getKotaByProvinsi($provinsiId)
+    {
+        $kotas = Kota::where('provinsi_id', '=', $provinsiId)->pluck('nama_kota', 'id');
+
+        return json_encode($kotas);
+    }
+
+    public function Daftar(Request $request)
+    {
+        $request->validate(
+            [
+                'nama' => 'required|regex:/^[a-zA-Z ]+$/',
+                'username' => 'required|unique:users,username|regex:/^[a-zA-Z\0-9]+$/',
+                'email' => 'required|email|unique:users,email',
+                'nomor_telepon' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:13',
+                'provinsi' => 'required',
+                'kota' => 'required',
+                'nama_jalan' => 'required',
+                'kode_pos' => 'required|min:5',
+                'password' => 'required|min:5|max:20',
+                'confirm_password' => 'required|same:password|min:5|max:20'
+            ],
+            [
+                'nama.required' => 'Kolom Nama harus terisi',
+                'nama.regex' => 'Nama harus terdapat huruf kecil atau huruf besar',
+                'username.required' => 'Kolom Nama Pengguna harus terisi',
+                'username.unique' => 'Nama Pengguna sudah digunakan',
+                'username.regex' => 'Nama Pengguna harus terdapat huruf atau angka',
+                'email.required' => 'Kolom Email harus terisi',
+                'email.email' => 'Email yang dimasukkan harus sesuai',
+                'email.unique' => 'Email sudah digunakan',
+                'nomor_telepon.required' => 'Kolom Telepon harus terisi',
+                'nomor_telepon.regex' => 'Telepon harus terisi angka',
+                'nomor_telepon.min' => 'Telepon harus terdapat 10 digit',
+                'nomor_telepon.max' => 'Telepon harus terdapat 13 digit',
+                'provinsi.required' => 'Kolom Provinsi harus terisi',
+                'kota.required' => 'Kolom Kota harus terisi',
+                'nama_jalan.required' => 'Kolom Nama Jalan harus terisi',
+                'kode_pos.required' => 'Kolom Kode Pos harus terisi',
+                'kode_pos.min' => 'Kode Pos wajib 5 digit angka',
+                'password.required' => 'Kolom Kata Sandi harus terisi',
+                'password.min' => 'Kata Sandi harus terdapat minimal 5 karakter',
+                'password.max' => 'Kata Sandi harus terdapat maksimal 20 karakter',
+                'confirm_password.required' => 'Kolom Kata Sandi harus terisi',
+                'confirm_password.same' => 'Kolom Sandi Ulang harus sama dengan Kata Sandi',
+                'confirm_password.min' => 'Kata Sandi harus terdapat minimal 5 karakter',
+                'confirm_password.max' => 'Kata Sandi harus terdapat maksimal 20 karakter',
+            ]
+        );
+
+        $provinsi_id = Provinsi::findOrFail($request->provinsi);
+        $nama_provinsi = $provinsi_id->provinsi;
+
+        $kota_id = Kota::findOrFail($request->kota);
+        $nama_kota = $kota_id->nama_kota;
+
 
         $user = new User();
         $user->role_id = 2;
@@ -58,8 +123,8 @@ class DaftarController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->nomor_telepon = $request->nomor_telepon;
-        $user->nama_provinsi = $request->nama_provinsi;
-        $user->nama_kota = $request->nama_kota;
+        $user->nama_provinsi = $nama_provinsi;
+        $user->nama_kota = $nama_kota;
         $user->nama_jalan = $request->nama_jalan;
         $user->kode_pos = $request->kode_pos;
         $user->password = Hash::make($request->password);
@@ -68,4 +133,3 @@ class DaftarController extends Controller
         return redirect('/loginPage')->with('status', "Akun Berhasil Dibuat");
     }
 }
-
