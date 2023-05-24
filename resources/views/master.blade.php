@@ -18,23 +18,23 @@
 <body>
 
     {{-- success --}}
-    @if(Session::has('status'))
+    @if (Session::has('status'))
         <div class="alert alert-success alert-dismissible fade show fixed-top m-5" role="alert">
-            {{Session::get('status')}}
+            {{ Session::get('status') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
 
     {{-- error handling --}}
-    @if($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li class="p-2">{{$error}}</li>
-            @endforeach
-        </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="p-2">{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
 
     <header class="bg-header">
@@ -42,14 +42,18 @@
             {{-- Menu Offcanvas --}}
             @if (Auth::check() && Auth::user()->role_id === 3)
                 <div class="d-flex align-items-center">
-                    <button class="btn btn-light border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-                        aria-controls="offcanvasExample"><i class="bi bi-caret-right-fill"></i>
+                    <button class="btn btn-light border-0" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i
+                            class="bi bi-caret-right-fill"></i>
                     </button>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                        aria-labelledby="offcanvasExampleLabel">
                         <div class="offcanvas-header">
-                            <img src="{{ auth()->user()->foto_profil }}" alt="Profile Picture" class="img-fluid" width="80" height="80">
+                            <img src="{{ auth()->user()->foto_profil }}" alt="Profile Picture" class="img-fluid"
+                                width="80" height="80">
                             <h5>{{ auth()->user()->nama }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
                         </div>
                         <div class="p-3 ms-4 mt-3">
                             <div>
@@ -85,13 +89,19 @@
                 </div>
             @endif
             <div class="align-items-center justify-content-center">
+                @if (Auth::check() && Auth::user()->role_id === 3)
+                    <img src="\asset\logoArtverse.png">
+                @else
                 <a href="/"><img src="\asset\logoArtverse.png"></a>
+                @endif
             </div>
-            <div class="d-flex align-items-center ">
+            <div class="d-flex align-items-center">
+                <form action="/search" method="GET">
                 <div class="search">
                     <i class="ms-4 bi-search"></i>
-                    <input class="ps-3 border-0 form-control" type="search" id="search" placeholder="Mencari...">
+                    <input class="ps-3 border-0 form-control" type="search" name="search" placeholder="Mencari...">
                 </div>
+            </form>
             </div>
             @auth
                 <div class="d-flex align-items-center">
@@ -99,7 +109,8 @@
                         <a href="/keranjang"><img class="mx-4"src="\asset\cartwhite.png"></a>
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu mt-2">
-                            <li><a class="dropdown-item text-dark hover" href="/profilPage/{{ Auth::user()->id }}">Profil (Member)</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="/profilPage/{{ Auth::user()->id }}">Profil
+                                    (Member)</a></li>
                             <li><a class="dropdown-item text-dark hover" href="">Riwayat Transaksi</a></li>
                             <li><a class="dropdown-item text-dark hover" href="/logout">Logout</a></li>
                         </ul>
@@ -139,7 +150,7 @@
                 <span class="text-white">|</span>
                 <a class="text-decoration-none text-white ms-3" href="">Syarat dan Ketentuan</a>
             </div>
-            <div class="text-white">&copy;2023, ArtVerse </div>
+            <div class="text-white">&copy; 2023, ArtVerse </div>
         </div>
     </footer>
 </body>
