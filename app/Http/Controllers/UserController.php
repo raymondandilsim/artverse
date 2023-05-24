@@ -30,7 +30,7 @@ class UserController extends Controller
         if($user->role_id === 2){
             $user->role_id = 3;
             $user->save();
-            return back()->with('status', "Status Anda Berubah Menjadi Seniman");
+            return redirect('/daftarLukisanPage')->with('status', "Status Anda Berubah Menjadi Seniman");
             // return redirect('/profilPage')->with('status', "Berhasil")->with('user', $user);
         }
         elseif($user->role_id === 3){
@@ -156,5 +156,13 @@ class UserController extends Controller
                 File::delete(public_path("storage/foto-profil/" . $item));
             }
         }
+    }
+    public function showSeniman(){
+        $users = User::where('id', '<>', 1)->where('role_id',3)->Paginate(6);
+        return view('lihat-semua-seniman',['users'=> $users]);
+    }
+    public function detailSeniman($id){
+        $user = User::findOrFail($id);
+        return view('detail-seniman', compact('user'));
     }
 }

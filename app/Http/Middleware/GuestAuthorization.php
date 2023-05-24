@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class SenimanAuthorization
+class GuestAuthorization
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class SenimanAuthorization
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check() || (Auth::user()->role_id !== 1 && Auth::user()->role_id !== 3)) {
-            return redirect('/errorPage');
+        if (Auth::check()) {
+            return redirect('/');
         }
         return $next($request);
     }
