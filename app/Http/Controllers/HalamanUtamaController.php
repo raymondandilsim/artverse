@@ -12,8 +12,8 @@ class HalamanUtamaController extends Controller
     public function HomePage()
     {
         $lukisans = Lukisan::inRandomOrder()->limit(4)->get();
-        $users = User::where('id', '<>', 1)->where('role_id', 3)->inRandomOrder()->limit(4)->get();
-
+        $users = User::where('role_id', '<>', 1)->inRandomOrder()->limit(4)->get();
+        // ->where('role_id', 3)
         return view('halaman-utama', ['lukisans' => $lukisans], ['users' =>$users]);
     }
 }

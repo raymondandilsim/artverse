@@ -47,7 +47,10 @@
                                     <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top"
                                         alt="{{ $lukisan->nama_lukisan }}" height="250">
                                     <div class="card-body">
-                                        <h6 class="card-text">Rp{{ $lukisan->harga }}</h6>
+                                        @php
+                                            $formatHarga = number_format($lukisan->harga, 0, '.', '.');
+                                        @endphp
+                                        <h6 class="card-text">Rp{{ $formatHarga }}</h6>
                                     </div>
                                 </a>
                             </div>

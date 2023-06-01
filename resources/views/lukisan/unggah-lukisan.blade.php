@@ -102,7 +102,7 @@
                             <input class="form-control mb-3" type="file" id="gambarLukisan2" name="gambarLukisan2" value="{{ old('gambarLukisan2') }}">
                             <input class="form-control mb-3" type="file" id="gambarLukisan3" name="gambarLukisan3" value="{{ old('gambarLukisan3') }}">
                         </div>
-                        <input class="btn-daftar text-white form-control mt-5" type="submit" value="Unggah">
+                        <input class="btn btn-secondary form-control mt-5" type="submit" value="Unggah">
                     </div>
                 </form>
             </div>

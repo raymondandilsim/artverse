@@ -103,7 +103,7 @@
 
 .box-stock {
     min-width: 40vw;
-    min-height: 23vh;
+    min-height: 13vh;
     background-color: #EEEEEE;
     border-radius: 15px;
 }
@@ -191,13 +191,17 @@ input[type=number]::-webkit-inner-spin-button {
     width: 150px;
 }
 
-.myCaraousel {
+.myCarousel {
     width: 600px;
     height: 400px;
 }
 
-.myCaraousel .carousel-item img {
+.myCarousel .carousel-inner .carousel-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.peringatan {
+    font-size: x-small;
 }

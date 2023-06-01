@@ -11,8 +11,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4">
-                                <img src="{{ $user->foto_profil }}" alt="Profile Picture" class="img-fluid" width="500" height="500">
+                            <div class="col-md-4 mt-4">
+                                <img src="{{ $user->foto_profil }}" alt="Profile Picture" class="img-fluid rounded" width="500" height="500">
                             </div>
 
                             <div class="col-md-8 mt-4">
@@ -21,7 +21,7 @@
                         </div>
                         <form action="/ubahPeran/{{ $user->id }}" method="POST">
                             @csrf
-                            <input class="btn-masuk text-white form-control mt-4" type="submit" value="Jadi Penjual">
+                            <input class="btn btn-dark form-control mt-4" type="submit" value="Jadi Penjual">
                         </form>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{ $user->foto_profil }}" alt="Profile Picture" class="img-fluid" width="500" height="500">
+                                <img src="{{ $user->foto_profil }}" alt="Profile Picture" class="img-fluid rounded" width="500" height="500">
                             </div>
 
                             <div class="col-md-8">

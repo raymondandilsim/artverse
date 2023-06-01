@@ -150,7 +150,7 @@
                         </tr> --}}
                     @endif
                     <br><label><label class="text-danger">*</label> Wajib diisi</label>
-                    <input class="btn-daftar text-white form-control mt-4" type="submit" value="Daftar">
+                    <input class="btn btn-secondary form-control mt-4" type="submit" value="Daftar">
                     <h6 class="mt-2">Sudah punya akun? <a class="text-decoration-none" href="/loginPage">Masuk</a>
                     </h6>
                 </div>

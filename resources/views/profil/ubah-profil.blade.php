@@ -124,13 +124,13 @@
                     </div>
                     <div class="mb-3">
                             <label for="fotoProfil" class="form-label mt-3">Foto Profil</label>
-                            <br><img class="mt-1 mb-3" src="{{ $user->foto_profil }}" alt="Foto Profil belum terdaftar" width="100">
+                            <br><img class="mt-1 mb-3 rounded" src="{{ $user->foto_profil }}" alt="Foto Profil belum terdaftar" width="100">
                             <input class="form-control mb-1" type="file" id="fotoProfil" name="fotoProfil">
                         </div>
 
         
                     <br><label><label class="text-danger">*</label> Wajib diisi</label>
-                    <input class="btn-daftar text-white form-control mt-4 mb-5" type="submit" value="Perbarui">
+                    <input class="btn btn-secondary form-control mt-4 mb-5" type="submit" value="Perbarui">
                 </div>
             </form>
         </div>

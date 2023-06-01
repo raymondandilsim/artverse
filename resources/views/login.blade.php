@@ -57,7 +57,7 @@
                             {{-- </td>
                         </tr> --}}
                     @endif
-                    <input class="btn-masuk text-white form-control mt-4" type="submit" value="Masuk">
+                    <input class="btn btn-secondary form-control mt-4" type="submit" value="Masuk">
                     <h6 class="mt-2">Belum mempunyai akun? <a class="text-decoration-none" href="/daftarPage">Daftar</a></h6>
                 </div>
             </form>

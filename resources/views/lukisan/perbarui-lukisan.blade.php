@@ -100,14 +100,14 @@
                         <div class="mb-3">
                             <label for="gambarLukisan" class="form-label">Gambar Lukisan (Gambar Pertama Wajib)<label
                                     class="text-danger">*</label></label>
-                            <br><img class="mt-1 mb-3" src="{{ $lukisan->gambar_pertama }}" alt="Lukisan belum terdaftar" width="200">
+                            <br><img class="mt-1 mb-3 rounded" src="{{ $lukisan->gambar_pertama }}" alt="Lukisan belum terdaftar" width="200">
                             <input class="form-control mb-1" type="file" id="gambarLukisan1" name="gambarLukisan1">
-                            <br><img class="mt-1 mb-3" src="{{ $lukisan->gambar_kedua }}" alt="Lukisan belum terdaftar" width="200">
+                            <br><img class="mt-1 mb-3 rounded" src="{{ $lukisan->gambar_kedua }}" alt="Lukisan belum terdaftar" width="200">
                             <input class="form-control mb-1" type="file" id="gambarLukisan2" name="gambarLukisan2">
-                            <br><img class="mt-1 mb-3" src="{{ $lukisan->gambar_ketiga }}" alt="Lukisan belum terdaftar" width="200">
+                            <br><img class="mt-1 mb-3 rounded" src="{{ $lukisan->gambar_ketiga }}" alt="Lukisan belum terdaftar" width="200">
                             <input class="form-control mb-1" type="file" id="gambarLukisan3" name="gambarLukisan3">
                         </div>
-                        <input class="btn-daftar text-white form-control mt-5" type="submit" value="Unggah">
+                        <input class="btn btn-secondary form-control mt-5" type="submit" value="Unggah">
                     </div>
                 </form>
             </div>

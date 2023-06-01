@@ -9,6 +9,8 @@ class Lukisan extends Model
 {
     use HasFactory;
 
+    protected $table = 'lukisans';
+
     public function unggahLukisan($user_id, $namaLukisan, $hargaLukisan, $deskripsi, $stokLukisan, $kondisiLukisan,
                                     $beratLukisan, $ukuranLukisan, $gambarLukisan1, $gambarLukisan2, $gambarLukisan3){
         $lukisan = new Lukisan();
@@ -51,4 +53,9 @@ class Lukisan extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // public function detailTransaksis()
+    // {
+    //     return $this->hasMany(DetailTransaksi::class);
+    // }
 }

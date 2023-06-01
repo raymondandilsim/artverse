@@ -13,21 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transaksis', function (Blueprint $table) {
+        Schema::create('keranjangs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->date('tanggal_pembelian');
-            $table->double('total_pembelian');
-            $table->string('status');
-            $table->string('bukti_pembayaran')->default('');
-            $table->string('bukti_pengiriman')->default('');
-            $table->string('bukti_pelepasan_dana')->default('');
+            $table->unsignedBigInteger('lukisan_id');
+            $table->foreign('lukisan_id')->references('id')->on('lukisans');
+            $table->integer('kuantitas');
+            $table->double('subtotal_produk');
             $table->timestamps();
         });
     }
-
-
 
     /**
      * Reverse the migrations.
@@ -36,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaksis');
+        Schema::dropIfExists('keranjangs');
     }
 };

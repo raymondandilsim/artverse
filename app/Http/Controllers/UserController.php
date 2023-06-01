@@ -20,9 +20,6 @@ class UserController extends Controller
         if(Auth::check() && Auth::user()->role_id === 2){
             return view('profil.profil-member', ['user' => $user]);
         }
-        elseif(Auth::check() && Auth::user()->role_id === 3){
-            return view('profil.profil-seniman', ['user' => $user]);
-        }
     }
 
     public function ubahPeran($userId){

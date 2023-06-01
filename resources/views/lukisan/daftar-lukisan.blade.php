@@ -24,9 +24,16 @@
                     <tbody>
                         @foreach ($lukisans as $lukisan)
                             <tr>
-                                <th scope="row">{{ $lukisan->id}}</th>
-                                <td><a class="text-decoration-none text-dark" href="/detailLukisanSenimanPage/{{ $lukisan->id }}"><img src="{{ $lukisan->gambar_pertama }}" alt="{{ $lukisan->nama_lukisan }}" width="50" height="50" class="me-3">{{ $lukisan->nama_lukisan }}</a></td>
-                                <td class="pt-3">Rp{{ $lukisan->harga }}</td>
+                                <th scope="row">{{ $lukisan->id }}</th>
+                                <td><a class="text-decoration-none text-dark"
+                                        href="/detailLukisanSenimanPage/{{ $lukisan->id }}">
+                                        <img src="{{ $lukisan->gambar_pertama }}" alt="{{ $lukisan->nama_lukisan }}"
+                                            width="50" height="50"
+                                            class="me-3 rounded">{{ $lukisan->nama_lukisan }}</a></td>
+                                @php
+                                    $formatHarga = number_format($lukisan->harga, 0, '.', '.');
+                                @endphp
+                                <td class="pt-3">Rp{{ $formatHarga }}</td>
                                 <td class="pt-3">{{ $lukisan->stok }}</td>
                             </tr>
                         @endforeach

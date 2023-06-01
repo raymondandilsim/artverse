@@ -6,19 +6,21 @@
 
 @section('Page-Contents')
     <div class="p-5 d-flex justify-content-center mb-5">
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleAutoplaying" class="myCarousel carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ $lukisan->gambar_pertama }}" class="d-block w-100 h-100" alt="{{ $lukisan->nama_lukisan }}">
+                    <img src="{{ $lukisan->gambar_pertama }}" class="d-block w-100 rounded" alt="{{ $lukisan->nama_lukisan }}">
                 </div>
                 @if ($lukisan->gambar_kedua != null)
                     <div class="carousel-item">
-                        <img src="{{ $lukisan->gambar_kedua }}" class="d-block w-100" alt="{{ $lukisan->nama_lukisan }}">
+                        <img src="{{ $lukisan->gambar_kedua }}" class="d-block w-100 rounded"
+                            alt="{{ $lukisan->nama_lukisan }}">
                     </div>
                 @endif
                 @if ($lukisan->gambar_ketiga != null)
                     <div class="carousel-item">
-                        <img src="{{ $lukisan->gambar_ketiga }}" class="d-block w-100" alt="{{ $lukisan->nama_lukisan }}">
+                        <img src="{{ $lukisan->gambar_ketiga }}" class="d-block w-100 rounded"
+                            alt="{{ $lukisan->nama_lukisan }}">
                     </div>
                 @endif
             </div>
@@ -38,7 +40,10 @@
         <div class="ms-5">
             <div class="box-deskripsi shadow p-5">
                 <h4 class="mb-3"><b>{{ $lukisan->nama_lukisan }}</b></h4>
-                <p><b>Rp{{ $lukisan->harga }}</b></p>
+                @php
+                    $formatHarga = number_format($lukisan->harga, 0, '.', '.');
+                @endphp
+                <p><b>Rp{{ $formatHarga }}</b></p>
                 <ul class="list-unstyled">
                     <div class="row">
                         <li class="col-sm-4"><span>Kondisi</span></li>
@@ -59,7 +64,8 @@
                 <div class="row">
                     <a class="col-sm-6 text-decoration-none" href="/perbaruiLukisanPage/{{ $lukisan->id }}">
                         <button class="btn-tambah-keranjang text-white fw-bold mt-5">Perbarui</button></a>
-                    <form action="/hapusLukisan/{{ $lukisan->id }}" method="POST" enctype="multipart/form-data" class=" col-sm-6">
+                    <form action="/hapusLukisan/{{ $lukisan->id }}" method="POST" enctype="multipart/form-data"
+                        class=" col-sm-6">
                         @csrf
                         <!-- Button trigger modal Delete Confirmation-->
                         <button type="button" class="btn-beli-langsung fw-bold mt-5" data-bs-toggle="modal"
@@ -81,8 +87,9 @@
                                         <p>Apakah anda yakin ingin menghapus lukisan {{ $lukisan->nama_lukisan }}?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                        <button type="Submit" class="btn btn-primary">Hapus</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Batal</button>
+                                        <button type="Submit" class="btn btn-danger">Hapus</button>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +103,7 @@
                         
                             <button class="btn-beli-langsung fw-bold mt-5">Hapus</button> --}}
 
-                   
+
                     <a class="col-sm-6 text-decoration-none" href="">
                         <button class="btn-beli-langsung fw-bold mt-5">Diskusi</button></a>
                 </div>

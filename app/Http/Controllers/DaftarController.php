@@ -5,28 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Kota;
 use App\Models\Provinsi;
 use App\Models\User;
-use App\Services\RajaOngkirService;
-use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Http;
-use Kodepandai\LaravelRajaOngkir\RajaOngkir;
 
 class DaftarController extends Controller
 {
-    protected $rajaOngkirService;
-
-    public function __construct(RajaOngkirService $rajaOngkirService)
-    {
-        $this->rajaOngkirService = $rajaOngkirService;
-    }
-
-    // public function DaftarPage()
-    // {
-    //     $data['provinsi'] = $this->rajaOngkirService->getProvinces();
-
-    //     return view('daftar', $data);
-    // }
     public function DaftarPage()
     {
         $provinsis = Provinsi::all();
@@ -34,32 +17,6 @@ class DaftarController extends Controller
         return view('daftar', compact('provinsis'));
     }
 
-    // public function DaftarPage()
-    // {
-    //     $origin = 501;
-    //     $destination = 114;
-    //     $weight = 1700;
-    //     $courier = "jne";
-
-    //     $response = Http::asForm()->withHeaders([
-    //         'key' => 'a6af13d8694b086e5148df4cb5693e79'
-    //     ])->post('https://api.rajaongkir.com/starter/cost',[
-    //         'origin' => $origin,
-    //         'destination' => $destination,
-    //         'weight' => $weight,
-    //         'courier' => $courier
-    //     ]);
-
-    //     // return $response['rajaongkir']['results'][0];
-    //     return view('daftar');
-    // }
-
-    // public function getCities($provinceId)
-    // {
-    //     $cities = $this->rajaOngkirService->getCitiesByProvince($provinceId);
-
-    //     return response()->json($cities);
-    // }
     public function getKotaByProvinsi($provinsiId)
     {
         $kotas = Kota::where('provinsi_id', '=', $provinsiId)->pluck('nama_kota', 'id');

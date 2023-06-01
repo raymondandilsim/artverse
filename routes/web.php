@@ -63,6 +63,10 @@ Route::get('/search', [LukisanController::class,'searchResult']);
 
 // Transaksi
 Route::get('/checkoutPage/{id}', [TransaksiController::class, 'checkoutPage'])->middleware(2);
+Route::get('/pembayaranPage/{lukisanId}/{quantity}', [TransaksiController::class, 'pembayaranPage'])->middleware(2);
+Route::get('/riwayatTransaksiAdminPage', [TransaksiController::class, 'riwayatTransaksiAdminPage']);
+Route::get('/riwayatTransaksiMemberPage', [TransaksiController::class, 'riwayatTransaksiMemberPage'])->middleware(2);
+Route::get('/detailTransaksiPage/{id}', [TransaksiController::class, 'detailTransaksiPage']);
 
 Route::get('/keranjang', [KeranjangController::class, 'KeranjangPage'])->middleware(2);
 
