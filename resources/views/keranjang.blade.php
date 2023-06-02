@@ -15,9 +15,9 @@
               <table class="table table-bordered m-0">
                 <thead>
                   <tr>
-                    <th class="text-center py-3 px-4" style="min-width: 400px;">Nama Produk</th>
+                    <th class="text-right py-3 px-4" style="min-width: 400px;">Nama Produk</th>
                     <th class="text-right py-3 px-4" style="width: 100px;">Harga</th>
-                    <th class="text-center py-3 px-4" style="width: 120px;">Jumlah</th>
+                    <th class="text-right py-3 px-4" style="width: 120px;">Jumlah</th>
                     <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
                     <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
                   </tr>
