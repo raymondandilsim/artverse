@@ -148,7 +148,7 @@
                 <span class="text-white">|</span>
                 <a class="text-decoration-none text-white mx-3" href="/kontak">Kontak</a>
                 <span class="text-white">|</span>
-                <a class="text-decoration-none text-white ms-3" href="">Syarat dan Ketentuan</a>
+                <a class="text-decoration-none text-white ms-3" href="/syaratketentuan">Syarat dan Ketentuan</a>
             </div>
             <div class="text-white">&copy; 2023, ArtVerse </div>
         </div>
