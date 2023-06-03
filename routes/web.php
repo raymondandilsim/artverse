@@ -7,6 +7,7 @@ use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LukisanController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AkunMemberController;
 use App\Http\Controllers\TentangController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\SyaratketentuanController;
@@ -46,6 +47,8 @@ Route::post('/ubahPeran/{id}', [UserController::class, 'ubahPeran']);
 Route::get('/showSemuaSeniman', [UserController::class, 'showSeniman']);
 
 Route::get('/detailSenimanPage/{id}', [UserController::class, 'detailSeniman']);
+
+Route::get('/akun-member', [AkunMemberController::class, 'akunmemberpage']);
 
 // Lukisan
 Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage'])->middleware(3);
