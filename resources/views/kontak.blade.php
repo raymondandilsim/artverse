@@ -5,7 +5,7 @@
 @endsection
 
 @section('Page-Contents')
-<div style="margin-top: 50px;">
+<div style="margin-top: 50px;  height: 468px;">
     <div style="margin-left: 100px; margin-right: 100px;">
         <h2 style="font-weight:bold">Kontak</h2>
         <p></p>

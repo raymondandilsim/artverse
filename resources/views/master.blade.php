@@ -141,7 +141,7 @@
     </header>
     @yield('Page-Contents')
     <footer>
-        <div class="section-footer bg-footer text-center fixed-bottom">
+        <div class="section-footer bg-footer text-center">
             <div class="text-white"><b>ArtVerse</b></div>
             <div class="fw-bold">
                 <a class="text-decoration-none text-white me-3" href="/tentang">Tentang</a>
