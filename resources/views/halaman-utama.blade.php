@@ -1,7 +1,7 @@
 @extends('Master')
 
 @section('Page-Title')
-    Halaman Utama
+    ArtVerse
 @endsection
 
 @section('Page-Contents')
@@ -18,10 +18,10 @@
                 <b>
                     <?php
                     use Carbon\Carbon;
-                    
+
                     config(['app.locale' => 'id']);
                     Carbon::setLocale('id');
-                    
+
                     echo Carbon::now()->translatedFormat('l, j F Y');
                     ?>
                 </b>
