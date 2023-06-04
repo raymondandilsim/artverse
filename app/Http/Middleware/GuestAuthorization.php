@@ -18,7 +18,11 @@ class GuestAuthorization
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            return redirect('/');
+            if (Auth::user()->role_id === 3) {
+                return redirect('/daftarLukisanPage');
+            } else {
+                return redirect('/');
+            }
         }
         return $next($request);
     }
