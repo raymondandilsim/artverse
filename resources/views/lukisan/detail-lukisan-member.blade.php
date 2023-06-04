@@ -42,7 +42,7 @@
             <div class="col box-stock d-flex justify-content-between shadow px-5">
                 @if (Auth::check())
                     <div class="row">
-                        <form action="" method="GET" enctype="multipart/form-data">
+                        <form action="/tambahkanKeKeranjang/{{ $lukisan->id }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @if ($lukisan->stok == 0)
                                 <button type="button" class="btn-tambah-keranjang text-white fw-bold mt-4" disabled>

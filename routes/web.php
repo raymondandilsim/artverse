@@ -71,9 +71,21 @@ Route::get('/checkoutPage/{id}', [TransaksiController::class, 'checkoutPage'])->
 Route::get('/pembayaranPage/{lukisanId}/{quantity}', [TransaksiController::class, 'pembayaranPage'])->middleware(2);
 Route::get('/riwayatTransaksiAdminPage', [TransaksiController::class, 'riwayatTransaksiAdminPage']);
 Route::get('/riwayatTransaksiMemberPage', [TransaksiController::class, 'riwayatTransaksiMemberPage'])->middleware(2);
+Route::put('/batalkanPesanan/{id}', [TransaksiController::class, 'batalkanPesanan'])->middleware(2);
 Route::get('/detailTransaksiPage/{id}', [TransaksiController::class, 'detailTransaksiPage']);
+Route::put('/unggahBuktiPembayaran/{id}', [TransaksiController::class, 'unggahBuktiPembayaran'])->middleware(2);
+Route::put('/adminAccBuktiPembayaran/{id}', [TransaksiController::class, 'adminAccBuktiPembayaran'])->middleware(1);
+Route::put('/adminDisBuktiPembayaran/{id}', [TransaksiController::class, 'adminDisBuktiPembayaran'])->middleware(1);
 
+// Keranjang
 Route::get('/keranjang', [KeranjangController::class, 'KeranjangPage'])->middleware(2);
+Route::post('/tambahkanKeKeranjang/{id}', [KeranjangController::class, 'tambahkanKeKeranjang'])->middleware(2);
+Route::delete('/hapusItemKeranjang/{id}', [KeranjangController::class, 'hapusItemKeranjang'])->middleware(2);
+Route::get('/checkoutKeranjangPage', [KeranjangController::class, 'checkoutKeranjangPage'])->middleware(2);
+Route::get('/pembayaranKeranjangPage', [TransaksiController::class, 'pembayaranKeranjangPage'])->middleware(2);
+
+// Pesanan Seniman
+Route::get('/lihatSemuaPesanan', [KeranjangController::class, 'pembayaranKeranjangPage'])->middleware(2);
 
 // Error Middleware
 Route::get('/errorPage',[Controller::class, 'errorPage']);

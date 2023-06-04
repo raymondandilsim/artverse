@@ -155,7 +155,7 @@ class UserController extends Controller
         }
     }
     public function showSeniman(){
-        $users = User::where('id', '<>', 1)->where('role_id',3)->Paginate(6);
+        $users = User::where('flag', '=', 1)->Paginate(6);
         return view('lihat-semua-seniman',['users'=> $users]);
     }
     public function detailSeniman($id){

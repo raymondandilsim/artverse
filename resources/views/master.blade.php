@@ -39,6 +39,15 @@
         </div>
     @endif
 
+    @if (Session::has('error'))
+        <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
+            <ul>
+                {{ Session::get('error') }}
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <header class="bg-header">
         <nav class="d-flex justify-content-around py-4">
             {{-- Menu Offcanvas --}}
@@ -77,7 +86,7 @@
                                 </ul>
                             </div>
                             <div class="my-4">
-                                <a class="text-decoration-none text-dark" href=""><i
+                                <a class="text-decoration-none text-dark" href="/lihatSemuaPesanan"><i
                                         class="bi bi-bag-check me-4"></i><b>Pesanan</b></a>
                             </div>
                         </div>

@@ -54,8 +54,13 @@ class Lukisan extends Model
         return $this->belongsTo(User::class);
     }
 
-    // public function detailTransaksis()
-    // {
-    //     return $this->hasMany(DetailTransaksi::class);
-    // }
+    public function keranjangs()
+    {
+        return $this->hasMany(Keranjang::class);
+    }
+
+    public function ulasans()
+    {
+        return $this->hasMany(Ulasan::class);
+    }
 }

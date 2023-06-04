@@ -20,16 +20,18 @@
                 <div class="card pb-5 ps-4 pe-4">
                     <h2 class="mt-5 fw-bold">Detail Transaksi</h2>
 
-                    <div class="mt-3 pb-3 border-bottom border-dark">
-                        <h6 class="mt-4 pb-3 border-bottom border-dark fw-bold">Alamat Pengiriman</h6>
+                    <div class="mt-3">
+                        <h6 class="mt-4 fw-bold">Alamat Pengiriman</h6>
+                        <hr>
                         <h6 class="fw-bold">{{ auth()->user()->nama }}</h6>
                         <label>{{ auth()->user()->nomor_telepon }}</label> <br>
                         <label class="">{{ auth()->user()->nama_jalan }}, {{ auth()->user()->nama_kota }},
                             {{ auth()->user()->nama_provinsi }}, {{ auth()->user()->kode_pos }}
                         </label><br><br>
                         <label for="">Jasa Pengiriman: JNE</label>
+                        <hr>
                     </div>
-                    <div class="mt-4 pb-3 border-bottom">
+                    <div class="mt-4 pb-3">
                         @php
                             $usernamePenjualPertama = null;
                             $kotaPenjualPertama = null;
@@ -41,7 +43,7 @@
                                 @php
                                     $usernamePenjualPertama = $item->username;
                                 @endphp
-                                <h6 class="penjual">{{ $item->username }} (Penjual)</h6>
+                                <h6 class="penjual fw-bold">{{ $item->username }} (Penjual)</h6>
                                 <label class="fw-light">{{ $item->nama_kota }}</label> <br>
                             @endif
                             <div class="row mt-3">
@@ -54,12 +56,16 @@
                                     <h6 class="">Rp{{ $item->harga }} x {{ $item->kuantitas }}</h6>
                                 </div>
                             </div>
-                            <div class="row g-3 align-items-center ">
-                                <div class="col-auto text-danger">
-                                    <label for="catatan" class="col-form-label">Catatan:</label>
-                                    <label for="catatan" class="col-form-label">{{ $item->catatan }}</label>
+                            @if ($item->catatan != null)
+                                <div class="row g-3 align-items-center ">
+                                    <div class="col-auto text-danger">
+                                        <label for="catatan" class="col-form-label">Catatan:</label>
+                                        <label for="catatan" class="col-form-label">{{ $item->catatan }}</label>
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                <br>
+                            @endif
                             <div class="d-flex justify-content-between">
                                 <label for="subtotal">Subtotal untuk Produk</label>
                                 @php
@@ -68,159 +74,219 @@
                                 <label for="hargaSubtotal">Rp{{ $formatHarga }}</label>
                             </div>
                             <div class="d-flex justify-content-between mt-2">
-                                <label for="ongkosKirim">Subtotal Pengiriman</label>
-                                @php
-                                    $formatHarga = number_format($item->subtotal_pengiriman, 0, '.', '.');
-                                @endphp
-                                <label for="hargaOngkosKirim" id="hargaOngkosKirim">Rp{{ $formatHarga }}</label>
-                            </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <label for="asuransi">Asuransi</label>
+                                <label for="asuransi">Biaya Asuransi</label>
                                 @php
                                     $formatHarga = number_format($item->subtotal_asuransi, 0, '.', '.');
                                 @endphp
                                 <label for="hargaAsuransi">Rp{{ $formatHarga }}</label>
                             </div>
-                            <div class="d-flex justify-content-between mt-2 mb-5 pb-3 border-bottom border-dark fw-bold">
-                                <label for="totalPembayaran">Total Pesanan</label>
-                                @php
-                                    $totalSemua = $totalSemua + $item->harga_total;
-                                    $formatHarga = number_format($item->harga_total, 0, '.', '.');
-                                @endphp
-                                <label for="hargaTotalPesanan" class="text-danger">Rp{{ $formatHarga }}</label>
-                            </div>
+                            <hr>
                         @endforeach
-                        <div class="d-flex justify-content-between mt-2 mb-5 pb-3 border-bottom border-dark fw-bold">
+                        <div class="d-flex justify-content-between mt-5">
+                            <label for="subtotalProduk">Subtotal Produk</label>
+                            @php
+                                $formatHarga = number_format($subtotalProduk, 0, '.', '.');
+                            @endphp
+                            <label for="subtotalProduk" id="subtotalProduk">Rp{{ $formatHarga }} </label>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <label for="ongkosKirim">Subtotal Pengiriman</label>
+                            @php
+                                $formatHarga = number_format($item->subtotal_pengiriman, 0, '.', '.');
+                            @endphp
+                            <label for="hargaOngkosKirim" id="hargaOngkosKirim">Rp{{ $formatHarga }}</label>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <label for="biayaPenanganan">Biaya Penanganan Asuransi</label>
+                            @php
+                                $formatHarga = number_format(5000, 0, '.', '.');
+                            @endphp
+                            <label for="biayaPenanganan" id="biayaPenangananAsuransi">Rp{{ $formatHarga }} </label>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <label for="totalAsuransi">Subtotal Asuransi</label>
+                            @php
+                                $formatHarga = number_format($subtotalAsuransi, 0, '.', '.');
+                            @endphp
+                            <label for="totalAsuransi" id="totalAsuransi">Rp{{ $formatHarga }} </label>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2 mb-5 pb-3 fw-bold">
                             <label for="totalPembayaran">Jumlah Harus Dibayar</label>
                             @php
+                                $totalSemua = $totalSemua + $transaksi->total_pembelian;
                                 $formatHarga = number_format($totalSemua, 0, '.', '.');
                             @endphp
                             <label for="hargaTotalPembayaran" class="text-danger">Rp{{ $formatHarga }}</label>
                         </div>
+                        <hr>
                     </div>
                 </div>
             </div>
-            <div class="col-4 card">
-                <div class="card-body">
-                    <div class="mb-2">
-                        <div class="row fw-bold">
-                            <label for="pembayaran" class="col-sm-10 col-form-label">Metode Pembayaran</label>
+            @if ($transaksi->status != 'Dibatalkan')
+                <div class="col-4 card">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <div class="row fw-bold">
+                                <label for="pembayaran" class="col-sm-10 col-form-label">Metode Pembayaran</label>
+                            </div>
+                            <div class="row fw-bold mt-2">
+                                <label for="OVO" class="col-sm-3">OVO</label>
+                                <label for="nomorOvo" class="col-sm-4 ">0822325456</label>
+                            </div>
+                            <div class="row fw-bold mt-2">
+                                <label for="GOPAY" class="col-sm-3">GOPAY</label>
+                                <label for="nomorGopay" class="col-sm-4 ">0822325456</label>
+                            </div>
+                            <div class="row fw-bold mt-2">
+                                <label for="BCA" class="col-sm-3">BCA</label>
+                                <label for="nomorBca" class="col-sm-4 ">805162303</label>
+                            </div>
                         </div>
-                        <div class="row fw-bold mt-2">
-                            <label for="OVO" class="col-sm-3">OVO</label>
-                            <label for="nomorOvo" class="col-sm-4 ">0822325456</label>
+                        <div class="mt-3 fw-bold">
+                            <label for="" class="form-label text-danger peringatan"><label
+                                    class="text-danger">*</label>Pastikan nama pengirim dana sesuai dengan nama akun anda,
+                                agar
+                                transaksi lebih cepat diproses.</label>
+                            <label for="" class="form-label text-danger peringatan"><label
+                                    class="text-danger">*</label>Jangan lupa unggah bukti pembayaran di halaman detail
+                                transaksi ini agar transaksi bisa diproses lebih lanjut.</label>
+                            <label for="" class="form-label text-danger peringatan"><label
+                                    class="text-danger">*</label>Sistem berhak membatalkan pesanan jika bukti pembayaran tidak
+                                diunggah dalam jangka waktu 1 hari.</label>
                         </div>
-                        <div class="row fw-bold mt-2">
-                            <label for="GOPAY" class="col-sm-3">GOPAY</label>
-                            <label for="nomorGopay" class="col-sm-4 ">0822325456</label>
-                        </div>
-                        <div class="row fw-bold mt-2">
-                            <label for="BCA" class="col-sm-3">BCA</label>
-                            <label for="nomorBca" class="col-sm-4 ">805162303</label>
-                        </div>
-                    </div>
-                    <div class="mt-3 fw-bold">
-                        <label for="buktiPembayaran" class="form-label text-danger peringatan"><label
-                                class="text-danger">*</label>Pastikan nama pengirim dana sesuai dengan nama akun anda, agar
-                            transaksi lebih cepat diproses.</label>
-                        <label for="buktiPembayaran" class="form-label text-danger peringatan"><label
-                                class="text-danger">*</label>Jangan lupa unggah bukti pembayaran di halaman detail
-                            transaksi ini agar transaksi bisa diproses lebih lanjut.</label>
-                    </div>
 
-                    {{-- Bukti Pembayaran --}}
-                    <div class="mt-4 align-items-end">
-                        @if ($user->role_id == 1)
-                            <form action="" method="POST">
-                                <div class="d-flex flex-row justify-content-between mb-2">
-                                    <label for="buktiPembayaran" class="col-5 form-label fw-bold">Bukti Pembayaran</label>
-                                    <button type="submit" class="col-3 btn btn-success btn-sm">Approve</button>
-                                </div>
-                            </form>
-                        @else
-                            <label for="buktiPembayaran" class="form-label fw-bold">Bukti Pembayaran</label> <br>
-                        @endif
-
-                        @if ($transaksi->bukti_pembayaran == null)
-                        @else
-                            <img src="{{ $transaksi->bukti_pembayaran }}" alt="" height="100" width="100">
-                        @endif
-                        @if ($user->role_id == 2)
-                            <input type="file" class="form-control form-control-sm mt-3" name="buktiPembayaran"
-                                id="buktiPembayaran">
-                            <form action="" method="POST">
-                                <button type="submit" class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
-                            </form>
-                        @else
-                            <label for="">Pembeli belum mengunggah bukti pembayaran.</label>
-                        @endif
-                        
-                    </div>
-
-                    {{-- Bukti Pengiriman --}}
-                    <div class="mt-4 align-items-end">
-                        <label for="buktiPembayaran" class="form-label fw-bold">Bukti Pengiriman</label> <br>
-                        @if ($transaksi->bukti_pembayaran == null)
-                        @else
-                            <img src="{{ $transaksi->bukti_pembayaran }}" alt="" height="100" width="100">
-                        @endif
-                        @if ($user->role_id == 3)
-                            <input type="file" class="form-control form-control-sm mt-3" name="buktiPengiriman"
-                                id="buktiPengiriman">
-                            <form action="" method="POST">
-                                <button type="submit" class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
-                            </form>
-                        @else
-                            <label for="">Penjual belum mengunggah bukti pengiriman/resi.</label>
-                        @endif
-                    </div>
-
-                    {{-- Tampilan jika role user adalah Admin / Seniman --}}
-                    @if ($user->role_id != 2)
+                        {{-- Bukti Pembayaran --}}
                         <div class="mt-4 align-items-end">
-                            <label for="buktiPembayaran" class="form-label fw-bold">Bukti Pelepasan Dana</label> <br>
-                            @if ($transaksi->bukti_pembayaran == null)
+                            {{-- Admin --}}
+                            @if ($user->role_id == 1)
+                                <div class="row b-2 mb-3">
+                                    <div class="col-6">
+                                        <label for="buktiPembayaran" class="form-label fw-bold">Bukti Pembayaran</label>
+                                    </div>
+                                    <div class="col-2 ps-4">
+                                        <form action="/adminAccBuktiPembayaran/{{ $transaksi->id }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                                <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-check-lg"></i></button>
+                                                
+                                            </form>
+                                    </div>
+                                    <div class="col-2">
+                                        <form action="/adminDisBuktiPembayaran/{{ $transaksi->id }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-x"></i></button>
+                                        </form>
+                                        
+                                    </div>
+
+                                </div>
                             @else
-                                <img src="{{ $transaksi->bukti_pembayaran }}" alt="" height="100"
+                                <label for="buktiPembayaran" class="form-label fw-bold">Bukti Pembayaran</label> <br>
+                            @endif
+                            
+                            @if ($transaksi->bukti_pembayaran == null)
+                                <label for="">Pembeli belum mengunggah bukti pembayaran.</label>
+                            @else
+                                @if ($transaksi->status == 'Pembayaran Invalid' && $user->role_id == 2)
+                                    <label class="text-danger mb-2 peringatan fw-bold"><label
+                                    class="">*</label>Pembeli dimohon melakukan dan unggah bukti pembayaran yang benar.</label>
+                                    <img src="{{ $transaksi->bukti_pembayaran }}" alt="" height="300" width="300">
+                                    <form action="/unggahBuktiPembayaran/{{ $transaksi->id }}" method="POST" enctype="multipart/form-data">  
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="file" class="form-control form-control-sm mt-3" name="buktiPembayaran"
+                                            id="buktiPembayaran">
+                                        <button type="submit" class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
+                                    </form>
+                                @else
+                                    <img src="{{ $transaksi->bukti_pembayaran }}" alt="" height="300" width="300">
+                                @endif
+                            @endif
+
+                            {{-- Member --}}
+                            @if ($user->role_id == 2)
+                                @if ($transaksi->status == 'Belum Bayar' || $transaksi->status == 'Menunggu Konfirmasi Pembayaran')
+                                    <form action="/unggahBuktiPembayaran/{{ $transaksi->id }}" method="POST" enctype="multipart/form-data">  
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="file" class="form-control form-control-sm mt-3" name="buktiPembayaran"
+                                            id="buktiPembayaran">
+                                        <button type="submit" class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
+                                    </form>
+                                @endif
+                            @endif
+                        </div>
+
+                        {{-- Bukti Pengiriman --}}
+                        <div class="mt-4 align-items-end">
+                            <label for="" class="form-label fw-bold">Bukti Pengiriman/Resi</label> <br>
+                            @if ($transaksi->bukti_pengiriman == null)
+                            @else
+                                <img src="{{ $transaksi->bukti_pengiriman }}" alt="" height="100"
                                     width="100">
                             @endif
-                            @if ($user->role_id == 1)
-                                <input type="file" class="form-control form-control-sm mt-3" name="buktiPelepasanDana"
-                                    id="buktiPelepasanDana">
-                                <form action="" method="POST">
+                            @if ($user->role_id == 3)
+                                <input type="file" class="form-control form-control-sm mt-3" name="buktiPengiriman"
+                                    id="buktiPengiriman">
+                                <form action="" method="POST" enctype="multipart/form-data">
                                     <button type="submit" class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
                                 </form>
                             @else
-                                <label for="">Admin belum mengunggah bukti pelepasan dana.</label>
+                                <label for="">Penjual belum mengunggah bukti pengiriman/resi.</label>
                             @endif
                         </div>
-                    @else
-                    @endif
-                    
-                    {{-- Selesaikan Pesanan --}}
-                    @if ($user->role_id != 3)
-                        @if ($transaksi->status == 'Dikirim')
-                            <form action="" method="POST">
-                                <button type="submit" class="col-12 btn btn-success btn-sm">Selesaikan Pesanan</button>
-                            </form>
-                        @endif
-                    @endif
 
-                    {{-- Ulasan --}}
-                    @if ($user->role_id == 2)
-                        @if ($transaksi->status == 'Selesai')
-                            <form action="" method="POST">
-                                <label for="ulasan" class="col-form-label mt-4 fw-bold">Berikan Ulasan</label>
-                                <div class="mb-3">
-                                    <input type="catatan" id="ulasan" name="ulasan" class="form-control"
-                                        placeholder="Silahkan berikan ulasan...">
-                                </div>
-                                <button type="submit" class="col-12 btn btn-success btn-sm">Kirim Ulasan</button>
-                            </form>
+                        {{-- Tampilan jika role user adalah Admin / Seniman --}}
+                        @if ($user->role_id != 2)
+                            <div class="mt-4 align-items-end">
+                                <label for="buktiPelepasanDana" class="form-label fw-bold">Bukti Pelepasan Dana</label>
+                                <br>
+                                @if ($transaksi->bukti_pelepasan_dana == null)
+                                @else
+                                    <img src="{{ $transaksi->bukti_pelepasan_dana }}" alt="" height="100"
+                                        width="100">
+                                @endif
+                                @if ($user->role_id == 1)
+                                    <input type="file" class="form-control form-control-sm mt-3"
+                                        name="buktiPelepasanDana" id="buktiPelepasanDana">
+                                    <form action="" method="POST">
+                                        <button type="submit"
+                                            class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
+                                    </form>
+                                @else
+                                    <label for="">Admin belum mengunggah bukti pelepasan dana.</label>
+                                @endif
+                            </div>
+                        @else
                         @endif
-                    @endif
+
+                        {{-- Selesaikan Pesanan --}}
+                        @if ($user->role_id != 3)
+                            @if ($transaksi->status == 'Dikirim')
+                                <form action="" method="POST">
+                                    <button type="submit" class="col-12 btn btn-success btn-sm">Selesaikan
+                                        Pesanan</button>
+                                </form>
+                            @endif
+                        @endif
+
+                        {{-- Ulasan --}}
+                        @if ($user->role_id == 2)
+                            @if ($transaksi->status == 'Selesai')
+                                <form action="" method="POST">
+                                    <label for="ulasan" class="col-form-label mt-4 fw-bold">Berikan Ulasan</label>
+                                    <div class="mb-3">
+                                        <input type="catatan" id="ulasan" name="ulasan" class="form-control"
+                                            placeholder="Silahkan berikan ulasan...">
+                                    </div>
+                                    <button type="submit" class="col-12 btn btn-success btn-sm">Kirim Ulasan</button>
+                                </form>
+                            @endif
+                        @endif
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 @endsection

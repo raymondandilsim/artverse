@@ -61,14 +61,14 @@
                         </div>
                     </div>
                     <div class="mt-4 fw-bold">
-                        <label for="buktiPembayaran" class="form-label text-danger"><label
-                                class="text-danger">*</label>Pastikan nama pengirim dana sesuai dengan nama akun anda, agar transaksi lebih cepat diproses.</label>
-                        <label for="buktiPembayaran" class="form-label text-danger"><label
-                                class="text-danger">*</label>Jangan lupa unggah bukti pembayaran di halaman detail 
-                                transaksi ini agar transaksi bisa diproses lebih lanjut.</label>
-                        <label for="buktiPembayaran" class="form-label text-danger"><label
-                                class="text-danger">*</label>Untuk mengakses halaman detail transaksi, anda dapat
-                            pergi ke halaman riwayat transaksi terlebih dahulu.</label>
+                        <label for="" class="form-label text-danger"><label class="text-danger">*</label>
+                            Pastikan nama pengirim dana sesuai dengan nama akun anda, agar transaksi lebih cepat diproses.</label>
+                        <label for="" class="form-label text-danger"><label class="text-danger">*</label>
+                            Jangan lupa unggah bukti pembayaran di halaman detail transaksi ini agar transaksi bisa diproses lebih lanjut.</label>
+                        <label for="" class="form-label text-danger"><label class="text-danger">*</label>
+                            Untuk mengakses halaman detail transaksi, anda dapat pergi ke halaman riwayat transaksi terlebih dahulu.</label>
+                        <label for="" class="form-label text-danger"><label class="text-danger">*</label>
+                            Sistem berhak membatalkan pesanan jika bukti pembayaran tidak diunggah dalam jangka waktu 24 jam.</label>
                         
                         <a href="/riwayatTransaksiMemberPage">
                             <input class="btn btn-dark form-control mt-4" type="submit" value="Ke Riwayat Transaksi">

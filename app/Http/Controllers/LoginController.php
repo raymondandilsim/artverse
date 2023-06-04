@@ -33,9 +33,15 @@ class LoginController extends Controller
         ];
 
         if(Auth::attempt($credentials,false)){
+            $user = Auth::user();
             $request->session()->regenerate();
             $request->session()->put('session', $credentials);
-            return redirect('/');
+            if ($user->role_id == 3) {
+                return redirect('/daftarLukisanPage');
+            } else {
+                return redirect('/');
+            }
+            
         }
         
         return back()->withErrors([
