@@ -42,6 +42,19 @@
                     <div class="box-card d-flex">
                         @foreach ($lukisans as $lukisan)
                             <div class="card text-center mt-2 me-4" style="width: 18rem;">
+                            @if (auth()->user()->role_id == 1)
+                                <a href="/detailLukisanAdminPage/{{ $lukisan->id }}"
+                                    class="text-decoration-none text-dark">
+                                    <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top"
+                                        alt="{{ $lukisan->nama_lukisan }}" height="250">
+                                    <div class="card-body">
+                                        @php
+                                            $formatHarga = number_format($lukisan->harga, 0, '.', '.');
+                                        @endphp
+                                        <h6 class="card-text">Rp{{ $formatHarga }}</h6>
+                                    </div>
+                                </a>
+                            @elseif (auth()->user()->role_id == 2)
                                 <a href="/detailLukisanMemberPage/{{ $lukisan->id }}"
                                     class="text-decoration-none text-dark">
                                     <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top"
@@ -53,6 +66,7 @@
                                         <h6 class="card-text">Rp{{ $formatHarga }}</h6>
                                     </div>
                                 </a>
+                            @endif
                             </div>
                         @endforeach
                     </div>

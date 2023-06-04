@@ -134,7 +134,6 @@
                     @elseif (Auth::check() && Auth::user()->role_id === 3)
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu mt-2">
-                            <li><a class="dropdown-item text-dark hover" href="">Riwayat Transaksi</a></li>
                             <li><a class="dropdown-item text-dark hover" href="/logout">Logout</a></li>
                         </ul>
                     @endif
@@ -150,7 +149,7 @@
     </header>
     @yield('Page-Contents')
     <footer>
-        <div class="section-footer bg-footer text-center">
+        <div class="section-footer bg-footer text-center fixed-bottom">
             <div class="text-white"><b>ArtVerse</b></div>
             <div class="fw-bold">
                 <a class="text-decoration-none text-white me-3" href="/tentang">Tentang</a>

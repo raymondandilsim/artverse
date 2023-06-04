@@ -46,6 +46,10 @@
                 <p><b>Rp{{ $formatHarga }}</b></p>
                 <ul class="list-unstyled">
                     <div class="row">
+                        <li class="col-sm-4"><span>Penjual</span></li>
+                        <span class="col-sm-8">: {{ $lukisan->user->username }}</span>
+                    </div>
+                    <div class="row">
                         <li class="col-sm-4"><span>Stok</span></li>
                         <span class="col-sm-8">: {{ $lukisan->stok }}</span>
                     </div>
@@ -66,8 +70,6 @@
                     <p class="">{{ $lukisan->deskripsi }}</p>
                 </ul>
                 <div class="row">
-                    <a class="col-sm-6 text-decoration-none" href="/perbaruiLukisanPage/{{ $lukisan->id }}">
-                        <button class="btn-tambah-keranjang text-white fw-bold mt-5">Perbarui</button></a>
                     <form action="/hapusLukisan/{{ $lukisan->id }}" method="POST" enctype="multipart/form-data"
                         class=" col-sm-6">
                         @csrf
@@ -99,17 +101,6 @@
                             </div>
                         </div>
                     </form>
-
-
-                    {{-- <form action="/hapusLukisan/{{ $lukisan->id }}" method="POST" class="col-sm-6"
-                        enctype="multipart/form-data">
-                        @csrf
-                        
-                            <button class="btn-beli-langsung fw-bold mt-5">Hapus</button> --}}
-
-
-                    <a class="col-sm-6 text-decoration-none" href="">
-                        <button class="btn-beli-langsung fw-bold mt-5">Diskusi</button></a>
                 </div>
             </div>
         </div>
