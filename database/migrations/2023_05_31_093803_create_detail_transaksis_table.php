@@ -20,11 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('lukisan_id');
             $table->foreign('lukisan_id')->references('id')->on('lukisans');
             $table->integer('kuantitas');
-            $table->string('jasa_pengiriman')->default('JNE');
             $table->double('subtotal_produk');
-            $table->double('subtotal_pengiriman');
             $table->double('subtotal_asuransi');
-            $table->double('harga_total');
             $table->string('alamat_asal');
             $table->string('alamat_destinasi');
             $table->string('catatan')->nullable();

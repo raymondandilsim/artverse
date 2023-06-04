@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Keranjang extends Model
+class Ulasan extends Model
 {
     use HasFactory;
 
-    protected $table = 'keranjangs';
+    protected $table = 'ulasans';
 
-    public function lukisan()
+    public function lukisans()
     {
         return $this->belongsTo(Lukisan::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }

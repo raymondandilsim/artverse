@@ -21,8 +21,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             AdminSeeder::class,
             ProvinsiSeeder::class,
-            KotaSeeder::class,
-            StatusSeeder::class
+            KotaSeeder::class
         ]);
     }
 }

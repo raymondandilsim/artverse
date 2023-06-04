@@ -10,7 +10,7 @@
         <div class="container mt-5 mb-5" style="height: 1000px; overflow-y: auto;">
             <div class="align-items-start">
                 <div class="card pt-5 pb-5 ps-4 pe-4">
-                    <h2 class="fw-bold">Konfirmasi Pesanan</h2>
+                    <h2 class="fw-bold text-center ">Konfirmasi Pesanan</h2>
                     <div class="mt-3 pb-3 border-bottom border-dark">
                         <h6 class="mt-4 pb-3 border-bottom border-dark fw-bold">Alamat Pengiriman</h6>
                         <h6 class="fw-bold">{{ auth()->user()->nama }}</h6>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lukisan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -61,9 +62,10 @@ class LukisanController extends Controller
 
             ]
         );
+        $user = Auth::user();
 
         $lukisan = new Lukisan();
-        $user_id = Auth::user()->id;
+        $user_id = $user->id;
         $nama_lukisan = $request->namaLukisan;
         $harga = $request->hargaLukisan;
         $deskripsi = $request->deskripsiLukisan;
@@ -100,6 +102,9 @@ class LukisanController extends Controller
         }
 
         $lukisan->unggahLukisan($user_id, $nama_lukisan, $harga, $deskripsi, $stok, $kondisi, $berat, $ukuran, $gambar1, $gambar2, $gambar3);
+
+        // ubah flag user
+        $user = User::where('id', Auth::user()->id)->update(['flag' => 1]);
 
         return redirect('/unggahLukisanPage')->with('status', "Lukisan Berhasil Ditambahkan");
     }

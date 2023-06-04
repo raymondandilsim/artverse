@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('kode_pos');
             $table->string('password');
             $table->string('foto_profil')->default('/asset/avatar.png');
+            $table->integer('flag')->default(0);
             $table->timestamps();
         });
     }
