@@ -5,6 +5,7 @@
 @endsection
 
 @section('Page-Contents')
+<div style="height: 515px;">
     <div class="container p-5">
         <h3><b>Lihat Semua Seniman</b></h3>
         <div class="row p-4">
@@ -27,4 +28,5 @@
             {{ $users->links('pagination::bootstrap-4') }}
         </div>
     </div>
+</div>
 @endsection

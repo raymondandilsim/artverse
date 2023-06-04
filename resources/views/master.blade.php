@@ -150,14 +150,14 @@
     </header>
     @yield('Page-Contents')
     <footer>
-        <div class="section-footer bg-footer text-center fixed-bottom">
+        <div class="section-footer bg-footer text-center">
             <div class="text-white"><b>ArtVerse</b></div>
             <div class="fw-bold">
                 <a class="text-decoration-none text-white me-3" href="/tentang">Tentang</a>
                 <span class="text-white">|</span>
                 <a class="text-decoration-none text-white mx-3" href="/kontak">Kontak</a>
                 <span class="text-white">|</span>
-                <a class="text-decoration-none text-white ms-3" href="">Syarat dan Ketentuan</a>
+                <a class="text-decoration-none text-white ms-3" href="/syaratketentuan">Syarat dan Ketentuan</a>
             </div>
             <div class="text-white">&copy; 2023, ArtVerse </div>
         </div>
