@@ -100,5 +100,8 @@
         @empty
             <h5 class="text-center my-5 p-5">Belum terdapat diskusi pada lukisan ini</h5>
         @endforelse
+        <div class="d-flex justify-content-end flex=column mb-5">
+            {{ $diskusis->links('pagination::bootstrap-4') }}
+        </div>
     </div>
 @endsection

@@ -13,6 +13,8 @@ class DiskusiController extends Controller
         $diskusis = Diskusi::whereNull('diskusi_id')
                     ->where('lukisan_id', '=', $id)
                     ->get();
+        $pagination = 7;
+        $diskusis = Diskusi::Paginate($pagination);
         foreach ($diskusis as $diskusi) {
             $diskusi -> setAttribute('reply',Diskusi::whereNotNull('diskusi_id')->where('diskusi_id','=',$diskusi->id)->orderBy('created_at')->get());
             $diskusi -> makeVisible(['reply']);
