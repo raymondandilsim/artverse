@@ -39,11 +39,11 @@
             <div class="bubble-chat border border-3 p-3 mt-4">
                 <div class="d-flex mb-4">
                     <div class="profil me-3">
-                        <img src="{{ auth()->user()->foto_profil }}" alt="Profile Picture" class="img-fluid">
+                        <img src="{{ $diskusi->user->foto_profil }}" alt="Profile Picture" class="img-fluid">
                     </div>
                     <div>
                         <div>
-                            <h5>{{ auth()->user()->username }}</h5>
+                            <h5>{{ $diskusi->user->username }}</h5>
                         </div>
                         <div>
                             <label>{{ $diskusi->text }}</label>
@@ -66,6 +66,7 @@
                     <div class="d-flex justify-content-end mt-3">
                         <input type="submit" class="btn btn-primary btn-sm" value="Unggah Balasan">
                     </div>
+                    </form>
                     @if ($errors->any())
                         <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
                             <ul>
@@ -76,7 +77,6 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    </form>
                 </div>
             </div>
             <h6 class="p-3">Balasan</h6>
@@ -84,11 +84,11 @@
                 <div>
                     <div class="d-flex ms-5 mb-4">
                         <div class="profil me-3">
-                            <img src="{{ auth()->user()->foto_profil }}" alt="Profile Picture" class="img-fluid">
+                            <img src="{{ $reply->user->foto_profil }}" alt="Profile Picture" class="img-fluid">
                         </div>
                         <div>
                             <div>
-                                <h5>{{ auth()->user()->username }}</h5>
+                                <h5>{{ $reply->user->username }}</h5>
                             </div>
                             <div>
                                 <label>{{ $reply->text }}</label>
