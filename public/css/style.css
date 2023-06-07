@@ -1,6 +1,9 @@
 .bg-login {
     min-height: 100vh;
     min-width: 100vw;
+    background-image: url("../asset/bg-login-register.jpg");
+    background-size: 200vh;
+    font-family: poppins;
 }
 
 .card-login {

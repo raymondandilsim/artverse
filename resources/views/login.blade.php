@@ -26,9 +26,10 @@
         </div>
     @endif
 
-    <div class="d-flex bg-login bg-secondary justify-content-center align-items-center">
+    <div class="d-flex bg-login bg-login-register justify-content-center align-items-center">
         <div class="card-login bg-white px-5 py-5 rounded-3 shadow">
             <h2 class="text-center"><b>MASUK</b></h2>
+            <p></p>
             <form action="/login" method="POST">
                 @csrf
                 <div>
@@ -54,7 +55,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    <input class="btn btn-secondary form-control mt-4" type="submit" value="Masuk">
+                    <input class="btn btn-dark form-control mt-4" type="submit" value="Masuk">
                     <h6 class="mt-2">Belum mempunyai akun? <a class="text-decoration-none" href="/daftarPage">Daftar</a></h6>
                 </div>
             </form>
