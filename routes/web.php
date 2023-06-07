@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\HalamanUtamaController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\DiskusiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LukisanController;
 use App\Http\Controllers\UserController;
@@ -85,7 +86,12 @@ Route::get('/checkoutKeranjangPage', [KeranjangController::class, 'checkoutKeran
 Route::get('/pembayaranKeranjangPage', [TransaksiController::class, 'pembayaranKeranjangPage'])->middleware(2);
 
 // Pesanan Seniman
-Route::get('/lihatSemuaPesanan', [KeranjangController::class, 'pembayaranKeranjangPage'])->middleware(2);
+Route::get('/lihatSemuaPesanan', [KeranjangController::class, 'pembayaranKeranjangPage'])->middleware(3);
+
+// Diskusi
+Route::get('/diskusiPage/{id}', [DiskusiController::class, 'DiskusiPage']);
+Route::post('/diskusi', [DiskusiController::class, 'unggahDiskusi']);
+Route::post('/diskusi/{id}', [DiskusiController::class, 'replyDiskusi']);
 
 // Error Middleware
 Route::get('/errorPage',[Controller::class, 'errorPage']);

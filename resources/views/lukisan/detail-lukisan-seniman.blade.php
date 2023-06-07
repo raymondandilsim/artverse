@@ -100,11 +100,11 @@
                     {{-- <form action="/hapusLukisan/{{ $lukisan->id }}" method="POST" class="col-sm-6"
                         enctype="multipart/form-data">
                         @csrf
-                        
+
                             <button class="btn-beli-langsung fw-bold mt-5">Hapus</button> --}}
 
 
-                    <a class="col-sm-6 text-decoration-none" href="">
+                    <a class="col-sm-6 text-decoration-none" href="/diskusiPage/{{$lukisan->id}}">
                         <button class="btn-beli-langsung fw-bold mt-5">Diskusi</button></a>
                 </div>
             </div>

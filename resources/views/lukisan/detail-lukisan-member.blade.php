@@ -196,7 +196,7 @@
                     <i class="bi-geo-alt-fill"></i>
                     <span>Dikirim dari kota <b>{{ $lukisan->user->nama_kota }}</b></span>
                     <div class="d-flex justify-content-center justify-content-around mt-3">
-                        <button class="btn-diskusi text-white"><b>Diskusi</b></button>
+                        <a href="/diskusiPage/{{$lukisan->id}}"><button class="btn-diskusi text-white"><b>Diskusi</b></button></a>
                         <button class="btn-ulasan text-white"><b>Ulasan</b></button>
                     </div>
                 </div>
