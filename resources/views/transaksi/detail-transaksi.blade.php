@@ -80,8 +80,10 @@
                                 @endphp
                                 <label for="hargaAsuransi">Rp{{ $formatHarga }}</label>
                             </div>
+                            
                             <hr>
                         @endforeach
+                        
                         <div class="d-flex justify-content-between mt-5">
                             <label for="subtotalProduk">Subtotal Produk</label>
                             @php
@@ -151,7 +153,8 @@
                                     class="text-danger">*</label>Jangan lupa unggah bukti pembayaran di halaman detail
                                 transaksi ini agar transaksi bisa diproses lebih lanjut.</label>
                             <label for="" class="form-label text-danger peringatan"><label
-                                    class="text-danger">*</label>Sistem berhak membatalkan pesanan jika bukti pembayaran tidak
+                                    class="text-danger">*</label>Sistem berhak membatalkan pesanan jika bukti pembayaran
+                                tidak
                                 diunggah dalam jangka waktu 1 hari.</label>
                         </div>
 
@@ -164,66 +167,78 @@
                                         <label for="buktiPembayaran" class="form-label fw-bold">Bukti Pembayaran</label>
                                     </div>
                                     <div class="col-2 ps-4">
-                                        <form action="/adminAccBuktiPembayaran/{{ $transaksi->id }}" method="POST" enctype="multipart/form-data">
+                                        <form action="/adminAccBuktiPembayaran/{{ $transaksi->id }}" method="POST"
+                                            enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
-                                                <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-check-lg"></i></button>
-                                                
-                                            </form>
+                                            <button type="submit" class="btn btn-success btn-sm"><i
+                                                    class="bi bi-check-lg"></i></button>
+
+                                        </form>
                                     </div>
                                     <div class="col-2">
-                                        <form action="/adminDisBuktiPembayaran/{{ $transaksi->id }}" method="POST" enctype="multipart/form-data">
+                                        <form action="/adminDisBuktiPembayaran/{{ $transaksi->id }}" method="POST"
+                                            enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-x"></i></button>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i
+                                                    class="bi bi-x"></i></button>
                                         </form>
-                                        
+
                                     </div>
 
                                 </div>
                             @else
                                 <label for="buktiPembayaran" class="form-label fw-bold">Bukti Pembayaran</label> <br>
                             @endif
-                            
+
                             @if ($transaksi->bukti_pembayaran == null)
                                 @if ($user->role_id == 1 || $user->role_id == 3)
                                     <label for="">Pembeli belum mengunggah bukti pembayaran.</label>
                                 @else
-                                    <label class="text-danger">*Mohon melakukan pembayaran dan mengunggah bukti pembayaran.</label>
-                                    <form action="/unggahBuktiPembayaran/{{ $transaksi->id }}" method="POST" enctype="multipart/form-data">  
+                                    <label class="text-danger">*Mohon melakukan pembayaran dan mengunggah bukti
+                                        pembayaran.</label>
+                                    <form action="/unggahBuktiPembayaran/{{ $transaksi->id }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
-                                        <input type="file" class="form-control form-control-sm mt-3" name="buktiPembayaran"
-                                            id="buktiPembayaran">
-                                        <button type="submit" class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
+                                        <input type="file" class="form-control form-control-sm mt-3"
+                                            name="buktiPembayaran" id="buktiPembayaran">
+                                        <button type="submit"
+                                            class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
                                     </form>
                                 @endif
                             @else
-                                @if ($transaksi->status == 'Pembayaran Invalid' && $user->role_id == 2)
-                                    <label class="text-danger mb-2 peringatan fw-bold"><label
-                                    class="">*</label>Pembeli dimohon melakukan dan unggah bukti pembayaran yang benar.</label>
-                                    <img src="{{ $transaksi->bukti_pembayaran }}" alt="" height="300" width="300">
-                                    <form action="/unggahBuktiPembayaran/{{ $transaksi->id }}" method="POST" enctype="multipart/form-data">  
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="file" class="form-control form-control-sm mt-3" name="buktiPembayaran"
-                                            id="buktiPembayaran">
-                                        <button type="submit" class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
-                                    </form>
-                                @else
-                                    <img src="{{ $transaksi->bukti_pembayaran }}" class="rounded" alt="" height="300" width="300">
-                                @endif
+                                <img src="{{ $transaksi->bukti_pembayaran }}" class="rounded" alt=""
+                                    height="300" width="300">
                             @endif
 
                             {{-- Member --}}
                             @if ($user->role_id == 2)
-                                @if ($transaksi->status == 'Belum Bayar' || $transaksi->status == 'Menunggu Konfirmasi Pembayaran')
-                                    <form action="/unggahBuktiPembayaran/{{ $transaksi->id }}" method="POST" enctype="multipart/form-data">  
+                                @if ($transaksi->status == 'Menunggu Konfirmasi Pembayaran')
+                                    <form action="/unggahBuktiPembayaran/{{ $transaksi->id }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
-                                        <input type="file" class="form-control form-control-sm mt-3" name="buktiPembayaran"
-                                            id="buktiPembayaran">
-                                        <button type="submit" class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
+                                        <input type="file" class="form-control form-control-sm mt-3"
+                                            name="buktiPembayaran" id="buktiPembayaran">
+                                        <button type="submit"
+                                            class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
+                                    </form>
+                                @elseif ($transaksi->status == 'Pembayaran Invalid')
+                                    <label class="text-danger mb-2 peringatan fw-bold"><label
+                                            class="">*</label>Pembeli dimohon melakukan dan unggah bukti pembayaran
+                                        yang benar.</label>
+                                    <img src="{{ $transaksi->bukti_pembayaran }}" alt="" height="300"
+                                        width="300">
+                                    <form action="/unggahBuktiPembayaran/{{ $transaksi->id }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="file" class="form-control form-control-sm mt-3"
+                                            name="buktiPembayaran" id="buktiPembayaran">
+                                        <button type="submit"
+                                            class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
                                     </form>
                                 @endif
                             @endif
@@ -232,28 +247,38 @@
                         {{-- Bukti Pengiriman --}}
                         <div class="mt-4 align-items-end">
                             <label for="" class="form-label fw-bold">Bukti Pengiriman/Resi</label> <br>
-                            
+
                             @if ($transaksi->bukti_pengiriman == null)
-                                <label for="">Penjual belum mengunggah bukti pengiriman/resi.</label>
+                                @if ($user->role_id != 3)
+                                    <label for="">Penjual belum mengunggah bukti pengiriman/resi.</label>
+                                @endif
                             @else
-                                <img src="{{ $transaksi->bukti_pengiriman }}" class="rounded" alt="" height="300"
-                                    width="300">
+                                <img src="{{ $transaksi->bukti_pengiriman }}" class="rounded" alt=""
+                                    height="300" width="300">
                             @endif
 
                             @if ($user->role_id == 3)
-                                @if ($transaksi->status == 'Belum Bayar' || $transaksi->status == 'Menunggu Konfirmasi Pembayaran' || $transaksi->status == 'Pembayaran Invalid')
-                                    <label for="">Lakukan pengiriman dan unggah bukti pengiriman setelah status transaksi menjadi "Dikemas".</label>
+                                @if (
+                                    $transaksi->bukti_pembayaran == null ||
+                                        $transaksi->status == 'Belum Bayar' ||
+                                        $transaksi->status == 'Menunggu Konfirmasi Pembayaran' ||
+                                        $transaksi->status == 'Pembayaran Invalid')
+                                    <label class="text-danger">*Lakukan pengiriman dan unggah bukti pengiriman setelah
+                                        status transaksi menjadi "Dikemas".</label>
                                 @else
-                                <form action="/unggahBuktiPengiriman/{{ $transaksi->id }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    @method('PUT')
-                                    @if ($transaksi->bukti_pengiriman == null)
-                                        <label class="text-danger">*Mohon lakukan pengiriman dan unggah bukti pengiriman.</label>
-                                    @endif
-                                    <input type="file" class="form-control form-control-sm mt-3" name="buktiPengiriman"
-                                    id="buktiPengiriman">
-                                    <button type="submit" class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
-                                </form>
+                                    <form action="/unggahBuktiPengiriman/{{ $transaksi->id }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        @if ($transaksi->bukti_pengiriman == null)
+                                            <label class="text-danger">*Mohon lakukan pengiriman dan unggah bukti
+                                                pengiriman.</label>
+                                        @endif
+                                        <input type="file" class="form-control form-control-sm mt-3"
+                                            name="buktiPengiriman" id="buktiPengiriman">
+                                        <button type="submit"
+                                            class="col-12 btn btn-dark btn-sm mt-3 mb-5">Unggah</button>
+                                    </form>
                                 @endif
                             @endif
                         </div>
@@ -271,11 +296,12 @@
                                         width="300">
                                 @endif
                                 @if ($user->role_id == 1)
-                                    <form action="/unggahBuktiPelepasanDana/{{ $transaksi->id }}" method="POST" enctype="multipart/form-data">
+                                    <form action="/unggahBuktiPelepasanDana/{{ $transaksi->id }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
-                                        <input type="file" class="form-control form-control-sm mt-3" name="buktiPelepasanDana" 
-                                        id="buktiPelepasanDana">
+                                        <input type="file" class="form-control form-control-sm mt-3"
+                                            name="buktiPelepasanDana" id="buktiPelepasanDana">
                                         <button type="submit" class="col-12 btn btn-dark btn-sm mt-3">Unggah</button>
                                     </form>
                                 @endif
@@ -289,26 +315,13 @@
                                     <form action="/selesaikanPesanan/{{ $transaksi->id }}" method="POST">
                                         @csrf
                                         @method('PUT')
-                                        <button type="submit" class="col-12 btn btn-success btn-sm">Selesaikan Pesanan</button>
+                                        <button type="submit" class="col-12 btn btn-success btn-sm">Selesaikan
+                                            Pesanan</button>
                                     </form>
                                 </div>
                             @endif
                         @endif
 
-                        {{-- Ulasan --}}
-                        @if ($user->role_id == 2)
-                            @if ($transaksi->status == 'Selesai')
-                                <form action="" method="POST">
-                                    
-                                    <label for="ulasan" class="col-form-label mt-4 fw-bold">Berikan Ulasan</label>
-                                    <div class="mb-3">
-                                        <input type="catatan" id="ulasan" name="ulasan" class="form-control"
-                                            placeholder="Silahkan berikan ulasan...">
-                                    </div>
-                                    <button type="submit" class="col-12 btn btn-success btn-sm">Kirim Ulasan</button>
-                                </form>
-                            @endif
-                        @endif
                     </div>
                 </div>
             @endif

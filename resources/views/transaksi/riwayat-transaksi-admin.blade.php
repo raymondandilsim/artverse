@@ -40,16 +40,44 @@
                                 </td>
                                 <td class="pt-3 pb-3">
                                     @if ($transaksi->status == 'Belum Bayar')
-                                        <form action="/batalkanPesanan/{{ $transaksi->id  }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i
-                                                    class="bi bi-x-octagon"></i></button>
-                                        </form>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#batalkanModal{{ $transaksi->id }}"><i
+                                                class="bi bi-x-octagon"></i></button>
                                     @else
                                         <button disabled class="btn btn-danger btn-sm"><i
                                                 class="bi bi-x-circle"></i></button>
                                     @endif
+
+                                    <!-- Modal Delete Confirmation-->
+                                    <div class="modal fade" id="batalkanModal{{ $transaksi->id }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5">Batalkan Pesanan
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-start">
+                                                    <p>Apakah anda yakin ingin membatalkan pesanan {{ $transaksi->id }}
+                                                        dari daftar pesanan anda?
+                                                    </p>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Tidak Jadi</button>
+                                                    <form action="/batalkanPesanan/{{ $transaksi->id }}" method="POST"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button type="Submit" class="btn btn-danger">Batalkan</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

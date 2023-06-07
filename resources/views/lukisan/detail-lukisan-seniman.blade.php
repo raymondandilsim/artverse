@@ -66,13 +66,13 @@
                     <p class="">{{ $lukisan->deskripsi }}</p>
                 </ul>
                 <div class="row">
-                    <a class="col-sm-6 text-decoration-none" href="/perbaruiLukisanPage/{{ $lukisan->id }}">
-                        <button class="btn-tambah-keranjang text-white fw-bold mt-5">Perbarui</button></a>
+                    <a class="col-sm-3 text-decoration-none" href="/perbaruiLukisanPage/{{ $lukisan->id }}">
+                        <button class="btn btn-lg btn-secondary text-white fw-bold mt-5">Perbarui</button></a>
                     <form action="/hapusLukisan/{{ $lukisan->id }}" method="POST" enctype="multipart/form-data"
-                        class=" col-sm-6">
+                        class="col-sm-3">
                         @csrf
                         <!-- Button trigger modal Delete Confirmation-->
-                        <button type="button" class="btn-beli-langsung fw-bold mt-5" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-lg btn-danger fw-bold mt-5" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
                             Hapus
                         </button>
@@ -100,16 +100,10 @@
                         </div>
                     </form>
 
-
-                    {{-- <form action="/hapusLukisan/{{ $lukisan->id }}" method="POST" class="col-sm-6"
-                        enctype="multipart/form-data">
-                        @csrf
-                        
-                            <button class="btn-beli-langsung fw-bold mt-5">Hapus</button> --}}
-
-
-                    <a class="col-sm-6 text-decoration-none" href="">
-                        <button class="btn-beli-langsung fw-bold mt-5">Diskusi</button></a>
+                    <a class="col-sm-3 text-decoration-none" href="">
+                        <button class="btn btn-lg btn-secondary fw-bold mt-5">Diskusi</button></a>
+                    <a class="col-sm-3 text-decoration-none" href="/lihatSemuaUlasan/{{ $lukisan->id }}">
+                        <button class="btn btn-lg btn-secondary fw-bold mt-5">Ulasan</button></a>
                 </div>
             </div>
         </div>

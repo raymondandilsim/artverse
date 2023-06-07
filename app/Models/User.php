@@ -14,6 +14,11 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
+    public function roles()
+    {
+        return $this->hasMany(Role::class);
+    }
+
     public function lukisans()
     {
         return $this->hasMany(Lukisan::class);
@@ -27,6 +32,11 @@ class User extends Authenticatable
     public function transaksis()
     {
         return $this->hasMany(Transaksi::class);
+    }
+
+    public function ulasans()
+    {
+        return $this->hasMany(Ulasan::class);
     }
 
     /**

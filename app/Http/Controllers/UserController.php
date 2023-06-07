@@ -154,12 +154,29 @@ class UserController extends Controller
             }
         }
     }
+
     public function showSeniman(){
         $users = User::where('flag', '=', 1)->Paginate(6);
         return view('lihat-semua-seniman',['users'=> $users]);
     }
+
     public function detailSeniman($id){
         $user = User::findOrFail($id);
         return view('detail-seniman', compact('user'));
     }
+
+    public function lihatSemuaAkun(){
+
+        $users = User::paginate(10);
+
+        return view('daftar-semua-akun', compact('users'));
+    }
+
+    public function hapusAkun($id)
+    {
+        User::find($id)->delete();
+
+        return back()->with('status', 'Akun telah dihapus dari sistem.');
+    }
+
 }

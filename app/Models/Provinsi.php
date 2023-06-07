@@ -10,4 +10,9 @@ class Provinsi extends Model
     use HasFactory;
     
     protected $table = 'provinsis';
+
+    public function kotas()
+    {
+        return $this->hasMany(Kota::class);
+    }
 }

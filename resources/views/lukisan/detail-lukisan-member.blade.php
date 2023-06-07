@@ -42,9 +42,10 @@
             <div class="col box-stock d-flex justify-content-between shadow px-5">
                 @if (Auth::check())
                     <div class="row">
-                        <form action="/tambahkanKeKeranjang/{{ $lukisan->id }}" method="POST" enctype="multipart/form-data">
+                        <form action="/tambahkanKeKeranjang/{{ $lukisan->id }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
-                            @if ($lukisan->stok == 0)
+                            @if ($lukisan->stok <= 0)
                                 <button type="button" class="btn-tambah-keranjang text-white fw-bold mt-4" disabled>
                                     +Keranjang
                                 </button>
@@ -91,7 +92,7 @@
                     <div class="row">
                         <form action="/checkoutPage/{{ $lukisan->id }}" method="GET" enctype="multipart/form-data">
                             @csrf
-                            @if ($lukisan->stok == 0)
+                            @if ($lukisan->stok <= 0)
                                 <button type="button" class="btn-beli-langsung fw-bold mt-4" disabled>
                                     Beli Langsung
                                 </button>
@@ -142,7 +143,7 @@
                         </div>
                         <div class="row">
                             <a class="text-decoration-none" href="/loginPage"><button
-                                    class="btn-beli-langsung fw-bold mt-2">Beli
+                                    class="btn-beli-langsung fw-bold mt-4">Beli
                                     Langsung</button></a>
                         </div>
                     @endguest
@@ -188,17 +189,28 @@
                                 width="50" height="50" class="rounded">
                             <span class="mx-2">{{ $lukisan->user->username }}</span>
                         </div>
-                        <a class="text-decoration-none text-dark me-2" href=""><i
-                                class="bi-chat-left-text me-2"></i>Chat</a>
                     </div>
                 </div>
                 <div class="p-2">
                     <i class="bi-geo-alt-fill"></i>
                     <span>Dikirim dari kota <b>{{ $lukisan->user->nama_kota }}</b></span>
-                    <div class="d-flex justify-content-center justify-content-around mt-3">
-                        <button class="btn-diskusi text-white"><b>Diskusi</b></button>
-                        <button class="btn-ulasan text-white"><b>Ulasan</b></button>
-                    </div>
+                    @if (Auth::check())
+                        <div class="d-flex justify-content-center justify-content-around mt-3">
+                            <button class="btn-diskusi text-white"><b>Diskusi</b></button>
+                            <a href="/lihatSemuaUlasan/{{ $lukisan->id }}">
+                                <button class="btn-ulasan text-white"><b>Ulasan</b></button>
+                            </a>
+                        </div>
+                    @else
+                        @guest
+                            <div class="d-flex justify-content-center justify-content-around mt-3">
+                                <button class="btn-diskusi text-white"><b>Diskusi</b></button>
+                                <a href="/loginPage">
+                                    <button class="btn-ulasan text-white"><b>Ulasan</b></button>
+                                </a>
+                            </div>
+                        @endguest
+                    @endif
                 </div>
             </div>
         </div>

@@ -11,8 +11,18 @@ class Ulasan extends Model
 
     protected $table = 'ulasans';
 
-    public function lukisans()
+    public function lukisan()
     {
         return $this->belongsTo(Lukisan::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function transaksi()
+    {
+        return $this->belongsTo(Transaksi::class);
     }
 }

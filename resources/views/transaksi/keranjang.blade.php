@@ -12,7 +12,7 @@
                     <h2>Keranjang</h2>
                 </div>
                 <div class="card-body text-center">
-                     <h4 class="m-5 text-danger">Maaf, belum ada lukisan yang ditambahkan.</h4>
+                    <h4 class="m-5 text-danger">Maaf, belum ada lukisan yang ditambahkan.</h4>
                 </div>
             </div>
         </div>
@@ -61,43 +61,76 @@
                                         <td class="text-right font-weight-semibold align-middle p-4">Rp{{ $formatHarga }}
                                         </td>
                                         <td class="text-center align-middle px-0">
-                                            <form action="/hapusItemKeranjang/{{ $item->id }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm m-3"><i
-                                                        class="bi bi-x-octagon"></i></button>
-                                            </form>
+                                            <button type="button" class="btn btn-danger btn-sm m-3" data-bs-toggle="modal"
+                                                data-bs-target="#hapusModal{{ $item->id }}"><i
+                                                    class="bi bi-x-octagon"></i></button>
+
+                                            <!-- Modal Delete Confirmation-->
+                                            <div class="modal fade" id="hapusModal{{ $item->id }}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5">Hapus Lukisan di Keranjang
+                                                            </h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body text-start">
+                                                            <p>Apakah anda yakin ingin menghapus lukisan {{ $item->lukisan_id }} dari keranjang anda?
+                                                            </p>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Batal</button>
+                                                            <form action="/hapusItemKeranjang/{{ $item->id }}" method="POST"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="Submit" class="btn btn-danger">Hapus</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                    <div class="d-flex">
-                        <div class="p-2 flex-grow-1">
+                    <div class="d-flex row">
+                        <div class="col-2 p-3 flex-grow-1">
                             <a href="/showLukisanSemua"><button type="button"
-                                class="btn btn-outline-dark md-btn-flat mt-2 mr-3">Kembali
-                                Belanja</button>
+                                    class="btn btn-outline-dark md-btn-flat mt-2 mr-3">Kembali
+                                    Belanja</button>
                             </a>
                         </div>
+                        <div class="col-4 p-4 d-flex justify-content-center me-3">
+                            {{ $keranjang->links('pagination::bootstrap-4') }}
+                        </div>
                         @php
-                            $totalHarga = 0
+                            $totalHarga = 0;
                         @endphp
                         @foreach ($keranjang as $item)
                             @php
-                                $totalHarga += $item->subtotal_produk
+                                $totalHarga += $item->subtotal_produk;
                             @endphp
                         @endforeach
                         @php
                             $formatHarga = number_format($totalHarga, 0, '.', '.');
                         @endphp
-                        <div class="p-2"><label class="font-weight-normal text-danger mt-3 me-3">Subtotal: Rp{{ $formatHarga }}</label>
+                        <div class="col-4 justify-content-end pt-3 ps-5">
+                            <form action="/checkoutKeranjangPage" method="GET">
+                                <label class="font-weight-normal text-danger mt-3 ms-5 me-4 ps-2">Subtotal:
+                                    Rp{{ $formatHarga }}</label>
+                                <button type="submit" class="btn btn-dark ms-5">Checkout</button>
+                            </form>
                         </div>
-                        <form action="/checkoutKeranjangPage" method="GET">
-                            <div class="p-2"><button type="submit" class="btn btn-dark mt-2">Checkout</button></div>
-                        </form>
                     </div>
                 </div>
             </div>
+
         </div>
     @endif
     <script>

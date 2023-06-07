@@ -5,7 +5,7 @@
 @endsection
 
 @section('Page-Contents')
-    <div class="mb-5">
+    <div class="mb-5 pb-5">
         <div class="mt-5 mb-3 d-flex justify-content-center">
             <h3 class=""><b>Daftar Lukisan</b></h3>
         </div>
@@ -16,15 +16,15 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">INFO PRODUK</th>
-                            <th scope="col">HARGA</th>
-                            <th scope="col">STOK</th>
+                            <th scope="col">Nama Lukisan</th>
+                            <th scope="col">Harga</th>
+                            <th scope="col">Stok</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($lukisans as $lukisan)
                             <tr>
-                                <th scope="row">{{ $lukisan->id }}</th>
+                                <th scope="row" class="pt-3">{{ $lukisan->id }}</th>
                                 <td><a class="text-decoration-none text-dark"
                                         href="/detailLukisanSenimanPage/{{ $lukisan->id }}">
                                         <img src="{{ $lukisan->gambar_pertama }}" alt="{{ $lukisan->nama_lukisan }}"
@@ -40,6 +40,9 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="d-flex justify-content-center mb-5">
+            {{ $lukisans->links('pagination::bootstrap-4') }}
         </div>
     </div>
 @endsection

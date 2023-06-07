@@ -71,10 +71,10 @@
                 </ul>
                 <div class="row">
                     <form action="/hapusLukisan/{{ $lukisan->id }}" method="POST" enctype="multipart/form-data"
-                        class=" col-sm-6">
+                        class="col-sm-3">
                         @csrf
                         <!-- Button trigger modal Delete Confirmation-->
-                        <button type="button" class="btn-beli-langsung fw-bold mt-5" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-lg btn-danger fw-bold mt-5" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
                             Hapus
                         </button>
@@ -100,7 +100,12 @@
                                 </div>
                             </div>
                         </div>
+
                     </form>
+                    <a class="col-sm-3 text-decoration-none" href="">
+                        <button class="btn btn-lg btn-secondary fw-bold mt-5">Diskusi</button></a>
+                    <a class="col-sm-3 text-decoration-none" href="/lihatSemuaUlasan/{{ $lukisan->id }}">
+                        <button class="btn btn-lg btn-secondary fw-bold mt-5">Ulasan</button></a>
                 </div>
             </div>
         </div>

@@ -48,7 +48,8 @@ Route::get('/showSemuaSeniman', [UserController::class, 'showSeniman']);
 
 Route::get('/detailSenimanPage/{id}', [UserController::class, 'detailSeniman']);
 
-Route::get('/akun-member', [AkunMemberController::class, 'akunmemberpage']);
+Route::get('/lihatSemuaAkun', [UserController::class, 'lihatSemuaAkun']);
+Route::delete('/hapusAkun/{id}', [UserController::class, 'hapusAkun'])->middleware(1);
 
 // Lukisan
 Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage'])->middleware(3);
@@ -57,13 +58,17 @@ Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan'])->midd
 Route::get('/daftarLukisanPage', [LukisanController::class, 'daftarLukisanPage'])->middleware(3);
 
 Route::get('/detailLukisanSenimanPage/{id}', [LukisanController::class, 'detailLukisanSenimanPage'])->middleware(3);
-Route::get('/detailLukisanMemberPage/{id}', [LukisanController::class, 'detailLukisanMemberPage'])->middleware(2);
+Route::get('/detailLukisanMemberPage/{id}', [LukisanController::class, 'detailLukisanMemberPage']);
 Route::get('/detailLukisanAdminPage/{id}', [LukisanController::class, 'detailLukisanAdminPage'])->middleware(1);
 Route::get('/perbaruiLukisanPage/{id}', [LukisanController::class, 'perbaruiLukisanPage'])->middleware(3);
 Route::post('/perbaruiLukisan/{id}', [LukisanController::class, 'perbaruiLukisan'])->middleware(3);
 Route::post('/hapusLukisan/{id}', [LukisanController::class, 'hapusLukisan'])->middleware(3);
 
 Route::get('/showLukisanSemua', [LukisanController::class,'showLukisan']);
+Route::get('/penilaianPage', [LukisanController::class, 'penilaianPage'])->middleware(2);
+Route::get('/ulasanPage/{lukisanId}/{transaksiId}', [LukisanController::class, 'ulasanPage'])->middleware(2);
+Route::post('/buatUlasan/{lukisanId}/{transaksiId}', [LukisanController::class, 'buatUlasan'])->middleware(2);
+Route::get('/lihatSemuaUlasan/{id}', [LukisanController::class, 'lihatSemuaUlasan']);
 
 Route::get('/search', [LukisanController::class,'searchResult']);
 
@@ -72,7 +77,7 @@ Route::get('/checkoutPage/{id}', [TransaksiController::class, 'checkoutPage'])->
 Route::get('/pembayaranPage/{lukisanId}/{quantity}', [TransaksiController::class, 'pembayaranPage'])->middleware(2);
 Route::get('/riwayatTransaksiAdminPage', [TransaksiController::class, 'riwayatTransaksiAdminPage']);
 Route::get('/riwayatTransaksiMemberPage', [TransaksiController::class, 'riwayatTransaksiMemberPage'])->middleware(2);
-Route::put('/batalkanPesanan/{id}', [TransaksiController::class, 'batalkanPesanan'])->middleware(2);
+Route::put('/batalkanPesanan/{id}', [TransaksiController::class, 'batalkanPesanan']);
 Route::get('/detailTransaksiPage/{id}', [TransaksiController::class, 'detailTransaksiPage']);
 Route::put('/unggahBuktiPembayaran/{id}', [TransaksiController::class, 'unggahBuktiPembayaran'])->middleware(2);
 Route::put('/unggahBuktiPengiriman/{id}', [TransaksiController::class, 'unggahBuktiPengiriman'])->middleware(3);
@@ -86,7 +91,7 @@ Route::get('/keranjang', [KeranjangController::class, 'KeranjangPage'])->middlew
 Route::post('/tambahkanKeKeranjang/{id}', [KeranjangController::class, 'tambahkanKeKeranjang'])->middleware(2);
 Route::delete('/hapusItemKeranjang/{id}', [KeranjangController::class, 'hapusItemKeranjang'])->middleware(2);
 Route::get('/checkoutKeranjangPage', [KeranjangController::class, 'checkoutKeranjangPage'])->middleware(2);
-Route::get('/pembayaranKeranjangPage', [TransaksiController::class, 'pembayaranKeranjangPage'])->middleware(2);
+Route::get('/pembayaranKeranjangPage', [KeranjangController::class, 'pembayaranKeranjangPage'])->middleware(2);
 
 // Pesanan Seniman
 Route::get('/lihatSemuaPesanan', [TransaksiController::class, 'riwayatPesananSenimanPage'])->middleware(3);

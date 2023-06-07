@@ -15,6 +15,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 
 <body>
@@ -67,14 +69,10 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="p-3 ms-4 mt-3">
-                            <div>
-                                <a class="text-decoration-none text-dark" href=""><i
-                                        class="bi-chat-left-text me-4"></i><b>Obrolan</b></a>
-                            </div>
-                            <div class="my-4">
+                            {{-- <div class="my-4">
                                 <a class="text-decoration-none text-dark" href=""><i
                                         class="bi bi-chat-left-quote me-4"></i><b>Diskusi</b></a>
-                            </div>
+                            </div> --}}
                             <div class="my-4">
                                 <a class="dropdown-toggle link-dark text-decoration-none" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -128,7 +126,7 @@
                     @elseif (Auth::check() && Auth::user()->role_id === 1)
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu mt-2">
-                            <li><a class="dropdown-item text-dark hover" href="">Lihat Semua Akun</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="/lihatSemuaAkun">Lihat Semua Akun</a></li>
                             <li><a class="dropdown-item text-dark hover" href="/riwayatTransaksiAdminPage">Riwayat Transaksi</a></li>
                             <li><a class="dropdown-item text-dark hover" href="/logout">Logout</a></li>
                         </ul>

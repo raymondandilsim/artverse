@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailTransaksi;
 use App\Models\Lukisan;
+use App\Models\Transaksi;
+use App\Models\Ulasan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class LukisanController extends Controller
@@ -111,7 +115,7 @@ class LukisanController extends Controller
 
     public function daftarLukisanPage()
     {
-        $lukisans = Lukisan::where('user_id', auth()->user()->id)->get();
+        $lukisans = Lukisan::where('user_id', auth()->user()->id)->paginate(10);
 
         return view('lukisan.daftar-lukisan', compact('lukisans'));
     }
@@ -288,15 +292,104 @@ class LukisanController extends Controller
         return redirect('/daftarLukisanPage')->with('status', "Lukisan Berhasil Dihapus");
     }
 
-    public function showLukisan(){
+    public function showLukisan()
+    {
         $pagination = 9;
         $lukisan = Lukisan::Paginate($pagination);
-        return view('lukisan.lihat-semua-lukisan',['lukisan'=> $lukisan]);
+        return view('lukisan.lihat-semua-lukisan', ['lukisan' => $lukisan]);
     }
 
-    public function searchResult(Request $request){
+    public function searchResult(Request $request)
+    {
         $search = $request->get('search');
-        $lukisan = Lukisan::where('nama_lukisan','LIKE',"%$search%")->Paginate(6);
-        return view('lukisan.search-result',['lukisan'=> $lukisan]);
+        $lukisan = Lukisan::where('nama_lukisan', 'LIKE', "%$search%")->Paginate(6);
+        return view('lukisan.search-result', ['lukisan' => $lukisan]);
+    }
+
+    public function penilaianPage()
+    {
+
+        $user = Auth::user();
+        $transaksis = Transaksi::where('user_id', $user->id)->where('status', 'Selesai')->get();
+        // $detailTransaksis = DetailTransaksi::where('transaksi_id', $transaksis->id)->get();
+        // $lukisans = Lukisan::where('id', $detailTransaksis->lukisan_id)->get();
+
+        $lukisans = collect(); // Initialize an empty collection
+
+        foreach ($transaksis as $transaksi) {
+            $detailTransaksis = DetailTransaksi::where('transaksi_id', $transaksi->id)->get();
+            $lukisanIds = $detailTransaksis->pluck('lukisan_id');
+            $lukisansForTransaksi = Lukisan::whereIn('id', $lukisanIds)->get();
+            $lukisans = $lukisans->concat($lukisansForTransaksi);
+        }
+
+        $transaksi = DB::table('transaksis')
+            ->join('detail_transaksis', 'transaksis.id', '=', 'detail_transaksis.transaksi_id')
+            ->join('lukisans', 'detail_transaksis.lukisan_id', '=', 'lukisans.id')
+            ->select(
+                'transaksis.id as transaksi_id',
+                'lukisans.id as lukisan_id',
+                'lukisans.gambar_pertama as gambar_pertama',
+                'lukisans.nama_lukisan',
+                'transaksis.status',
+                'transaksis.tanggal_pembelian'
+            )
+            ->where('transaksis.user_id', $user->id)
+            ->where('transaksis.status', 'Selesai')
+            ->paginate(10);
+
+        return view('lukisan.penilaian', compact('transaksi'));
+    }
+
+    public function ulasanPage($lukisanId, $transaksiId)
+    {
+        $user = Auth::user();
+        $transaksi = Transaksi::findorFail($transaksiId);
+        $lukisan = Lukisan::findOrFail($lukisanId);
+        $cekUlasan = Ulasan::where('user_id', $user->id)->where('transaksi_id', $transaksiId)->where('lukisan_id', $lukisanId)->first();
+
+        return view('lukisan.ulasan', compact('lukisan', 'cekUlasan', 'transaksi'));
+    }
+
+    public function buatUlasan(Request $request, $lukisanId, $transaksiId)
+    {
+
+        $user = Auth::user();
+        $bintang = $request->input('rating');
+        $isi_ulasan = $request->ulasan;
+
+        $request->validate(
+            ['rating' => 'required',],
+            ['rating.required' => 'Kolom Bintang harus terisi',]
+        );
+
+        $ulasan = new Ulasan();
+        $ulasan->user_id = $user->id;
+        $ulasan->transaksi_id = $transaksiId;
+        $ulasan->lukisan_id = $lukisanId;
+        $ulasan->bintang = $bintang;
+        $ulasan->isi_ulasan = $isi_ulasan;
+        $ulasan->save();
+
+        return back()->with('status', 'Berhasil mengirim ulasan');
+    }
+
+    public function lihatSemuaUlasan($lukisanId){
+
+        $lukisan = Lukisan::findOrFail($lukisanId);
+        $ulasans = Ulasan::where('lukisan_id', $lukisanId)->paginate(10);
+
+        $increment = 0;
+        $jumlahBintang = 0;
+        $totalBintang = 0;
+        
+        foreach ($ulasans as $ulasan) {
+            $increment += 1;
+            $jumlahBintang += $ulasan->bintang;
+            $totalBintang = $jumlahBintang / $increment;
+        }
+
+
+        return view('lukisan.lihat-semua-ulasan', compact('ulasans', 'lukisan', 'totalBintang'));
     }
 }

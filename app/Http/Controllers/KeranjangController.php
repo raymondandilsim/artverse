@@ -19,7 +19,7 @@ class KeranjangController extends Controller
     public function KeranjangPage(Request $request)
     {
         $user = Auth::user();
-        $keranjang = Keranjang::where('user_id', $user->id)->get();
+        $keranjang = Keranjang::where('user_id', $user->id)->paginate(5);
 
         return view('transaksi.keranjang', compact('keranjang'));
     }
@@ -136,6 +136,7 @@ class KeranjangController extends Controller
         $subtotalAsuransi = 0;
         $berat = 0;
         $subtotalProduk = 0;
+        $penjual_id = 0;
 
         foreach ($itemKeranjang as $item) {
             $asuransi = $item->kuantitas * (2 / 1000 * $item->lukisan->harga);
@@ -143,8 +144,8 @@ class KeranjangController extends Controller
             $subtotalAsuransi += $asuransi;
             $tempBerat = $item->kuantitas * $item->lukisan->berat;
             $berat += $tempBerat;
-
             $subtotalProduk += $item->subtotal_produk;
+            $penjual_id = $item->lukisan->user->id;
         }
 
         $totalAsuransi = $subtotalAsuransi + 5000;
@@ -155,6 +156,7 @@ class KeranjangController extends Controller
         $alamatDestinasi = $user->nama_jalan . ',' . $user->nama_kota . ',' . $user->nama_provinsi . ',' . $user->kode_pos;
 
         $transaksi->user_id = $user->id;
+        $transaksi->penjual_id = $penjual_id;
         $transaksi->tanggal_pembelian = date('Y-m-d H:i:s');
         $transaksi->status = 'Belum Bayar';
         $transaksi->subtotal_pengiriman = $subtotalPengiriman;

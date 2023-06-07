@@ -6,6 +6,7 @@ use App\Models\DetailTransaksi;
 use App\Models\Kota;
 use App\Models\Lukisan;
 use App\Models\Transaksi;
+use App\Models\Ulasan;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -304,4 +305,5 @@ class TransaksiController extends Controller
 
         return back()->with('status', 'Terimakasih! Pesanan ini telah diselesaikan.');
     }
+
 }

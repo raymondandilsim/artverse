@@ -21,4 +21,9 @@ class Transaksi extends Model
         return $this->hasMany(DetailTransaksi::class);
     }
 
+    public function ulasans()
+    {
+        return $this->hasMany(Ulasan::class);
+    }
+
 }

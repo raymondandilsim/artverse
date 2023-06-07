@@ -17,9 +17,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('transaksi_id');
+            $table->foreign('transaksi_id')->references('id')->on('transaksis');
             $table->unsignedBigInteger('lukisan_id');
             $table->foreign('lukisan_id')->references('id')->on('lukisans');
-            $table->longText('isiUlasan');
+            $table->integer('bintang');
+            $table->longText('isi_ulasan')->nullable();
             $table->timestamps();
         });
     }

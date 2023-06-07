@@ -18,10 +18,10 @@
                 <b>
                     <?php
                     use Carbon\Carbon;
-
+                    
                     config(['app.locale' => 'id']);
                     Carbon::setLocale('id');
-
+                    
                     echo Carbon::now()->translatedFormat('l, j F Y');
                     ?>
                 </b>
@@ -38,35 +38,52 @@
                 <div class="bgcard-art text-white d-flex align-items-center">
                     <p class="ms-5"><b>Bermacam <br> Lukisan</b></p>
                 </div>
+
                 @if ($lukisans->count() > 0)
                     <div class="box-card d-flex">
                         @foreach ($lukisans as $lukisan)
                             <div class="card text-center mt-2 me-4" style="width: 18rem;">
-                            @if (auth()->user()->role_id == 1)
-                                <a href="/detailLukisanAdminPage/{{ $lukisan->id }}"
-                                    class="text-decoration-none text-dark">
-                                    <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top"
-                                        alt="{{ $lukisan->nama_lukisan }}" height="250">
-                                    <div class="card-body">
-                                        @php
-                                            $formatHarga = number_format($lukisan->harga, 0, '.', '.');
-                                        @endphp
-                                        <h6 class="card-text">Rp{{ $formatHarga }}</h6>
-                                    </div>
-                                </a>
-                            @elseif (auth()->user()->role_id == 2)
-                                <a href="/detailLukisanMemberPage/{{ $lukisan->id }}"
-                                    class="text-decoration-none text-dark">
-                                    <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top"
-                                        alt="{{ $lukisan->nama_lukisan }}" height="250">
-                                    <div class="card-body">
-                                        @php
-                                            $formatHarga = number_format($lukisan->harga, 0, '.', '.');
-                                        @endphp
-                                        <h6 class="card-text">Rp{{ $formatHarga }}</h6>
-                                    </div>
-                                </a>
-                            @endif
+                                @if (Auth::check())
+                                    @if (auth()->user()->role_id == 1)
+                                        <a href="/detailLukisanAdminPage/{{ $lukisan->id }}"
+                                            class="text-decoration-none text-dark">
+                                            <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top"
+                                                alt="{{ $lukisan->nama_lukisan }}" height="250">
+                                            <div class="card-body">
+                                                @php
+                                                    $formatHarga = number_format($lukisan->harga, 0, '.', '.');
+                                                @endphp
+                                                <h6 class="card-text">Rp{{ $formatHarga }}</h6>
+                                            </div>
+                                        </a>
+                                    @elseif (auth()->user()->role_id == 2)
+                                        <a href="/detailLukisanMemberPage/{{ $lukisan->id }}"
+                                            class="text-decoration-none text-dark">
+                                            <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top"
+                                                alt="{{ $lukisan->nama_lukisan }}" height="250">
+                                            <div class="card-body">
+                                                @php
+                                                    $formatHarga = number_format($lukisan->harga, 0, '.', '.');
+                                                @endphp
+                                                <h6 class="card-text">Rp{{ $formatHarga }}</h6>
+                                            </div>
+                                        </a>
+                                    @endif
+                                @else
+                                    @guest
+                                        <a href="/detailLukisanMemberPage/{{ $lukisan->id }}"
+                                            class="text-decoration-none text-dark">
+                                            <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top"
+                                                alt="{{ $lukisan->nama_lukisan }}" height="250">
+                                            <div class="card-body">
+                                                @php
+                                                    $formatHarga = number_format($lukisan->harga, 0, '.', '.');
+                                                @endphp
+                                                <h6 class="card-text">Rp{{ $formatHarga }}</h6>
+                                            </div>
+                                        </a>
+                                    @endguest
+                                @endif
                             </div>
                         @endforeach
                     </div>
@@ -96,8 +113,8 @@
                     </div>
                 @endforeach
             </div>
-            @else
-                <h1 class="display-6 mt-5 mb-5 pt-3 pb-5">Belum ada seniman yang terdaftar</h1>
+        @else
+            <h1 class="display-6 mt-5 mb-5 pt-3 pb-5">Belum ada seniman yang terdaftar</h1>
         @endif
     </div>
 @endsection
