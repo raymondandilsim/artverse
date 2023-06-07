@@ -223,7 +223,7 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: 20px;
 }
 .profil{
- max-width: 60px;
+    max-width: 60px;
 }
 
 .text-diskusi{
@@ -259,4 +259,8 @@ input[type=number]::-webkit-inner-spin-button {
 
 .star-rating input[type="radio"]:checked~label {
     color: gold;
+}
+
+.reply-diskusi{
+    background-color: #EEEEEE;
 }
