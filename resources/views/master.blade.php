@@ -139,7 +139,6 @@
                     @elseif (Auth::check() && Auth::user()->role_id === 3)
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu mt-2">
-                            <li><a class="dropdown-item text-dark hover" href="">Riwayat Transaksi</a></li>
                             <li><a class="dropdown-item text-dark hover" href="/logout">Logout</a></li>
                         </ul>
                     @endif

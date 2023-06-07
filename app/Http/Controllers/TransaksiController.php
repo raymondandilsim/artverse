@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 
 class TransaksiController extends Controller
@@ -128,9 +129,9 @@ class TransaksiController extends Controller
     public function riwayatPesananSenimanPage (){
 
         $user = Auth::user();
-        $transaksis = Transaksi::where('user_id', $user->id)->get();
+        $transaksis = Transaksi::where('penjual_id', $user->id)->get();
 
-        return view('transaksi.riwayat-transaksi-member', compact('transaksis'));
+        return view('transaksi.riwayat-transaksi-seniman', compact('transaksis'));
     }
 
     public function batalkanPesanan($transaksiId){
@@ -167,38 +168,56 @@ class TransaksiController extends Controller
         }
 
         $totalAsuransi = $subtotalAsuransi + 5000;
-        
-        return view('transaksi.detail-transaksi', compact('transaksi', 'detailTransaksis', 'user', 'berat','subtotalProduk', 'subtotalAsuransi'));
+
+        return view('transaksi.detail-transaksi', compact('transaksi', 'detailTransaksis', 'user', 'berat','subtotalProduk', 'subtotalAsuransi', 'asuransi'));
     }
 
-    public function unggahBuktiPembayaran (Request $request, $transaksiId){
-        
-        $transaksi = Transaksi::findOrFail($transaksiId);
-
-        $buktiBayar = $request->file('buktiPembayaran');
-        if ($buktiBayar == null) {
-            $buktiPembayaran = '';
-            return back()->with('error', 'Silahkan unggah bukti pembayaran.');
-        } else {
-            $buktiBayar->store('/public/bukti-pembayaran');
-            $buktiBayar = asset('storage/bukti-pembayaran/' . $buktiBayar->hashName());
-            $buktiPembayaran = $buktiBayar;
-            $transaksi->bukti_pembayaran = $buktiPembayaran;
-            $transaksi->status = 'Menunggu Konfirmasi Pembayaran';
-            $transaksi->save();
-            return back()->with('status', 'Bukti Pembayaran berhasil diunggah.');
+    public function deleteBuktiPembayaranFromDB($transaksi)
+    {
+        foreach (explode('/', $transaksi->bukti_pembayaran) as $item) {
+            if (str_ends_with($item, '.jpg') || str_ends_with($item, '.png') || str_ends_with($item, '.jpeg')) {
+                File::delete(public_path("storage/bukti-pembayaran/" . $item));
+            }
         }
+    }
 
+    public function deleteBuktiPengirimanFromDB($transaksi)
+    {
+        foreach (explode('/', $transaksi->bukti_pengiriman) as $item) {
+            if (str_ends_with($item, '.jpg') || str_ends_with($item, '.png') || str_ends_with($item, '.jpeg')) {
+                File::delete(public_path("storage/bukti-pengiriman/" . $item));
+            }
+        }
+    }
+
+    public function deleteBuktiPelepasanDanaFromDB($transaksi)
+    {
+        foreach (explode('/', $transaksi->bukti_pelepasan_dana) as $item) {
+            if (str_ends_with($item, '.jpg') || str_ends_with($item, '.png') || str_ends_with($item, '.jpeg')) {
+                File::delete(public_path("storage/bukti-pelepasan-dana/" . $item));
+            }
+        }
     }
 
     public function adminAccBuktiPembayaran ($transaksiId){
 
         $transaksi = Transaksi::findOrFail($transaksiId);
+        $detailTransaksi = DetailTransaksi::where('transaksi_id', $transaksiId)->get();
+
         if ($transaksi->bukti_pembayaran == '') {
             return back();
         } else {
             $transaksi->status = 'Dikemas';
             $transaksi->save();
+
+            // kurangin kuantitas produk
+            foreach ($detailTransaksi as $item) {
+                $lukisan_id = $item->lukisan_id;
+                $lukisan = Lukisan::findorFail($lukisan_id);
+                $lukisan->stok = $lukisan->stok - $item->kuantitas;
+                $lukisan->save();
+            }
+
             return back()->with('status', 'Bukti Pembayaran berhasil disetujui.');
         }
         
@@ -214,5 +233,75 @@ class TransaksiController extends Controller
             $transaksi->save();
             return back();
         }
+    }
+
+    public function unggahBuktiPembayaran (Request $request, $transaksiId){
+        
+        $transaksi = Transaksi::findOrFail($transaksiId);
+
+        $buktiBayar = $request->file('buktiPembayaran');
+        if ($buktiBayar == null) {
+            $buktiPembayaran = '';
+            return back()->with('error', 'Silahkan unggah bukti pembayaran.');
+        } else {
+            $this->deleteBuktiPembayaranFromDB($transaksi);
+            $buktiBayar->store('/public/bukti-pembayaran');
+            $buktiBayar = asset('storage/bukti-pembayaran/' . $buktiBayar->hashName());
+            $buktiPembayaran = $buktiBayar;
+            $transaksi->bukti_pembayaran = $buktiPembayaran;
+            $transaksi->status = 'Menunggu Konfirmasi Pembayaran';
+            $transaksi->save();
+            return back()->with('status', 'Bukti Pembayaran berhasil diunggah.');
+        }
+
+    }
+
+    public function unggahBuktiPengiriman(Request $request, $transaksiId){
+
+        $transaksi = Transaksi::findOrFail($transaksiId);
+
+        $buktiKirim = $request->file('buktiPengiriman');
+        if ($buktiKirim == null) {
+            $buktiPengiriman = '';
+            return back()->with('error', 'Silahkan unggah bukti pengiriman.');
+        } else {
+            $this->deleteBuktiPengirimanFromDB($transaksi);
+            $buktiKirim->store('/public/bukti-pengiriman');
+            $buktiKirim = asset('storage/bukti-pengiriman/' . $buktiKirim->hashName());
+            $buktiPengiriman = $buktiKirim;
+            $transaksi->bukti_pengiriman = $buktiPengiriman;
+            $transaksi->status = 'Dikirim';
+            $transaksi->save();
+            return back()->with('status', 'Bukti pengiriman berhasil diunggah.');
+        }
+    }
+
+    public function unggahBuktiPelepasanDana(Request $request, $transaksiId){
+
+        $transaksi = Transaksi::findOrFail($transaksiId);
+
+        $buktiPelepasan = $request->file('buktiPelepasanDana');
+        if ($buktiPelepasan == null) {
+            $buktiPelepasanDana = '';
+            return back()->with('error', 'Silahkan unggah bukti pelepasan dana.');
+        } else {
+            $this->deleteBuktiPelepasanDanaFromDB($transaksi);
+            $buktiPelepasan->store('/public/bukti-pelepasan-dana');
+            $buktiPelepasan = asset('storage/bukti-pelepasan-dana/' . $buktiPelepasan->hashName());
+            $buktiPelepasanDana = $buktiPelepasan;
+            $transaksi->bukti_pelepasan_dana = $buktiPelepasanDana;
+            $transaksi->save();
+            return back()->with('status', 'Bukti pelepasan dana berhasil diunggah.');
+        }
+    }
+
+    public function selesaikanPesanan($transaksiId){
+        
+        $transaksi = Transaksi::findOrFail($transaksiId);
+
+        $transaksi->status = 'Selesai';
+        $transaksi->save();
+
+        return back()->with('status', 'Terimakasih! Pesanan ini telah diselesaikan.');
     }
 }

@@ -11,10 +11,10 @@ class DetailTransaksi extends Model
 
     protected $table = 'detail_transaksis';
 
-    // public function transaksis()
-    // {
-    //     return $this->belongsTo(Transaksi::class);
-    // }
+    public function transaksis()
+    {
+        return $this->belongsTo(Transaksi::class);
+    }
 
     public function lukisans()
     {

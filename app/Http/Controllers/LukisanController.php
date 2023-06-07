@@ -123,6 +123,13 @@ class LukisanController extends Controller
         return view('lukisan.detail-lukisan-seniman', compact('lukisan'));
     }
 
+    public function detailLukisanAdminPage($id)
+    {
+        $lukisan = Lukisan::findOrFail($id);
+
+        return view('lukisan.detail-lukisan-admin', compact('lukisan'));
+    }
+
     public function detailLukisanMemberPage($id)
     {
         $lukisan = Lukisan::findOrFail($id);
