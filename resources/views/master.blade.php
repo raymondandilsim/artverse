@@ -103,16 +103,17 @@
                 @if (Auth::check() && Auth::user()->role_id === 3)
                     <img src="\asset\logoArtverse.png">
                 @else
-                <a href="/"><img src="\asset\logoArtverse.png"></a>
+                    <a href="/"><img src="\asset\logoArtverse.png"></a>
                 @endif
             </div>
             <div class="d-flex align-items-center">
                 <form action="/search" method="GET">
-                <div class="search">
-                    <i class="ms-4 bi-search"></i>
-                    <input class="ps-3 border-0 form-control" type="search" name="search" placeholder="Cari Lukisan...">
-                </div>
-            </form>
+                    <div class="search">
+                        <i class="ms-4 bi-search"></i>
+                        <input class="ps-3 border-0 form-control" type="search" name="search"
+                            placeholder="Cari Lukisan...">
+                    </div>
+                </form>
             </div>
             @auth
                 <div class="d-flex align-items-center">
@@ -121,15 +122,18 @@
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu mt-2">
                             <li><a class="dropdown-item text-dark hover" href="/profilPage/{{ Auth::user()->id }}">Profil
-                                    (Member)</a></li>
-                            <li><a class="dropdown-item text-dark hover" href="/riwayatTransaksiMemberPage">Riwayat Transaksi</a></li>
+                                    (Member)
+                                </a></li>
+                            <li><a class="dropdown-item text-dark hover" href="/riwayatTransaksiMemberPage">Riwayat
+                                    Transaksi</a></li>
                             <li><a class="dropdown-item text-dark hover" href="/logout">Logout</a></li>
                         </ul>
                     @elseif (Auth::check() && Auth::user()->role_id === 1)
                         <img class="mx-3"src="\asset\profilewhite.png" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu mt-2">
                             <li><a class="dropdown-item text-dark hover" href="">Lihat Semua Akun</a></li>
-                            <li><a class="dropdown-item text-dark hover" href="/riwayatTransaksiAdminPage">Riwayat Transaksi</a></li>
+                            <li><a class="dropdown-item text-dark hover" href="/riwayatTransaksiAdminPage">Riwayat
+                                    Transaksi</a></li>
                             <li><a class="dropdown-item text-dark hover" href="/logout">Logout</a></li>
                         </ul>
                     @elseif (Auth::check() && Auth::user()->role_id === 3)
@@ -148,9 +152,15 @@
             @endguest
         </nav>
     </header>
-    @yield('Page-Contents')
+    @auth
+        <div class="fill-footer">
+            @yield('Page-Contents')
+        </div>
+    @else
+        @yield('Page-Contents')
+    @endauth
     <footer>
-        <div class="section-footer bg-footer text-center fixed-bottom">
+        <div class="section-footer bg-footer text-center">
             <div class="text-white"><b>ArtVerse</b></div>
             <div class="fw-bold">
                 <a class="text-decoration-none text-white me-3" href="/tentang">Tentang</a>

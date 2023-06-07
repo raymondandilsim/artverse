@@ -65,7 +65,9 @@
     font-size: small;
     min-width: 100vw;
 }
-
+.fill-footer{
+    min-height: calc(100vh - 227.5px);
+}
 .bgcard-art {
     background: #363636;
     width: 300px;
@@ -207,4 +209,25 @@ input[type=number]::-webkit-inner-spin-button {
 
 .peringatan {
     font-size: x-small;
+}
+
+.bubble-chat{
+    width: 100%;
+    border-radius: 20px;
+}
+.profil{
+ max-width: 60px;
+}
+
+.text-diskusi{
+    width: 100%;
+    height: 150px;
+}
+.card-footer{
+    border-radius: 12px;
+}
+
+.diskusi-form{
+    width: 1200px;
+    height: 80px;
 }
