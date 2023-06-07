@@ -68,4 +68,9 @@ class Lukisan extends Model
     {
         return $this->hasMany(DetailTransaksi::class);
     }
+
+    public function diskusis()
+    {
+        return $this->hasMany(Diskusi::class);
+    }
 }
