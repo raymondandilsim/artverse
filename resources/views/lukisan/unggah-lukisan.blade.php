@@ -10,7 +10,7 @@
             <h3 class=""><b>Tambah Lukisan</b></h3>
         </div>
 
-        <div class="d-flex bg-daftar justify-content-center align-items-center p-2 mb-5 pb-5">
+        <div class="d-flex bg-detail justify-content-center align-items-center p-2 mb-5 pb-5">
             <div class="card-unggah-lukisan bg-white px-5 py-5 rounded-3 shadow">
                 <h5 class="text-start mb-4"><b>Informasi Produk</b></h5>
                 
@@ -73,7 +73,7 @@
                             <div class="row col-sm-3 ps-4">
                                 <input class="col form-control" type="number" id="beratLukisan" name="beratLukisan"
                                     value="{{ old('beratLukisan') }}"placeholder="Berat Produk">
-                                <span class="col col-sm-2 badge bg-secondary pt-2">gram</span>
+                                <span class="col col-sm-2 badge bg-dark pt-2">gram</span>
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -82,17 +82,17 @@
                             <div class="row col-sm-3 ps-4">
                                 <input class="col form-control" type="number" id="panjangLukisan" name="panjangLukisan"
                                     value="{{ old('panjangLukisan') }}"placeholder="Panjang">
-                                <span class="col col-sm-2 badge bg-secondary pt-2">cm</span>
+                                <span class="col col-sm-2 badge bg-dark pt-2">cm</span>
                             </div>
                             <div class="row col-sm-3 ps-4">
                                 <input class="col form-control" type="number" id="lebarLukisan" name="lebarLukisan"
                                     value="{{ old('lebarLukisan') }}"placeholder="Lebar">
-                                <span class="col col-sm-2 badge bg-secondary pt-2">cm</span>
+                                <span class="col col-sm-2 badge bg-dark pt-2">cm</span>
                             </div>
                             <div class="row col-sm-3 ps-4">
                                 <input class="col form-control" type="number" id="tinggiLukisan" name="tinggiLukisan"
                                     value="{{ old('tinggiLukisan') }}"placeholder="Tinggi">
-                                <span class="col col-sm-2 badge bg-secondary pt-2">cm</span>
+                                <span class="col col-sm-2 badge bg-dark pt-2">cm</span>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -102,7 +102,7 @@
                             <input class="form-control mb-3" type="file" id="gambarLukisan2" name="gambarLukisan2" value="{{ old('gambarLukisan2') }}">
                             <input class="form-control mb-3" type="file" id="gambarLukisan3" name="gambarLukisan3" value="{{ old('gambarLukisan3') }}">
                         </div>
-                        <input class="btn btn-secondary form-control mt-5" type="submit" value="Unggah">
+                        <input class="btn btn-dark form-control mt-5" type="submit" value="Unggah">
                     </div>
                 </form>
             </div>

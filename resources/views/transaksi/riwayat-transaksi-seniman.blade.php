@@ -10,7 +10,7 @@
             <h3 class=""><b>Riwayat Pesanan</b></h3>
         </div>
 
-        <div class="d-flex bg-daftar justify-content-center align-items-start">
+        <div class="d-flex bg-detail justify-content-center align-items-start">
             <div class="card-unggah-lukisan bg-white px-5 py-5 mb-5 rounded-3 shadow-lg">
                 <table class="table table-hover">
                     <thead>

@@ -2,8 +2,7 @@
     min-height: 100vh;
     min-width: 100vw;
     background-image: url("../asset/bg-login-register.jpg");
-    background-size: 200vh;
-    font-family: poppins;
+    background-size: 210vh;
 }
 
 .card-login {
@@ -14,9 +13,17 @@
     background: #363636;
 }
 
+.bg-detail{
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
 .bg-daftar {
     min-height: 100vh;
     min-width: 100vw;
+    background-image: url("../asset/bg-login-register.jpg");
+    background-size: 210vh;
+    background-attachment: fixed;
 }
 
 .card-daftar {
