@@ -18,11 +18,26 @@
 </head>
 
 <body>
-    <div class="d-flex bg-daftar bg-secondary justify-content-center align-items-center p-5">
-        <div class="card-daftar bg-white px-5 py-5 rounded-3 shadow">
-            <h2 class="text-center"><b>DAFTAR</b></h2>
-            <form action="/daftar" method="POST">
-                @csrf
+<section class="d-flex bg-daftar bg-secondary justify-content-center align-items-center p-5">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card shadow" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="../asset/logo-register.png"
+                alt="register form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form action="/daftar" method="POST">
+
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <span class="h1 fw-bold mb-0">DAFTAR</span>
+                  </div>
+
+                  @csrf
                 <div>
                     <div>
                         <label for="Nama" class="form-label">Nama <label class="text-danger">*</label></label>
@@ -151,13 +166,17 @@
                         </tr> --}}
                     @endif
                     <br><label><label class="text-danger">*</label> Wajib diisi</label>
-                    <input class="btn btn-secondary form-control mt-4" type="submit" value="Daftar">
-                    <h6 class="mt-2">Sudah punya akun? <a class="text-decoration-none" href="/loginPage">Masuk</a>
-                    </h6>
-                </div>
-            </form>
+                    <input class="btn btn-dark form-control mt-4" type="submit" value="Daftar">
+                    <h6 class="mt-2">Sudah punya akun? <a class="text-decoration-none" href="/loginPage">Masuk</a></h6>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+</section>
 </body>
 
 </html>

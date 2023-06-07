@@ -10,7 +10,7 @@
             <h3 class=""><b>Perbarui Lukisan</b></h3>
         </div>
 
-        <div class="d-flex bg-daftar justify-content-center align-items-center p-2 mb-5 pb-5">
+        <div class="d-flex bg-detail justify-content-center align-items-center p-2 mb-5 pb-5">
             <div class="card-unggah-lukisan bg-white px-5 py-5 rounded-3 shadow">
                 <h5 class="text-start mb-4"><b>Informasi Produk</b></h5>
                 
