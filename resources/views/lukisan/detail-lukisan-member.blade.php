@@ -196,7 +196,7 @@
                     <span>Dikirim dari kota <b>{{ $lukisan->user->nama_kota }}</b></span>
                     @if (Auth::check())
                         <div class="d-flex justify-content-center justify-content-around mt-3">
-                            <button class="btn-diskusi text-white"><b>Diskusi</b></button>
+                            <a href="/diskusiPage/{{$lukisan->id}}"><button class="btn-diskusi text-white"><b>Diskusi</b></button></a>
                             <a href="/lihatSemuaUlasan/{{ $lukisan->id }}">
                                 <button class="btn-ulasan text-white"><b>Ulasan</b></button>
                             </a>
@@ -204,10 +204,8 @@
                     @else
                         @guest
                             <div class="d-flex justify-content-center justify-content-around mt-3">
-                                <button class="btn-diskusi text-white"><b>Diskusi</b></button>
-                                <a href="/loginPage">
-                                    <button class="btn-ulasan text-white"><b>Ulasan</b></button>
-                                </a>
+                                <a href="/loginPage"><button class="btn-diskusi text-white"><b>Diskusi</b></button></a>
+                                <a href="/loginPage"><button class="btn-ulasan text-white"><b>Ulasan</b></button></a>
                             </div>
                         @endguest
                     @endif

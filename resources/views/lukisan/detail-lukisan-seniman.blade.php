@@ -100,7 +100,7 @@
                         </div>
                     </form>
 
-                    <a class="col-sm-3 text-decoration-none" href="">
+                    <a class="col-sm-3 text-decoration-none" href="/diskusiPage/{{$lukisan->id}}">
                         <button class="btn btn-lg btn-secondary fw-bold mt-5">Diskusi</button></a>
                     <a class="col-sm-3 text-decoration-none" href="/lihatSemuaUlasan/{{ $lukisan->id }}">
                         <button class="btn btn-lg btn-secondary fw-bold mt-5">Ulasan</button></a>
