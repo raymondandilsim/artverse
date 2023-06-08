@@ -21,7 +21,7 @@
                     </div>
             </div>
             <div class="d-flex justify-content-end mt-3">
-                <input type="submit" class="btn btn-primary btn-sm" value="Kirim">
+                <input type="submit" class="btn btn-primary btn-sm" value="Kirim Diskusi">
             </div>
             @if ($errors->any())
                 <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
@@ -52,7 +52,6 @@
                                 </div>
                             </div>
                         </div>
-                        <hr>
                         <div class="reply-diskusi rounded">
                             <h6 class="p-3">Balasan</h6>
                             @foreach ($diskusi->replies as $reply)
@@ -89,7 +88,7 @@
                                         </div>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <input type="submit" class="btn btn-primary btn-sm" value="Unggah Balasan">
+                                    <input type="submit" class="btn btn-primary btn-sm" value="Kirim Balasan">
                                 </div>
                                 </form>
                                 @if ($errors->any())
