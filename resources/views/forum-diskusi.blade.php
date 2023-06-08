@@ -21,7 +21,7 @@
                     </div>
             </div>
             <div class="d-flex justify-content-end mt-3">
-                <input type="submit" class="btn btn-primary btn-sm" value="Kirim Diskusi">
+                <input type="submit" class="btn btn-primary btn-sm" value="Kirim">
             </div>
             @if ($errors->any())
                 <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
@@ -89,7 +89,7 @@
                                         </div>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <input type="submit" class="btn btn-primary btn-sm" value="Kirim Balasan">
+                                    <input type="submit" class="btn btn-primary btn-sm" value="Unggah Balasan">
                                 </div>
                                 </form>
                                 @if ($errors->any())
