@@ -20,8 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('lukisan_id');
             $table->foreign('lukisan_id')->references('id')->on('lukisans');
             $table->string('text');
-            $table->unsignedBigInteger('diskusi_id')->nullable();
-            $table->foreign('diskusi_id')->references('id')->on('diskusis');
+            $table->unsignedBigInteger('balasan_id')->nullable();
+            $table->foreign('balasan_id')->references('id')->on('diskusis');
             $table->timestamps();
         });
     }

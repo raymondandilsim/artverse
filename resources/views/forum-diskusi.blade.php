@@ -36,7 +36,7 @@
             </form>
         </div>
         @forelse ($diskusis as $diskusi)
-            @if ($diskusi->diskusi_id == null)
+            @if ($diskusi->balasan_id == null)
                 <div class="shadow-lg p-3 mb-5 mt-5 bg-body-tertiary rounded">
                     <div class="bubble-chat p-3 mt-4">
                         <div class="d-flex mb-4">
@@ -52,7 +52,6 @@
                                 </div>
                             </div>
                         </div>
-                        <hr>
                         <div class="reply-diskusi rounded">
                             <h6 class="p-3">Balasan</h6>
                             @foreach ($diskusi->replies as $reply)

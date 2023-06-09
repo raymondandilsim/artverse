@@ -10,15 +10,15 @@ class DiskusiController extends Controller
 {
     public function DiskusiPage($id){
         $lukisan = Lukisan::findOrFail($id);
-        $diskusis = Diskusi::whereNull('diskusi_id')
+        $diskusis = Diskusi::whereNull('balasan_id')
                     ->where('lukisan_id', '=', $id)
                     ->get();
         $pagination = 7;
         $diskusis = Diskusi::Paginate($pagination);
         foreach ($diskusis as $diskusi) {
-            $diskusi -> setAttribute('reply',Diskusi::whereNotNull('diskusi_id')->where('diskusi_id','=',$diskusi->id)->orderBy('created_at')->get());
+            $diskusi -> setAttribute('reply',Diskusi::whereNotNull('balasan_id')->where('balasan_id','=',$diskusi->id)->orderBy('created_at')->get());
             $diskusi -> makeVisible(['reply']);
-            $replies = Diskusi::where("diskusi_id", "=", $diskusi->id)->get();
+            $replies = Diskusi::where("balasan_id", "=", $diskusi->id)->get();
             $diskusi->replies = $replies;
         }
         return view('forum-diskusi', compact('lukisan','diskusis'));
@@ -43,7 +43,7 @@ class DiskusiController extends Controller
         return redirect('/diskusiPage' . "/" . $request->lukisan_id)->with('status', 'Berhasil menambahkan diskusi');
     }
 
-    public function replyDiskusi(Request $request, $diskusi_id){
+    public function replyDiskusi(Request $request, $balasan_id){
         $request->validate([
             'reply' => 'required|string|max:2000',
             'lukisan_id' => 'required'
@@ -57,7 +57,7 @@ class DiskusiController extends Controller
         $diskusi->user_id = auth()->user()->id;
         $diskusi->text = $request->reply;
         $diskusi->lukisan_id = $request->lukisan_id;
-        $diskusi->diskusi_id = $diskusi_id;
+        $diskusi->balasan_id = $balasan_id;
         $diskusi->save();
 
         return redirect('/diskusiPage' . "/" . $request->lukisan_id)->with('status', 'Berhasil menambahkan balasan');
