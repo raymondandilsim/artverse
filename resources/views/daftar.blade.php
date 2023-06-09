@@ -74,7 +74,6 @@
                                 class="text-danger">*</label></label>
                     </div>
                     <div>
-                        {{-- <input class="form-control" type="text" id="nama_provinsi" name="nama_provinsi" value="{{ old('nama_provinsi') }}" placeholder="Masukkan nama provinsi"> --}}
                         <select name="provinsi" id="provinsi" class="form-select">
                             <option value="">Pilih Provinsi</option>
                             @foreach ($provinsis as $provinsi)
@@ -86,8 +85,6 @@
                         <label for="Nama Kota" class="form-label">Nama Kota <label class="text-danger">*</label></label>
                     </div>
                     <div>
-                        {{-- <input class="form-control" type="text" id="nama_kota" name="nama_kota"
-                            value="{{ old('nama_kota') }}" placeholder="Masukkan nama kota"> --}}
 
                         <select name="kota" id="kota" class="form-select">
                             <option value="">Pilih Kota</option>
@@ -107,8 +104,6 @@
                                                 $.each(response, function(key, value) {
                                                     $('#kota').append('<option value="' + key + '">' + value +
                                                         '</option>');
-                                                        // $('#provinsi').append('<input type="text" id="nama_provinsi" name="nama_provinsi" value="' + value
-                                                        //  .province + '">');
                                                 });
                                             }
                                         });
@@ -151,8 +146,6 @@
                             placeholder="Masukkan ulang kata sandi">
                     </div>
                     @if ($errors->any())
-                        {{-- <tr>
-                            <td colspan="2" class="px-5 py-2"> --}}
                         <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -162,8 +155,6 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert"
                                 aria-label="Close"></button>
                         </div>
-                        {{-- </td>
-                        </tr> --}}
                     @endif
                     <br><label><label class="text-danger">*</label> Wajib diisi</label>
                     <input class="btn btn-dark form-control mt-4" type="submit" value="Daftar">

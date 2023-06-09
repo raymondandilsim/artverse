@@ -15,13 +15,13 @@
                         <h6 class="mt-4 pb-3 border-bottom border-dark fw-bold">Alamat Pengiriman</h6>
                         <h6 class="fw-bold">{{ auth()->user()->nama }}</h6>
                         <label>{{ auth()->user()->nomor_telepon }}</label> <br>
-                        <label class="">{{ auth()->user()->nama_jalan }}, {{ auth()->user()->nama_kota }},
-                            {{ auth()->user()->nama_provinsi }}, {{ auth()->user()->kode_pos }}
+                        <label class="">{{ auth()->user()->nama_jalan }}, {{ auth()->user()->kota->nama_kota }},
+                            {{ auth()->user()->provinsi->provinsi }}, {{ auth()->user()->kode_pos }}
                         </label>
                     </div>
                     <div class="mt-4 pb-3 border-dark">
                         <h6>{{ $lukisan->user->username }} (Penjual)</h6>
-                        <label class="fw-light">{{ $lukisan->user->nama_kota }}</label> <br>
+                        <label class="fw-light">{{ $lukisan->user->kota->nama_kota }}, {{ $lukisan->user->provinsi->provinsi }}</label> <br>
                         <div class="row mt-3">
                             <div class="col-1">
                                 <img src="{{ $lukisan->gambar_pertama }}" class="rounded"
@@ -43,9 +43,7 @@
                         </div>
                         <label for="pengiriman" class="fw-bold mb-2">Pilih Jenis Pengiriman</label><br>
                         <button type="button" class="btn btn-secondary mt-2" disabled>JNE</button>
-                        {{-- <select name="courier" class="btn btn-secondary mt-2 disabled">
-                        <option value="jne" class="text-start">JNE</option>
-                    </select> --}}
+                        
                         <select name="jenisPengiriman" id="jenisPengiriman" class="btn btn-secondary mt-2">
                             @foreach ($cekOngkir as $item)
                                 @php

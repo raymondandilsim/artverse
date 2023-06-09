@@ -100,11 +100,11 @@ class UserController extends Controller
 
         $userLama = User::findOrFail($id);
 
-        $provinsi_id = Provinsi::findOrFail($request->provinsi);
-        $nama_provinsi = $provinsi_id->provinsi;
+        // $provinsi_id = Provinsi::findOrFail($request->provinsi);
+        // $nama_provinsi = $provinsi_id->provinsi;
 
-        $kota_id = Kota::findOrFail($request->kota);
-        $nama_kota = $kota_id->nama_kota;
+        // $kota_id = Kota::findOrFail($request->kota);
+        // $nama_kota = $kota_id->nama_kota;
 
         $validator = Validator::make(
                 [
@@ -123,8 +123,8 @@ class UserController extends Controller
             $userLama->username = $request->username;
             $userLama->email = $request->email;
             $userLama->nomor_telepon = $request->nomor_telepon;
-            $userLama->nama_provinsi = $nama_provinsi;
-            $userLama->nama_kota = $nama_kota;
+            $userLama->provinsi_id = $request->provinsi;
+            $userLama->kota_id = $request->kota;
             $userLama->nama_jalan = $request->nama_jalan;
             $userLama->kode_pos = $request->kode_pos;
             $userLama->password = Hash::make($request->password);
@@ -172,11 +172,14 @@ class UserController extends Controller
         return view('daftar-semua-akun', compact('users'));
     }
 
-    public function hapusAkun($id)
+    public function blokirAkun($id)
     {
-        User::find($id)->delete();
+        // User::find($id)->delete();
+        $user = User::findOrFail($id);
+        $user->flag = 2;
+        $user->save();
 
-        return back()->with('status', 'Akun telah dihapus dari sistem.');
+        return back()->with('status', 'Akun telah diblokir dari sistem.');
     }
 
 }

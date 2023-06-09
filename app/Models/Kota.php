@@ -15,4 +15,9 @@ class Kota extends Model
     {
         return $this->belongsTo(Provinsi::class);
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

@@ -67,11 +67,11 @@ class DaftarController extends Controller
             ]
         );
 
-        $provinsi_id = Provinsi::findOrFail($request->provinsi);
-        $nama_provinsi = $provinsi_id->provinsi;
+        // $provinsi_id = Provinsi::findOrFail($request->provinsi);
+        // $nama_provinsi = $provinsi_id->provinsi;
 
-        $kota_id = Kota::findOrFail($request->kota);
-        $nama_kota = $kota_id->nama_kota;
+        // $kota_id = Kota::findOrFail($request->kota);
+        // $nama_kota = $kota_id->nama_kota;
 
 
         $user = new User();
@@ -80,8 +80,8 @@ class DaftarController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->nomor_telepon = $request->nomor_telepon;
-        $user->nama_provinsi = $nama_provinsi;
-        $user->nama_kota = $nama_kota;
+        $user->provinsi_id = $request->provinsi;
+        $user->kota_id = $request->kota;
         $user->nama_jalan = $request->nama_jalan;
         $user->kode_pos = $request->kode_pos;
         $user->password = Hash::make($request->password);

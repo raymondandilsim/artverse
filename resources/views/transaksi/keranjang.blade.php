@@ -120,11 +120,11 @@
                         @php
                             $formatHarga = number_format($totalHarga, 0, '.', '.');
                         @endphp
-                        <div class="col-4 justify-content-end pt-3 ps-5">
+                        <div class="col-5 justify-content-end pt-3 ps-5">
                             <form action="/checkoutKeranjangPage" method="GET">
                                 <label class="font-weight-normal text-danger mt-3 ms-5 me-4 ps-2">Subtotal:
                                     Rp{{ $formatHarga }}</label>
-                                <button type="submit" class="btn btn-dark ms-5">Checkout</button>
+                                <button type="submit" class="btn btn-dark ms-3">Checkout</button>
                             </form>
                         </div>
                     </div>

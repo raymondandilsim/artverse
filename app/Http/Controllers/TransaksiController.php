@@ -22,33 +22,35 @@ class TransaksiController extends Controller
         $lukisan = Lukisan::findOrFail($lukisanId);
         
         // Asal Kota Penjual (Origin)
-        $kotaPenjual = $lukisan->user->nama_kota;
+        // $kotaPenjual = $lukisan->user->kota->nama_kota;
 
         // Ubah Nama Kota jadi ID Kota biar bisa dihitung dengan API
-        $namaKotaOrigin = Kota::where('nama_kota', $kotaPenjual)->first();
+        // $namaKotaOrigin = Kota::where('nama_kota', $kotaPenjual)->first();
 
-        if ($namaKotaOrigin) {
-            $idOrigin = $namaKotaOrigin->id;
-        } else {
-            $idOrigin = '';
-        }
+        // if ($namaKotaOrigin) {
+        //     $idOrigin = $namaKotaOrigin->id;
+        // } else {
+        //     $idOrigin = '';
+        // }
 
         // Asal Kota Pembeli (Destination)
-        $kotaPembeli = $user->nama_kota;
+        // $kotaPembeli = $user->kota->nama_kota;
 
         // Ubah Nama Kota jadi ID Kota biar bisa dihitung dengan API
-        $namaKotaDestination = Kota::where('nama_kota', $kotaPembeli)->first();
+        // $namaKotaDestination = Kota::where('nama_kota', $kotaPembeli)->first();
 
-        if ($namaKotaDestination) {
-            $idDestination = $namaKotaDestination->id;
-        } else {
-            $idDestination = '';
-        }
+        // if ($namaKotaDestination) {
+        //     $idDestination = $namaKotaDestination->id;
+        // } else {
+        //     $idDestination = '';
+        // }
 
         $quantity = request('quantity');
         
-        $origin = $idOrigin;
-        $destination = $idDestination;
+        // $origin = $idOrigin;
+        $origin = $lukisan->user->kota_id;
+        // $destination = $idDestination;
+        $destination = $user->kota_id;
         $weight = $quantity * $lukisan->berat;
         // $courier = $request->courier;
 
@@ -85,7 +87,7 @@ class TransaksiController extends Controller
         $totalPembayaran = $subtotalProduk + $subtotalPengiriman + $subtotalAsuransi;
         $catatan = $request->catatan;
 
-        $alamatDestinasi = $user->nama_jalan . ',' . $user->nama_kota . ',' . $user->nama_provinsi . ',' . $user->kode_pos;
+        $alamatDestinasi = $user->nama_jalan . ',' . $user->kota->nama_kota . ',' . $user->provinsi->provinsi . ',' . $user->kode_pos;
 
         $transaksi->user_id = $user->id;
         $transaksi->penjual_id = $lukisan->user_id;
@@ -103,7 +105,7 @@ class TransaksiController extends Controller
         $detailTransaksi->kuantitas = $quantity;
         $detailTransaksi->subtotal_produk = $subtotalProduk;
         $detailTransaksi->subtotal_asuransi = $subtotalAsuransi;
-        $detailTransaksi->alamat_asal = $lukisan->user->nama_kota;
+        $detailTransaksi->alamat_asal = $lukisan->user->kota->nama_kota;
         $detailTransaksi->alamat_destinasi = $alamatDestinasi;
         $detailTransaksi->catatan = $catatan;
         $detailTransaksi->save();
@@ -153,11 +155,13 @@ class TransaksiController extends Controller
         ->join('transaksis', 'transaksi_id', "=", 'transaksis.id')
         ->join('lukisans', 'lukisan_id', "=", 'lukisans.id')
         ->join('users', 'lukisans.user_id', "=", 'users.id')
+        ->join('kotas', 'users.kota_id', "=", 'kotas.id')
         ->where('transaksi_id', $transaksiId)->get();
 
         $subtotalAsuransi = 0;
         $berat = 0;
         $subtotalProduk = 0;
+        $asuransi = 0;
 
         foreach ($detailTransaksis as $item) {
             $asuransi = $item->kuantitas * (2 / 1000 * $item->harga);

@@ -26,6 +26,15 @@
         </div>
     @endif
 
+    @if (Session::has('error'))
+        <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
+            <ul>
+                {{ Session::get('error') }}
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <!-- <div class="d-flex bg-login bg-login-register justify-content-center align-items-center">
         <div class="card-login bg-white px-5 py-5 rounded-3 shadow">
             <h2 class="text-center"><b>MASUK</b></h2>

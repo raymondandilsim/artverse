@@ -81,31 +81,33 @@ class KeranjangController extends Controller
 
         foreach ($itemKeranjang as $item) {
             // Asal Kota Penjual (Origin)
-            $kotaPenjual = $item->lukisan->user->nama_kota;
+            // $kotaPenjual = $item->lukisan->user->nama_kota;
 
             // Ubah Nama Kota jadi ID Kota biar bisa dihitung dengan API
-            $namaKotaOrigin = Kota::where('nama_kota', $kotaPenjual)->first();
+            // $namaKotaOrigin = Kota::where('nama_kota', $kotaPenjual)->first();
 
-            if ($namaKotaOrigin) {
-                $idOrigin = $namaKotaOrigin->id;
-            } else {
-                $idOrigin = '';
-            }
+            // if ($namaKotaOrigin) {
+            //     $idOrigin = $namaKotaOrigin->id;
+            // } else {
+            //     $idOrigin = '';
+            // }
 
             // Asal Kota Pembeli (Destination)
-            $kotaPembeli = $user->nama_kota;
+            // $kotaPembeli = $user->nama_kota;
 
             // Ubah Nama Kota jadi ID Kota biar bisa dihitung dengan API
-            $namaKotaDestination = Kota::where('nama_kota', $kotaPembeli)->first();
+            // $namaKotaDestination = Kota::where('nama_kota', $kotaPembeli)->first();
 
-            if ($namaKotaDestination) {
-                $idDestination = $namaKotaDestination->id;
-            } else {
-                $idDestination = '';
-            }
+            // if ($namaKotaDestination) {
+            //     $idDestination = $namaKotaDestination->id;
+            // } else {
+            //     $idDestination = '';
+            // }
 
-            $origin = $idOrigin;
-            $destination = $idDestination;
+            // $origin = $idOrigin;
+            $origin = $item->lukisan->user->kota_id;
+            // $destination = $idDestination;
+            $destination = $user->kota_id;
             
             $weight = $item->kuantitas * $item->lukisan->berat;
             $temp = $temp + $weight;
@@ -153,7 +155,7 @@ class KeranjangController extends Controller
         $totalPembayaran = $subtotalProduk + $subtotalPengiriman + $totalAsuransi;
         $catatans = $request->input('catatan');
 
-        $alamatDestinasi = $user->nama_jalan . ',' . $user->nama_kota . ',' . $user->nama_provinsi . ',' . $user->kode_pos;
+        $alamatDestinasi = $user->nama_jalan . ',' . $user->kota->nama_kota . ',' . $user->provinsi->provinsi . ',' . $user->kode_pos;
 
         $transaksi->user_id = $user->id;
         $transaksi->penjual_id = $penjual_id;
@@ -175,7 +177,7 @@ class KeranjangController extends Controller
             $detailTransaksi->kuantitas = $item->kuantitas;
             $detailTransaksi->subtotal_produk = $item->subtotal_produk;
             $detailTransaksi->subtotal_asuransi = $asuransi;
-            $detailTransaksi->alamat_asal = $item->lukisan->user->nama_kota;
+            $detailTransaksi->alamat_asal = $item->lukisan->user->kota->nama_kota;
             $detailTransaksi->alamat_destinasi = $alamatDestinasi;
             $detailTransaksi->catatan = $catatans[$item->id];
             $detailTransaksi->save();

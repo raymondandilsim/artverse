@@ -19,7 +19,8 @@
                             <th scope="col">Username</th>
                             <th scope="col">Email</th>
                             <th scope="col">Nomor Telepon</th>
-                            <th class="text-center align-middle py-3 px-0" style="width: 40px;"></th>
+                            <th scope="col">Status</th>
+                            <th class="text-center align-middle " style="width: 40px;">Blokir</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,35 +33,45 @@
 
                                 <td class="pt-3">{{ $user->email }}</td>
                                 <td class="pt-3">{{ $user->nomor_telepon }}</td>
+                                @php
+                                    $status = '';
+                                    if ($user->flag == 2) {
+                                        $status = 'Diblokir';
+                                    } else {
+                                        $status = 'Normal';
+                                    }
+                                    
+                                @endphp
+                                <td class="pt-3">{{ $status }}</td>
 
                                 <td class="text-center align-middle px-0">
                                     <button type="button" class="btn btn-danger btn-sm m-3" data-bs-toggle="modal"
-                                        data-bs-target="#hapusModal{{ $user->id }}"><i
+                                        data-bs-target="#blokirModal{{ $user->id }}"><i
                                             class="bi bi-x-octagon"></i></button>
 
                                     <!-- Modal Delete Confirmation-->
-                                    <div class="modal fade" id="hapusModal{{ $user->id }}" tabindex="-1"
+                                    <div class="modal fade" id="blokirModal{{ $user->id }}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5">Hapus Akun
+                                                    <h1 class="modal-title fs-5">Blokir Akun
                                                     </h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body text-start">
-                                                    <p>Apakah anda yakin ingin menghapus akun {{ $user->id }}?</p>
+                                                    <p>Apakah anda yakin ingin memblokir akun {{ $user->username }}?</p>
                                                 </div>
 
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Batal</button>
-                                                    <form action="/hapusAkun/{{ $user->id }}" method="POST"
+                                                    <form action="/blokirAkun/{{ $user->id }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
-                                                        @method('DELETE')
-                                                        <button type="Submit" class="btn btn-danger">Hapus</button>
+                                                        @method('PUT')
+                                                        <button type="Submit" class="btn btn-danger">Blokir</button>
                                                     </form>
                                                 </div>
                                             </div>

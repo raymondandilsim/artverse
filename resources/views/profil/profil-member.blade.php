@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="mb-1 row">
                                     <label class="col-sm-4 col-form-label fs-5">Alamat</label>
-                                    <label class="col-sm-8 col-form-label fs-5">{{ $user->nama_kota }}, {{ $user->nama_provinsi }}</label> <br>
+                                    <label class="col-sm-8 col-form-label fs-5">{{ $user->nama_jalan }}, {{ $user->kota->nama_kota }}, {{ $user->provinsi->provinsi }}, {{ $user->kode_pos }}</label> <br>
                                 </div>
                                 <br>
                                 <h3>Kontak</h3>

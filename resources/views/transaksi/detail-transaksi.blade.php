@@ -25,8 +25,8 @@
                         <hr>
                         <h6 class="fw-bold">{{ $transaksi->user->nama }}</h6>
                         <label>{{ $transaksi->user->nomor_telepon }}</label> <br>
-                        <label class="">{{ $transaksi->user->nama_jalan }}, {{ $transaksi->user->nama_kota }},
-                            {{ $transaksi->user->nama_provinsi }}, {{ $transaksi->user->kode_pos }}
+                        <label class="">{{ $transaksi->user->nama_jalan }}, {{ $transaksi->user->kota->nama_kota }},
+                            {{ $transaksi->user->provinsi->provinsi }}, {{ $transaksi->user->kode_pos }}
                         </label><br><br>
                         <label for="">Jasa Pengiriman: JNE</label>
                         <hr>
@@ -94,7 +94,7 @@
                         <div class="d-flex justify-content-between mt-2">
                             <label for="ongkosKirim">Subtotal Pengiriman</label>
                             @php
-                                $formatHarga = number_format($item->subtotal_pengiriman, 0, '.', '.');
+                                $formatHarga = number_format($transaksi->subtotal_pengiriman, 0, '.', '.');
                             @endphp
                             <label for="hargaOngkosKirim" id="hargaOngkosKirim">Rp{{ $formatHarga }}</label>
                         </div>
@@ -133,15 +133,15 @@
                             </div>
                             <div class="row fw-bold mt-2">
                                 <label for="OVO" class="col-sm-3">OVO</label>
-                                <label for="nomorOvo" class="col-sm-4 ">0822325456</label>
+                                <label for="nomorOvo" class="col-sm-8 ">0822325456 (a.n. Artverse)</label>
                             </div>
                             <div class="row fw-bold mt-2">
                                 <label for="GOPAY" class="col-sm-3">GOPAY</label>
-                                <label for="nomorGopay" class="col-sm-4 ">0822325456</label>
+                                <label for="nomorGopay" class="col-sm-8 ">0822325456 (a.n. Artverse)</label>
                             </div>
                             <div class="row fw-bold mt-2">
                                 <label for="BCA" class="col-sm-3">BCA</label>
-                                <label for="nomorBca" class="col-sm-4 ">805162303</label>
+                                <label for="nomorBca" class="col-sm-8 ">805162303 (a.n. Artverse)</label>
                             </div>
                         </div>
                         <div class="mt-3 fw-bold">
@@ -286,7 +286,7 @@
                         {{-- Bukti Pelepasan Dana --}}
                         {{-- Tampilan jika role user adalah Admin / Seniman --}}
                         @if ($user->role_id != 2)
-                            <div class="mt-4 align-items-end">
+                            <div class="mt-3 align-items-end">
                                 <label for="buktiPelepasanDana" class="form-label fw-bold">Bukti Pelepasan Dana</label>
                                 <br>
                                 @if ($transaksi->bukti_pelepasan_dana == null)

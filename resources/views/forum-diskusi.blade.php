@@ -10,7 +10,7 @@
         <div class="card-footer py-3 border-0">
             <div class="d-flex">
                 <div class="profil me-3">
-                    <img src="{{ auth()->user()->foto_profil }}" alt="Profile Picture" class="img-fluid">
+                    <img src="{{ auth()->user()->foto_profil }}" alt="Profile Picture" class="img-fluid rounded">
                 </div>
                 <form action="/diskusi" method="POST">
                     @csrf
@@ -21,7 +21,7 @@
                     </div>
             </div>
             <div class="d-flex justify-content-end mt-3">
-                <input type="submit" class="btn btn-primary btn-sm" value="Unggah Diskusi">
+                <input type="submit" class="btn btn-primary btn-sm" value="Kirim">
             </div>
             @if ($errors->any())
                 <div class="alert alert-danger alert-dismissible fade show fixed-top m-5" role="alert">
@@ -41,7 +41,7 @@
                     <div class="bubble-chat p-3 mt-4">
                         <div class="d-flex mb-4">
                             <div class="profil me-3">
-                                <img src="{{ $diskusi->user->foto_profil }}" alt="Profile Picture" class="img-fluid">
+                                <img src="{{ $diskusi->user->foto_profil }}" alt="Profile Picture" class="img-fluid rounded">
                             </div>
                             <div>
                                 <div>
@@ -60,7 +60,7 @@
                                     <div class="d-flex ms-5 mb-4">
                                         <div class="profil me-3">
                                             <img src="{{ $reply->user->foto_profil }}" alt="Profile Picture"
-                                                class="img-fluid">
+                                                class="img-fluid rounded">
                                         </div>
                                         <div>
                                             <div>
@@ -77,7 +77,7 @@
                                 <div class="d-flex ">
                                     <div class="profil me-3">
                                         <img src="{{ auth()->user()->foto_profil }}" alt="Profile Picture"
-                                            class="img-fluid">
+                                            class="img-fluid rounded">
                                     </div>
                                     <form action="/diskusi/{{ $diskusi->id }}" method="POST">
                                         @csrf
@@ -89,7 +89,7 @@
                                         </div>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <input type="submit" class="btn btn-primary btn-sm" value="Unggah Balasan">
+                                    <input type="submit" class="btn btn-primary btn-sm" value="Kirim Balasan">
                                 </div>
                                 </form>
                                 @if ($errors->any())

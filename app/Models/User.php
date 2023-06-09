@@ -44,6 +44,16 @@ class User extends Authenticatable
         return $this->hasMany(Diskusi::class);
     }
 
+    public function provinsi()
+    {
+        return $this->belongsTo(Provinsi::class);
+    }
+
+    public function kota()
+    {
+        return $this->belongsTo(Kota::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

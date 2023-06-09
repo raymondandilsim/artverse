@@ -14,8 +14,8 @@
                     <hr>
                     <h6 class="fw-bold">{{ auth()->user()->nama }}</h6>
                     <label>{{ auth()->user()->nomor_telepon }}</label> <br>
-                    <label class="">{{ auth()->user()->nama_jalan }}, {{ auth()->user()->nama_kota }},
-                        {{ auth()->user()->nama_provinsi }}, {{ auth()->user()->kode_pos }}
+                    <label class="">{{ auth()->user()->nama_jalan }}, {{ auth()->user()->kota->nama_kota }},
+                        {{ auth()->user()->provinsi->provinsi }}, {{ auth()->user()->kode_pos }}
                     </label>
                     <hr>
                 </div>
@@ -23,7 +23,7 @@
                     @csrf
                     <div class="pb-3">
                         <h6 class="fw-bold">{{ $lukisan->user->username }} (Penjual)</h6>
-                        <label class="fw-light">{{ $lukisan->user->nama_kota }}</label> <br>
+                        <label class="fw-light">{{ $lukisan->user->kota->nama_kota }}, {{ $lukisan->user->provinsi->provinsi }}</label> <br>
                         @foreach ($itemKeranjang as $item)
                             <div class="row mt-4">
                                 <div class="col-1">

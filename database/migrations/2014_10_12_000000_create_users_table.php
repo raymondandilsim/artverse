@@ -21,8 +21,12 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('nomor_telepon');
-            $table->string('nama_provinsi');
-            $table->string('nama_kota');
+            // $table->string('nama_provinsi');
+            // $table->string('nama_kota');
+            $table->unsignedBigInteger('provinsi_id');
+            $table->foreign('provinsi_id')->references('id')->on('provinsis');
+            $table->unsignedBigInteger('kota_id');
+            $table->foreign('kota_id')->references('id')->on('kotas');
             $table->string('nama_jalan');
             $table->string('kode_pos');
             $table->string('password');

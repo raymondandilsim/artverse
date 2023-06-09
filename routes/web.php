@@ -50,7 +50,7 @@ Route::get('/showSemuaSeniman', [UserController::class, 'showSeniman']);
 Route::get('/detailSenimanPage/{id}', [UserController::class, 'detailSeniman']);
 
 Route::get('/lihatSemuaAkun', [UserController::class, 'lihatSemuaAkun']);
-Route::delete('/hapusAkun/{id}', [UserController::class, 'hapusAkun'])->middleware(1);
+Route::put('/blokirAkun/{id}', [UserController::class, 'blokirAkun'])->middleware(1);
 
 // Lukisan
 Route::get('/unggahLukisanPage', [LukisanController::class, 'unggahLukisanPage'])->middleware(3);

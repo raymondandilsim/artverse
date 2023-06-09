@@ -193,7 +193,7 @@
                 </div>
                 <div class="p-2">
                     <i class="bi-geo-alt-fill"></i>
-                    <span>Dikirim dari kota <b>{{ $lukisan->user->nama_kota }}</b></span>
+                    <span>Dikirim dari kota <b>{{ $lukisan->user->kota->nama_kota }}</b></span>
                     @if (Auth::check())
                         <div class="d-flex justify-content-center justify-content-around mt-3">
                             <a href="/diskusiPage/{{$lukisan->id}}"><button class="btn-diskusi text-white"><b>Diskusi</b></button></a>
