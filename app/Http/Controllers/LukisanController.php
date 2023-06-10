@@ -383,7 +383,7 @@ class LukisanController extends Controller
         $increment = 0;
         $jumlahBintang = 0;
         $totalBintang = 0;
-        
+
         foreach ($ulasans as $ulasan) {
             $increment += 1;
             $jumlahBintang += $ulasan->bintang;

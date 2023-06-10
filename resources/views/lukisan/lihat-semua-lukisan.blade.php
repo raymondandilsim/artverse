@@ -12,9 +12,15 @@
                 @if ($lukisan->user->flag == 1)
                     <div class="col-4 my-4">
                         <div class="card shadow light-dark-bg border text-center">
-                            <a href="/detailLukisanMemberPage/{{ $lukisan->id }}" class="text-decoration-none">
-                                <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top" height="310px">
-                            </a>
+                            @if (Auth::check() && Auth::user()->role_id === 1)
+                                <a href="/detailLukisanAdminPage/{{ $lukisan->id }}" class="text-decoration-none">
+                                    <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top" height="310px">
+                                </a>
+                            @elseif (Auth::check() && Auth::user()->role_id === 2)
+                                <a href="/detailLukisanMemberPage/{{ $lukisan->id }}" class="text-decoration-none">
+                                    <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top" height="310px">
+                                </a>
+                            @endif
                             <div class="card-body">
                                 <h5 class="card-title">{{ $lukisan->nama_lukisan }}</h5>
                                 <h5 class="card-title mb-3">Rp @php echo number_format($lukisan->harga, 0, ',', '.')@endphp</h5>

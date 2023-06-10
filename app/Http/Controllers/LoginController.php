@@ -39,7 +39,7 @@ class LoginController extends Controller
 
             if($user->flag == 2){
                 Auth::logout();
-                return redirect()->route('loginPage')->with('error', 'Akun ini sudah diblokir dari sistem');
+                return redirect()->route('loginPage')->with('error', 'Akun ini sudah diblokir dari sistem karena sudah melanggar aturan yang ada.');
             }
             elseif ($user->role_id == 3) {
                 return redirect('/daftarLukisanPage');
