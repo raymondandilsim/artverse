@@ -11,7 +11,12 @@ class HalamanUtamaController extends Controller
 {
     public function HomePage()
     {
-        $lukisans = Lukisan::inRandomOrder()->limit(4)->get();
+        $lukisans = Lukisan::join('users', 'users.id', '=', 'lukisans.user_id')
+        ->where('users.flag', 1)
+        ->inRandomOrder()
+        ->limit(4)
+        ->select('lukisans.*')
+        ->get();
         $users = User::where('flag', '=', 1)->inRandomOrder()->limit(4)->get();
         
         return view('halaman-utama', ['lukisans' => $lukisans], ['users' =>$users]);
