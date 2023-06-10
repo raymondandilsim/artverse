@@ -85,6 +85,8 @@ class DaftarController extends Controller
         $user->nama_jalan = $request->nama_jalan;
         $user->kode_pos = $request->kode_pos;
         $user->password = Hash::make($request->password);
+        $user->nama_bank = $request->nama_bank;
+        $user->nomor_rekening = $request->nomor_rekening;
         $user->save();
 
         return redirect('/loginPage')->with('status', "Akun Berhasil Dibuat");

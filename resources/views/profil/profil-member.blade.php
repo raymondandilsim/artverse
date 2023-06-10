@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 mb-5 ms-5">
+            <div class="col-md-8 mb-5 ms-5 pb-5">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -59,6 +59,10 @@
                                 <div class="mb-1 row">
                                     <label class="col-sm-4 col-form-label fs-5">Nomor HP</label>
                                     <label class="col-sm-8 col-form-label fs-5">{{ $user->nomor_telepon }}</label> <br>
+                                </div>
+                                <div class="mb-1 row">
+                                    <label class="col-sm-4 col-form-label fs-5">Nomor Rekening</label>
+                                    <label class="col-sm-8 col-form-label fs-5">{{ $user->nomor_rekening }} ({{ $user->nama_bank }})</label> <br>
                                 </div>
 
                                 <form class="col-sm-5 mt-5" action="/ubahProfilPage/{{ $user->id }}" method="GET">

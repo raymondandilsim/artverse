@@ -124,7 +124,7 @@
                             <form action="/checkoutKeranjangPage" method="GET">
                                 <label class="font-weight-normal text-danger mt-3 ms-5 me-4 ps-2">Subtotal:
                                     Rp{{ $formatHarga }}</label>
-                                <button type="submit" class="btn btn-dark ms-3">Checkout</button>
+                                <button type="submit" class="btn btn-dark ms-5">Beli</button>
                             </form>
                         </div>
                     </div>

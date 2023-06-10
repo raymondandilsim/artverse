@@ -127,6 +127,8 @@ class UserController extends Controller
             $userLama->kota_id = $request->kota;
             $userLama->nama_jalan = $request->nama_jalan;
             $userLama->kode_pos = $request->kode_pos;
+            $userLama->nama_bank = $request->nama_bank;
+            $userLama->nomor_rekening = $request->nomor_rekening;
             $userLama->password = Hash::make($request->password);
 
             $fotoProfilBaru = $request->file('fotoProfil');

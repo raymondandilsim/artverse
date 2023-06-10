@@ -102,6 +102,19 @@
                             value="{{ $user->kode_pos }}" placeholder="Masukkan kode pos">
                     </div>
                     <div>
+                        <label for="nama_bank" class="form-label">Nama Bank <label class="text-danger">*</label><label class="text-danger peringatan"> Mohon diisi jika anda ingin menjadi Penjual</label></label>
+                    </div>
+                    <div>
+                        <input class="form-control" type="text" id="nama_bank" maxlength="5" name="nama_bank"
+                            value="{{ $user->nama_bank }}" placeholder="Masukkan nama bank yang benar">
+                    </div>
+                    <div>
+                        <label for="nomor_rekening" class="form-label">Nomor Rekening <label class="text-danger">*</label><label class="text-danger peringatan"> Mohon diisi jika anda ingin menjadi Penjual</label></label>
+                    </div>
+                    <div>
+                        <input class="form-control" type="text" id="nomor_rekening" name="nomor_rekening"
+                            value="{{ $user->nomor_rekening }}" placeholder="Masukkan nomor rekening anda yang benar">
+                    <div>
                         <label for="Kata Sandi" class="form-label mt-3">Kata Sandi <label
                                 class="text-danger">*</label></label>
                     </div>

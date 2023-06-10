@@ -107,7 +107,7 @@
                             <br><img class="mt-1 mb-3 rounded" src="{{ $lukisan->gambar_ketiga }}" alt="Lukisan belum terdaftar" width="200">
                             <input class="form-control mb-1" type="file" id="gambarLukisan3" name="gambarLukisan3">
                         </div>
-                        <input class="btn btn-secondary form-control mt-5" type="submit" value="Unggah">
+                        <input class="btn btn-secondary form-control mt-5" type="submit" value="Perbarui">
                     </div>
                 </form>
             </div>

@@ -286,11 +286,26 @@
                         {{-- Bukti Pelepasan Dana --}}
                         {{-- Tampilan jika role user adalah Admin / Seniman --}}
                         @if ($user->role_id != 2)
+                            @php
+                                $namaBankPenjualPertama = null;
+                                $noRekPenjualPertama = null;
+                            @endphp
+                            @foreach ($detailTransaksis as $item)
+                                @if ($item->nama_bank === $namaBankPenjualPertama || $item->nomor_rekening === $noRekPenjualPertama)
+                                @else
+                                    @php
+                                        $namaBankPenjualPertama = $item->nama_bank;
+                                        $noRekPenjualPertama = $item->nomor_rekening;
+                                    @endphp
+                                    <label class="fw-bold mt-3">No. Rekening Penjual: {{ $item->nomor_rekening }} ({{ $item->nama_bank }})</label> <br>
+                                    <label class="fw-bold peringatan text-danger mt-2">* Pastikan Bank dan Nomor Rekening penjual sudah benar. Jika belum, penjual disarankan untuk memperbarui nomor rekening di halaman Profil.</label> <br>
+                                @endif
+                            @endforeach
                             <div class="mt-3 align-items-end">
                                 <label for="buktiPelepasanDana" class="form-label fw-bold">Bukti Pelepasan Dana</label>
                                 <br>
                                 @if ($transaksi->bukti_pelepasan_dana == null)
-                                    <label for="">Admin belum mengunggah bukti pelepasan dana.</label>
+                                    <label for=""class="mt-2">Admin belum mengunggah bukti pelepasan dana.</label>
                                 @else
                                     <img src="{{ $transaksi->bukti_pelepasan_dana }}" alt="" height="300"
                                         width="300">

@@ -21,8 +21,6 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('nomor_telepon');
-            // $table->string('nama_provinsi');
-            // $table->string('nama_kota');
             $table->unsignedBigInteger('provinsi_id');
             $table->foreign('provinsi_id')->references('id')->on('provinsis');
             $table->unsignedBigInteger('kota_id');
@@ -30,6 +28,8 @@ return new class extends Migration
             $table->string('nama_jalan');
             $table->string('kode_pos');
             $table->string('password');
+            $table->string('nama_bank')->nullable();
+            $table->string('nomor_rekening')->nullable();
             $table->string('foto_profil')->default('/asset/avatar.png');
             $table->integer('flag')->default(0);
             $table->timestamps();
