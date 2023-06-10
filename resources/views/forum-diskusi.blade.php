@@ -17,7 +17,7 @@
                     <div>
                         <h5>{{ auth()->user()->username }}</h5>
                         <input type="text" hidden name="lukisan_id" id="lukisan_id" value="{{ $lukisan->id }}">
-                        <textarea class="diskusi-form" id="text" name="text" placeholder="Masukkan diskusi anda..."></textarea>
+                        <textarea class="diskusi-form rounded" id="text" name="text" placeholder="Masukkan diskusi anda..."></textarea>
                     </div>
             </div>
             <div class="d-flex justify-content-end mt-3">

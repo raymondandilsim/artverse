@@ -30,7 +30,7 @@ Route::get('/daftarPage', [DaftarController::class, 'DaftarPage'])->middleware('
 Route::post('/daftar', [DaftarController::class, 'Daftar'])->middleware('guests');
 Route::get('/get-cities/{provinceId}', [DaftarController::class, 'getKotaByProvinsi']);
 
-Route::get('/loginPage', [LoginController::class, 'LoginPage'])->middleware('guests');
+Route::get('/loginPage', [LoginController::class, 'LoginPage'])->middleware('guests')->name('loginPage');
 Route::post('/login', [LoginController::class, 'Login'])->middleware('guests');
 Route::get('/logout', [LoginController::class, 'Logout']);
 
@@ -65,13 +65,13 @@ Route::get('/perbaruiLukisanPage/{id}', [LukisanController::class, 'perbaruiLuki
 Route::post('/perbaruiLukisan/{id}', [LukisanController::class, 'perbaruiLukisan'])->middleware(3);
 Route::post('/hapusLukisan/{id}', [LukisanController::class, 'hapusLukisan'])->middleware(3);
 
-Route::get('/showLukisanSemua', [LukisanController::class,'showLukisan']);
+Route::get('/showLukisanSemua', [LukisanController::class, 'showLukisan']);
 Route::get('/penilaianPage', [LukisanController::class, 'penilaianPage'])->middleware(2);
 Route::get('/ulasanPage/{lukisanId}/{transaksiId}', [LukisanController::class, 'ulasanPage'])->middleware(2);
 Route::post('/buatUlasan/{lukisanId}/{transaksiId}', [LukisanController::class, 'buatUlasan'])->middleware(2);
 Route::get('/lihatSemuaUlasan/{id}', [LukisanController::class, 'lihatSemuaUlasan']);
 
-Route::get('/search', [LukisanController::class,'searchResult']);
+Route::get('/search', [LukisanController::class, 'searchResult']);
 
 // Transaksi
 Route::get('/checkoutPage/{id}', [TransaksiController::class, 'checkoutPage'])->middleware(2);
@@ -103,4 +103,4 @@ Route::post('/diskusi', [DiskusiController::class, 'unggahDiskusi']);
 Route::post('/diskusi/{id}', [DiskusiController::class, 'replyDiskusi']);
 
 // Error Middleware
-Route::get('/errorPage',[Controller::class, 'errorPage']);
+Route::get('/errorPage', [Controller::class, 'errorPage']);

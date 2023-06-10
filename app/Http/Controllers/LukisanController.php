@@ -294,12 +294,10 @@ class LukisanController extends Controller
 
     public function showLukisan()
     {
-        // $pagination = 9;
-        // $lukisan = Lukisan::Paginate($pagination);
-        $lukisan = Lukisan::join('users', 'users.id', '=', 'lukisans.user_id')
-        ->where('users.flag', 1)
-        ->paginate(9);
-        return view('lukisan.lihat-semua-lukisan', ['lukisan' => $lukisan]);
+        $pagination = 9;
+        $lukisans = Lukisan::Paginate($pagination);
+
+        return view('lukisan.lihat-semua-lukisan', compact('lukisans'));
     }
 
     public function searchResult(Request $request)

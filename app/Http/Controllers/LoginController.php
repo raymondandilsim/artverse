@@ -36,8 +36,10 @@ class LoginController extends Controller
             $user = Auth::user();
             $request->session()->regenerate();
             $request->session()->put('session', $credentials);
+
             if($user->flag == 2){
-                return redirect('/logout')->with('error', 'Akun ini sudah diblokir dari sistem');
+                Auth::logout();
+                return redirect()->route('loginPage')->with('error', 'Akun ini sudah diblokir dari sistem');
             }
             elseif ($user->role_id == 3) {
                 return redirect('/daftarLukisanPage');

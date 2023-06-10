@@ -76,11 +76,11 @@
                             <div class="my-4">
                                 <a class="dropdown-toggle link-dark text-decoration-none" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-archive me-4"></i><b>Produk</b>
+                                    <i class="bi bi-archive me-4"></i><b>Lukisan</b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/unggahLukisanPage">Tambah Produk</a></li>
-                                    <li><a class="dropdown-item" href="/daftarLukisanPage">Daftar Produk</a></li>
+                                    <li><a class="dropdown-item" href="/unggahLukisanPage">Tambah Lukisan</a></li>
+                                    <li><a class="dropdown-item" href="/daftarLukisanPage">Daftar Lukisan</a></li>
                                 </ul>
                             </div>
                             <div class="my-4">

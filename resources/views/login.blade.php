@@ -35,6 +35,12 @@
         </div>
     @endif
 
+    {{-- @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif --}}
+
     <!-- <div class="d-flex bg-login bg-login-register justify-content-center align-items-center">
         <div class="card-login bg-white px-5 py-5 rounded-3 shadow">
             <h2 class="text-center"><b>MASUK</b></h2>
