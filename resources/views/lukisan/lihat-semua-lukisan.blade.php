@@ -20,6 +20,12 @@
                                 <a href="/detailLukisanMemberPage/{{ $lukisan->id }}" class="text-decoration-none">
                                     <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top" height="310px">
                                 </a>
+                            @else
+                                @guest
+                                    <a href="/detailLukisanMemberPage/{{ $lukisan->id }}" class="text-decoration-none">
+                                        <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top" height="310px">
+                                    </a>
+                                @endguest
                             @endif
                             <div class="card-body">
                                 <h5 class="card-title">{{ $lukisan->nama_lukisan }}</h5>
