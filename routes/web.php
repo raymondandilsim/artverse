@@ -2,16 +2,12 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DaftarController;
-use App\Http\Controllers\HalamanUtamaController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\DiskusiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LukisanController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AkunMemberController;
-use App\Http\Controllers\TentangController;
-use App\Http\Controllers\KontakController;
-use App\Http\Controllers\SyaratketentuanController;
+use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,10 +30,10 @@ Route::get('/loginPage', [LoginController::class, 'LoginPage'])->middleware('gue
 Route::post('/login', [LoginController::class, 'Login'])->middleware('guests');
 Route::get('/logout', [LoginController::class, 'Logout']);
 
-Route::get('/', [HalamanUtamaController::class, 'HomePage']);
-Route::get('/tentang', [TentangController::class, 'TentangPage']);
-Route::get('/kontak', [KontakController::class, 'KontakPage']);
-Route::get('/syaratketentuan', [SyaratketentuanController::class, 'SyaratketentuanPage']);
+Route::get('/', [HalamanController::class, 'HomePage']);
+Route::get('/tentang', [HalamanController::class, 'TentangPage']);
+Route::get('/kontak', [HalamanController::class, 'KontakPage']);
+Route::get('/syaratketentuan', [HalamanController::class, 'SyaratketentuanPage']);
 
 // Profil
 Route::get('/profilPage/{id}', [UserController::class, 'profilPage']);

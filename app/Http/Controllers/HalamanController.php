@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class HalamanUtamaController extends Controller
+class HalamanController extends Controller
 {
     public function HomePage()
     {
@@ -20,5 +20,20 @@ class HalamanUtamaController extends Controller
         $users = User::where('flag', '=', 1)->inRandomOrder()->limit(4)->get();
         
         return view('halaman-utama', ['lukisans' => $lukisans], ['users' =>$users]);
+    }
+
+    public function KontakPage()
+    {
+        return view('kontak');
+    }
+
+    public function TentangPage()
+    {
+        return view('tentang');
+    }
+
+    public function SyaratketentuanPage()
+    {
+        return view('syaratketentuan');
     }
 }
