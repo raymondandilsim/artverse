@@ -302,8 +302,14 @@ class LukisanController extends Controller
     public function searchResult(Request $request)
     {
         $search = $request->get('search');
-        $lukisan = Lukisan::where('nama_lukisan', 'LIKE', "%$search%")->Paginate(6);
-        return view('lukisan.search-result', ['lukisan' => $lukisan]);
+        $lukisans = Lukisan::where('nama_lukisan', 'LIKE', "%$search%")
+        ->where('flag', 0)
+        ->whereHas('user', function ($query) {
+            $query->where('flag', 1);
+        })
+        ->Paginate(6);
+
+        return view('lukisan.search-result', ['lukisans' => $lukisans]);
     }
 
     public function penilaianPage()
