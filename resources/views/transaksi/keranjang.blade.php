@@ -56,7 +56,7 @@
                                         </td>
                                         <td class="align-middle p-4 text-center">{{ $item->kuantitas }}</td>
                                         @php
-                                            $formatHarga = number_format($item->subtotal_produk, 0, '.', '.');
+                                            $formatHarga = number_format($item->lukisan->harga * $item->kuantitas, 0, '.', '.');
                                         @endphp
                                         <td class="text-right font-weight-semibold align-middle p-4">Rp{{ $formatHarga }}
                                         </td>
@@ -114,7 +114,7 @@
                         @endphp
                         @foreach ($keranjang as $item)
                             @php
-                                $totalHarga += $item->subtotal_produk;
+                                $totalHarga += ($item->kuantitas * $item->lukisan->harga);
                             @endphp
                         @endforeach
                         @php
@@ -122,9 +122,9 @@
                         @endphp
                         <div class="col-5 justify-content-end pt-3 ps-5">
                             <form action="/checkoutKeranjangPage" method="GET">
-                                <label class="font-weight-normal text-danger mt-3 ms-5 me-4 ps-2">Subtotal:
+                                <label class="font-weight-normal text-danger mt-3 ms-5 me-5 ps-2">Subtotal:
                                     Rp{{ $formatHarga }}</label>
-                                <button type="submit" class="btn btn-dark ms-5">Beli</button>
+                                <button type="submit" class="btn btn-dark ms-5" style="position: absolute">Beli</button>
                             </form>
                         </div>
                     </div>

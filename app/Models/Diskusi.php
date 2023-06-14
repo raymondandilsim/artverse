@@ -20,9 +20,4 @@ class Diskusi extends Model
     {
         return $this->belongsTo(Lukisan::class);
     }
-
-    public function reply()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

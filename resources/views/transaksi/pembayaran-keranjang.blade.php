@@ -15,7 +15,7 @@
                             <div class="d-flex justify-content-between">
                                 <label for="subtotal">{{ $item->lukisan->nama_lukisan }} (x{{ $item->kuantitas }})</label>
                                 @php
-                                    $formatHarga = number_format($item->subtotal_produk, 0, '.', '.');
+                                    $formatHarga = number_format($item->kuantitas * $item->lukisan->harga, 0, '.', '.');
                                 @endphp
                                 <label for="hargaSubtotal">Rp{{ $formatHarga }}</label>
                             </div>

@@ -23,10 +23,10 @@
                     <div class="mt-3">
                         <h6 class="mt-4 fw-bold">Alamat Pengiriman</h6>
                         <hr>
+                        
                         <h6 class="fw-bold">{{ $transaksi->user->nama }}</h6>
                         <label>{{ $transaksi->user->nomor_telepon }}</label> <br>
-                        <label class="">{{ $transaksi->user->nama_jalan }}, {{ $transaksi->user->kota->nama_kota }},
-                            {{ $transaksi->user->provinsi->provinsi }}, {{ $transaksi->user->kode_pos }}
+                        <label class="">{{ $alamatTransaksi->alamat_destinasi }}
                         </label><br><br>
                         <label for="">Jasa Pengiriman: JNE</label>
                         <hr>
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="col col-8 ms-4">
                                     <h6 class="fw-bold">{{ $item->nama_lukisan }}</h6>
-                                    <h6 class="">Rp{{ $item->harga }} x {{ $item->kuantitas }}</h6>
+                                    <h6 class="">Rp{{ $item->subtotal_produk / $item->kuantitas  }} x {{ $item->kuantitas }}</h6>
                                 </div>
                             </div>
                             @if ($item->catatan != null)

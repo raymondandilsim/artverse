@@ -20,7 +20,6 @@ return new class extends Migration
             $table->unsignedBigInteger('lukisan_id');
             $table->foreign('lukisan_id')->references('id')->on('lukisans');
             $table->integer('kuantitas');
-            $table->double('subtotal_produk');
             $table->timestamps();
         });
     }

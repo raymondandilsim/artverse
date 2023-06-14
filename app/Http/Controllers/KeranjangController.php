@@ -19,7 +19,14 @@ class KeranjangController extends Controller
     public function KeranjangPage(Request $request)
     {
         $user = Auth::user();
-        $keranjang = Keranjang::where('user_id', $user->id)->paginate(5);
+
+        $keranjang = Keranjang::where('user_id', $user->id)
+        ->whereHas('lukisan', function ($query) {
+            $query->where('flag', 0)->whereHas('user', function ($query) {
+                $query->where('flag', 1);
+            });
+        })
+        ->paginate(10);
 
         return view('transaksi.keranjang', compact('keranjang'));
     }
@@ -40,17 +47,15 @@ class KeranjangController extends Controller
 
         if ($keranjangItem) {
             $keranjangItem->kuantitas += $request->quantity;
-            if($keranjangItem->kuantitas > $lukisan->stok){
-                $keranjangItem->kuantitas -= $request->quantity;
+            if($keranjangItem->kuantitas >= $lukisan->stok){
+                $keranjangItem->kuantitas = $lukisan->stok;
             }
-            $keranjangItem->subtotal_produk = $keranjangItem->kuantitas * $lukisan->harga;
             $keranjangItem->save();
         } else {
             $keranjang = new Keranjang();
             $keranjang->user_id = $user->id;
             $keranjang->lukisan_id = $lukisanId;
             $keranjang->kuantitas = $request->quantity;
-            $keranjang->subtotal_produk = $request->quantity * $lukisan->harga;
             $keranjang->save();
         }
         
@@ -60,7 +65,12 @@ class KeranjangController extends Controller
     public function checkoutKeranjangPage(Request $request){
 
         $user = Auth::user();
-        $itemKeranjang = Keranjang::where('user_id', $user->id)->get();
+        $itemKeranjang = Keranjang::where('user_id', $user->id)
+        ->whereHas('lukisan', function ($query) {
+            $query->where('flag', 0)->whereHas('user', function ($query) {
+                $query->where('flag', 1);
+            });
+        })->get();
 
         foreach ($itemKeranjang as $item) {
             $lukisan = Lukisan::where('id', $item->lukisan_id)->first();
@@ -132,7 +142,14 @@ class KeranjangController extends Controller
         $transaksi = new Transaksi();
         
         $user = Auth::user();
-        $itemKeranjang = Keranjang::where('user_id', $user->id)->get();
+        // $itemKeranjang = Keranjang::where('user_id', $user->id)->get();
+
+        $itemKeranjang = Keranjang::where('user_id', $user->id)
+        ->whereHas('lukisan', function ($query) {
+            $query->where('flag', 0)->whereHas('user', function ($query) {
+                $query->where('flag', 1);
+            });
+        })->get();
 
         $hargaAsuransi = [];
         $subtotalAsuransi = 0;
@@ -146,7 +163,7 @@ class KeranjangController extends Controller
             $subtotalAsuransi += $asuransi;
             $tempBerat = $item->kuantitas * $item->lukisan->berat;
             $berat += $tempBerat;
-            $subtotalProduk += $item->subtotal_produk;
+            $subtotalProduk += ($item->kuantitas * $item->lukisan->harga);
             $penjual_id = $item->lukisan->user->id;
         }
 
@@ -155,7 +172,7 @@ class KeranjangController extends Controller
         $totalPembayaran = $subtotalProduk + $subtotalPengiriman + $totalAsuransi;
         $catatans = $request->input('catatan');
 
-        $alamatDestinasi = $user->nama_jalan . ',' . $user->kota->nama_kota . ',' . $user->provinsi->provinsi . ',' . $user->kode_pos;
+        $alamatDestinasi = $user->nama_jalan . ', ' . $user->kota->nama_kota . ', ' . $user->provinsi->provinsi . ', ' . $user->kode_pos;
 
         $transaksi->user_id = $user->id;
         $transaksi->penjual_id = $penjual_id;
@@ -175,7 +192,7 @@ class KeranjangController extends Controller
             $detailTransaksi->transaksi_id = $transaksi->id;
             $detailTransaksi->lukisan_id = $item->lukisan->id;
             $detailTransaksi->kuantitas = $item->kuantitas;
-            $detailTransaksi->subtotal_produk = $item->subtotal_produk;
+            $detailTransaksi->subtotal_produk = ($item->kuantitas * $item->lukisan->harga);
             $detailTransaksi->subtotal_asuransi = $asuransi;
             $detailTransaksi->alamat_asal = $item->lukisan->user->kota->nama_kota;
             $detailTransaksi->alamat_destinasi = $alamatDestinasi;

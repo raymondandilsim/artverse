@@ -13,6 +13,7 @@ class HalamanController extends Controller
     {
         $lukisans = Lukisan::join('users', 'users.id', '=', 'lukisans.user_id')
         ->where('users.flag', 1)
+        ->where('lukisans.flag', 0)
         ->inRandomOrder()
         ->limit(4)
         ->select('lukisans.*')

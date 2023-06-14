@@ -9,7 +9,7 @@
         <h3><b>Lihat Semua Lukisan</b></h3>
         <div class="row p-4">
             @forelse ($lukisans as $lukisan)
-                @if ($lukisan->user->flag == 1)
+                @if ($lukisan->user->flag == 1 && $lukisan->flag == 0)
                     <div class="col-4 my-4">
                         <div class="card shadow light-dark-bg border text-center">
                             @if (Auth::check() && Auth::user()->role_id === 1)

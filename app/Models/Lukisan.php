@@ -46,7 +46,11 @@ class Lukisan extends Model
 
     public function hapusLukisanById($id)
     {
-        $this->where('id', '=', $id)->delete();
+        $lukisan = Lukisan::findOrFail($id);
+
+        // Data tidak beneran dihapus dari DB, cuman di blok seperti blokir akun, value flag diganti dari 0 -> 1
+        $lukisan->flag = 1;
+        $lukisan->save();
     }
 
     public function user()

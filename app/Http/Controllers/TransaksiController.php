@@ -87,7 +87,7 @@ class TransaksiController extends Controller
         $totalPembayaran = $subtotalProduk + $subtotalPengiriman + $subtotalAsuransi;
         $catatan = $request->catatan;
 
-        $alamatDestinasi = $user->nama_jalan . ',' . $user->kota->nama_kota . ',' . $user->provinsi->provinsi . ',' . $user->kode_pos;
+        $alamatDestinasi = $user->nama_jalan . ', ' . $user->kota->nama_kota . ', ' . $user->provinsi->provinsi . ', ' . $user->kode_pos;
 
         $transaksi->user_id = $user->id;
         $transaksi->penjual_id = $lukisan->user_id;
@@ -163,8 +163,11 @@ class TransaksiController extends Controller
         $subtotalProduk = 0;
         $asuransi = 0;
 
+        // $alamatPengiriman = $transaksi->user->nama_jalan . ", " . $transaksi->user->kota->nama_kota . ", " . $transaksi->user->provinsi-> provinsi . ", " . $transaksi->user->kode_pos;
+        $alamatTransaksi = DetailTransaksi::where('transaksi_id', $transaksiId)->first();
+
         foreach ($detailTransaksis as $item) {
-            $asuransi = $item->kuantitas * (2 / 1000 * $item->harga);
+            $asuransi = (2 / 1000 * $item->subtotal_produk);
             $subtotalAsuransi += $asuransi;
             $tempBerat = $item->kuantitas * $item->berat;
             $berat += $tempBerat;
@@ -174,7 +177,7 @@ class TransaksiController extends Controller
 
         $totalAsuransi = $subtotalAsuransi + 5000;
 
-        return view('transaksi.detail-transaksi', compact('transaksi', 'detailTransaksis', 'user', 'berat','subtotalProduk', 'subtotalAsuransi', 'asuransi'));
+        return view('transaksi.detail-transaksi', compact('transaksi', 'detailTransaksis', 'user', 'berat','subtotalProduk', 'subtotalAsuransi', 'asuransi', 'alamatTransaksi'));
     }
 
     public function deleteBuktiPembayaranFromDB($transaksi)

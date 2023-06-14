@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('gambar_pertama');
             $table->string('gambar_kedua')->nullable();
             $table->string('gambar_ketiga')->nullable();
+            $table->integer('flag')->default(0);
             $table->timestamps();
         });
     }
