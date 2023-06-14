@@ -223,8 +223,6 @@
                                     <label class="text-danger mb-2 peringatan fw-bold"><label
                                             class="">*</label>Pembeli dimohon melakukan dan unggah bukti pembayaran
                                         yang benar.</label>
-                                    <img src="{{ $transaksi->bukti_pembayaran }}" alt="" height="300"
-                                        width="300">
                                     <form action="/unggahBuktiPembayaran/{{ $transaksi->id }}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
