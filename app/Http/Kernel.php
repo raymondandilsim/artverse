@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
         3 => \App\Http\Middleware\SenimanAuthorization::class,
         2 => \App\Http\Middleware\MemberAuthorization::class,
         1 => \App\Http\Middleware\AdminAuthorization::class,
-        'guests' =>\App\Http\Middleware\GuestAuthorization::class
+        'guests' =>\App\Http\Middleware\GuestAuthorization::class,
+        'someone' =>\App\Http\Middleware\Authorization::class
     ];
 }

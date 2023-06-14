@@ -45,7 +45,7 @@ Route::get('/showSemuaSeniman', [UserController::class, 'showSeniman']);
 
 Route::get('/detailSenimanPage/{id}', [UserController::class, 'detailSeniman']);
 
-Route::get('/lihatSemuaAkun', [UserController::class, 'lihatSemuaAkun']);
+Route::get('/lihatSemuaAkun', [UserController::class, 'lihatSemuaAkun'])->middleware(1);
 Route::put('/blokirAkun/{id}', [UserController::class, 'blokirAkun'])->middleware(1);
 
 // Lukisan
@@ -55,7 +55,7 @@ Route::post('/unggahLukisan', [LukisanController::class, 'unggahLukisan'])->midd
 Route::get('/daftarLukisanPage', [LukisanController::class, 'daftarLukisanPage'])->middleware(3);
 
 Route::get('/detailLukisanSenimanPage/{id}', [LukisanController::class, 'detailLukisanSenimanPage'])->middleware(3);
-Route::get('/detailLukisanMemberPage/{id}', [LukisanController::class, 'detailLukisanMemberPage']);
+Route::get('/detailLukisanMemberPage/{id}', [LukisanController::class, 'detailLukisanMemberPage'])->middleware(2);
 Route::get('/detailLukisanAdminPage/{id}', [LukisanController::class, 'detailLukisanAdminPage'])->middleware(1);
 Route::get('/perbaruiLukisanPage/{id}', [LukisanController::class, 'perbaruiLukisanPage'])->middleware(3);
 Route::post('/perbaruiLukisan/{id}', [LukisanController::class, 'perbaruiLukisan'])->middleware(3);
@@ -72,7 +72,7 @@ Route::get('/search', [LukisanController::class, 'searchResult']);
 // Transaksi
 Route::get('/checkoutPage/{id}', [TransaksiController::class, 'checkoutPage'])->middleware(2);
 Route::get('/pembayaranPage/{lukisanId}/{quantity}', [TransaksiController::class, 'pembayaranPage'])->middleware(2);
-Route::get('/riwayatTransaksiAdminPage', [TransaksiController::class, 'riwayatTransaksiAdminPage']);
+Route::get('/riwayatTransaksiAdminPage', [TransaksiController::class, 'riwayatTransaksiAdminPage'])->middleware(1);
 Route::get('/riwayatTransaksiMemberPage', [TransaksiController::class, 'riwayatTransaksiMemberPage'])->middleware(2);
 Route::put('/batalkanPesanan/{id}', [TransaksiController::class, 'batalkanPesanan']);
 Route::get('/detailTransaksiPage/{id}', [TransaksiController::class, 'detailTransaksiPage']);
@@ -94,9 +94,9 @@ Route::get('/pembayaranKeranjangPage', [KeranjangController::class, 'pembayaranK
 Route::get('/lihatSemuaPesanan', [TransaksiController::class, 'riwayatPesananSenimanPage'])->middleware(3);
 
 // Diskusi
-Route::get('/diskusiPage/{id}', [DiskusiController::class, 'DiskusiPage']);
-Route::post('/diskusi', [DiskusiController::class, 'unggahDiskusi']);
-Route::post('/diskusi/{id}', [DiskusiController::class, 'replyDiskusi']);
+Route::get('/diskusiPage/{id}', [DiskusiController::class, 'DiskusiPage'])->middleware('someone');
+Route::post('/diskusi', [DiskusiController::class, 'unggahDiskusi'])->middleware('someone');
+Route::post('/diskusi/{id}', [DiskusiController::class, 'replyDiskusi'])->middleware('someone');
 
 // Error Middleware
 Route::get('/errorPage', [Controller::class, 'errorPage']);
