@@ -45,7 +45,7 @@
                         <form action="/tambahkanKeKeranjang/{{ $lukisan->id }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            @if ($lukisan->stok <= 0)
+                            @if ($lukisan->stok <= 0 || auth()->user()->role_id == 3)
                                 <button type="button" class="btn-tambah-keranjang text-white fw-bold mt-4" disabled>
                                     +Keranjang
                                 </button>
@@ -92,7 +92,7 @@
                     <div class="row">
                         <form action="/checkoutPage/{{ $lukisan->id }}" method="GET" enctype="multipart/form-data">
                             @csrf
-                            @if ($lukisan->stok <= 0)
+                            @if ($lukisan->stok <= 0 || auth()->user()->role_id == 3)
                                 <button type="button" class="btn-beli-langsung fw-bold mt-4" disabled>
                                     Beli Langsung
                                 </button>

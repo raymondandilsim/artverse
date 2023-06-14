@@ -115,7 +115,7 @@ class LukisanController extends Controller
 
     public function daftarLukisanPage()
     {
-        $lukisans = Lukisan::where('user_id', auth()->user()->id)->paginate(10);
+        $lukisans = Lukisan::where('user_id', auth()->user()->id)->where('flag', 0)->paginate(10);
 
         return view('lukisan.daftar-lukisan', compact('lukisans'));
     }
@@ -283,11 +283,10 @@ class LukisanController extends Controller
     {
         $lukisan = Lukisan::findOrFail($id);
 
-        $this->deleteGambarPertamaFromDB($lukisan);
         $this->deleteGambarKeduaFromDB($lukisan);
         $this->deleteGambarKetigaFromDB($lukisan);
 
-        // delete data from DB
+        // delete data from sistem saja, data DB tidak dihapus
         $lukisan->hapusLukisanById($id);
         return redirect('/daftarLukisanPage')->with('status', "Lukisan Berhasil Dihapus");
     }
@@ -304,11 +303,11 @@ class LukisanController extends Controller
     {
         $search = $request->get('search');
         $lukisans = Lukisan::where('nama_lukisan', 'LIKE', "%$search%")
-        ->where('flag', 0)
-        ->whereHas('user', function ($query) {
-            $query->where('flag', 1);
-        })
-        ->Paginate(6);
+            ->where('flag', 0)
+            ->whereHas('user', function ($query) {
+                $query->where('flag', 1);
+            })
+            ->Paginate(6);
 
         return view('lukisan.search-result', ['lukisans' => $lukisans]);
     }
@@ -381,7 +380,8 @@ class LukisanController extends Controller
         return back()->with('status', 'Berhasil mengirim ulasan');
     }
 
-    public function lihatSemuaUlasan($lukisanId){
+    public function lihatSemuaUlasan($lukisanId)
+    {
 
         $lukisan = Lukisan::findOrFail($lukisanId);
         $ulasans = Ulasan::where('lukisan_id', $lukisanId)->paginate(10);

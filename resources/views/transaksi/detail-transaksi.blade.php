@@ -4,12 +4,6 @@
     Detail Transaksi - {{ $transaksi->id }}
 @endsection
 
-{{-- @foreach ($detailTransaksis as $item)
-    Lukisan ID: {{ $item->lukisan_id }} <br>
-    Harga Transaksi: {{ $item->harga_total }} <br>
-    Transaksi Detail ID: {{ $item->id }}<br>
-    Transaksi ID: {{ $item->transaksi_id }}<br>
-@endforeach --}}
 @section('Page-Contents')
     <div class="container mt-5 mb-5" style="height: 2000px; overflow-y: auto;">
         <div class="row">
