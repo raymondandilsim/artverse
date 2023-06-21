@@ -12,9 +12,8 @@ class DiskusiController extends Controller
         $lukisan = Lukisan::findOrFail($id);
         $diskusis = Diskusi::whereNull('balasan_id')
                     ->where('lukisan_id', '=', $id)
-                    ->get();
-        $pagination = 7;
-        $diskusis = Diskusi::Paginate($pagination);
+                    ->paginate(7);
+
         foreach ($diskusis as $diskusi) {
             $diskusi -> setAttribute('reply',Diskusi::whereNotNull('balasan_id')->where('balasan_id','=',$diskusi->id)->orderBy('created_at')->get());
             $diskusi -> makeVisible(['reply']);
