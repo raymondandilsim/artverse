@@ -15,7 +15,7 @@
                             <a href="/detailLukisanAdminPage/{{ $lukisan->id }}" class="text-decoration-none">
                                 <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top" height="310px">
                             </a>
-                        @elseif (Auth::check() && Auth::user()->role_id === 2)
+                        @elseif (Auth::check() && (Auth::user()->role_id === 2 || Auth::user()->role_id === 3))
                             <a href="/detailLukisanMemberPage/{{ $lukisan->id }}" class="text-decoration-none">
                                 <img src="{{ $lukisan->gambar_pertama }}" class="card-img-top" height="310px">
                             </a>

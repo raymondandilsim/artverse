@@ -147,11 +147,27 @@ class UserController extends Controller
 
     }
 
+    // public function deleteFotoProfilFromDB($user)
+    // {
+    //     foreach (explode('/', $user->foto_profil) as $item) {
+    //         if (str_ends_with($item, '.jpg') || str_ends_with($item, '.png') || str_ends_with($item, '.jpeg')) {
+    //             File::delete(public_path("storage/foto-profil/" . $item));
+    //         }
+    //     }
+    // }
+
     public function deleteFotoProfilFromDB($user)
     {
-        foreach (explode('/', $user->foto_profil) as $item) {
-            if (str_ends_with($item, '.jpg') || str_ends_with($item, '.png') || str_ends_with($item, '.jpeg')) {
-                File::delete(public_path("storage/foto-profil/" . $item));
+        $fotoProfil = $user->foto_profil;
+
+        if ($fotoProfil) {
+            // Get the filename from the photo URL
+            $filename = basename($fotoProfil);
+
+            // Delete the existing profile picture if it exists
+            $path = public_path("storage/foto-profil/" . $filename);
+            if (File::exists($path)) {
+                File::delete($path);
             }
         }
     }

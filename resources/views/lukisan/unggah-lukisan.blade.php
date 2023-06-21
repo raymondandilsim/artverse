@@ -1,7 +1,7 @@
 @extends('Master')
 
 @section('Page-Title')
-    Tambah Produk
+    Tambah Lukisan
 @endsection
 
 @section('Page-Contents')
@@ -22,7 +22,7 @@
                                     class="text-danger">*</label></label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text" id="namaLukisan" name="namaLukisan" 
-                                    value="{{ old('namaLukisan') }}" placeholder="Contoh: Lukisan Edvard Munch The Scream Painting">
+                                    value="{{ old('namaLukisan') }}" placeholder="Masukkan Nama Lukisan serta Jenisnya, Contoh: Karikatur Bapak B.J. Habibie">
                             </div>
                         </div>
                         <div class="mb-3 row">

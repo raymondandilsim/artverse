@@ -68,6 +68,9 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+
+        // pas hosting diganti
+        // public_path('public_html/storage') => storage_path('app/public'),
     ],
 
 ];
