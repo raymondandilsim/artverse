@@ -14,15 +14,15 @@
             <div class="card-unggah-lukisan bg-white px-5 py-5 mb-5 rounded-3 shadow-lg">
                 <form action="/riwayatTransaksiAdmin">
                     <div class="mb-3 ">
-                        <select name="status" class="btn btn-secondary">
-                            <option value="Belum Bayar">Belum Bayar</option>
-                            <option value="Menunggu Konfirmasi Pembayaran">Menunggu Konfirmasi Pembayaran</option>
-                            <option value="Dikemas">Dikemas</option>
-                            <option value="Dikirim">Dikirim</option>
-                            <option value="Selesai">Selesai</option>
-                            <option value="Pembayaran Invalid">Pembayaran Invalid</option>
+                        <select name="status" class="btn btn-light" >
+                            <option value="Belum Bayar" class="btn btn-outline-secondary">Belum Bayar</option>
+                            <option value="Menunggu Konfirmasi Pembayaran" class="btn btn-outline-secondary">Menunggu Konfirmasi Pembayaran</option>
+                            <option value="Dikemas" class="btn btn-outline-secondary">Dikemas</option>
+                            <option value="Dikirim" class="btn btn-outline-secondary">Dikirim</option>
+                            <option value="Selesai" class="btn btn-outline-secondary">Selesai</option>
+                            <option value="Pembayaran Invalid" class="btn btn-outline-secondary">Pembayaran Invalid</option>
                         </select>
-                        <button type="submit" class="btn btn-primary">Filter</button>
+                        <button type="submit" class="btn btn-secondary">Filter</button>
                     </div>
                 </form>
                 <table class="table table-hover">
