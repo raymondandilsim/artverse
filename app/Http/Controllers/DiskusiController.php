@@ -12,6 +12,7 @@ class DiskusiController extends Controller
         $lukisan = Lukisan::findOrFail($id);
         $diskusis = Diskusi::whereNull('balasan_id')
                     ->where('lukisan_id', '=', $id)
+                    ->orderBy('created_at', 'desc')
                     ->paginate(7);
 
         foreach ($diskusis as $diskusi) {
