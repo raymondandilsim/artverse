@@ -82,6 +82,7 @@ Route::put('/unggahBuktiPelepasanDana/{id}', [TransaksiController::class, 'ungga
 Route::put('/selesaikanPesanan/{id}', [TransaksiController::class, 'selesaikanPesanan']);
 Route::put('/adminAccBuktiPembayaran/{id}', [TransaksiController::class, 'adminAccBuktiPembayaran'])->middleware(1);
 Route::put('/adminDisBuktiPembayaran/{id}', [TransaksiController::class, 'adminDisBuktiPembayaran'])->middleware(1);
+Route::get('/riwayatTransaksiAdmin', [TransaksiController::class, 'filter'])->middleware(1);
 
 // Keranjang
 Route::get('/keranjang', [KeranjangController::class, 'KeranjangPage'])->middleware(2);
