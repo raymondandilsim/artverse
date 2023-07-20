@@ -126,12 +126,12 @@
                                 <label for="pembayaran" class="col-sm-10 col-form-label">Metode Pembayaran</label>
                             </div>
                             <div class="row fw-bold mt-2">
-                                <label for="OVO" class="col-sm-3">OVO</label>
-                                <label for="nomorOvo" class="col-sm-8 ">0822325456 (a.n. Artverse)</label>
+                                <label for="Mandiri" class="col-sm-3">Mandiri</label>
+                                <label for="nomorMandiri" class="col-sm-8 ">56651656851 (a.n. Artverse)</label>
                             </div>
                             <div class="row fw-bold mt-2">
-                                <label for="GOPAY" class="col-sm-3">GOPAY</label>
-                                <label for="nomorGopay" class="col-sm-8 ">0822325456 (a.n. Artverse)</label>
+                                <label for="BRI" class="col-sm-3">BRI</label>
+                                <label for="nomorBri" class="col-sm-8 ">7841521584851 (a.n. Artverse)</label>
                             </div>
                             <div class="row fw-bold mt-2">
                                 <label for="BCA" class="col-sm-3">BCA</label>
