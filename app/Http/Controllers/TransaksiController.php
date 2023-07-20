@@ -20,7 +20,7 @@ class TransaksiController extends Controller
     public function checkoutPage(Request $request, $lukisanId){
         $user = Auth::user();
         $lukisan = Lukisan::findOrFail($lukisanId);
-        
+
         // Asal Kota Penjual (Origin)
         // $kotaPenjual = $lukisan->user->kota->nama_kota;
 
@@ -46,7 +46,7 @@ class TransaksiController extends Controller
         // }
 
         $quantity = request('quantity');
-        
+
         // $origin = $idOrigin;
         $origin = $lukisan->user->kota_id;
         // $destination = $idDestination;
@@ -68,14 +68,14 @@ class TransaksiController extends Controller
         $subtotalProduk = $quantity * $lukisan->harga;
         $asuransi = $quantity * (2/1000 * $lukisan->harga) + 5000;
         $hargaPengiriman = $request->jenisPengiriman;
-        
+
         $totalPembayaran = $subtotalProduk + $hargaPengiriman + $asuransi;
 
         return view('transaksi.checkout', compact('lukisan', 'quantity', 'cekOngkir'));
     }
 
     public function pembayaranPage(Request $request, $lukisanId, $quantity)
-    {   
+    {
         $transaksi = new Transaksi();
         $detailTransaksi = new DetailTransaksi();
         $user = Auth::user();
@@ -116,7 +116,7 @@ class TransaksiController extends Controller
     public function riwayatTransaksiAdminPage (){
 
         $user = Auth::user();
-        $transaksis = Transaksi::all();
+        $transaksis = Transaksi::orderBy('created_at', 'desc')->get();
 
         return view('transaksi.riwayat-transaksi-admin', compact('transaksis'));
     }
@@ -228,7 +228,7 @@ class TransaksiController extends Controller
 
             return back()->with('status', 'Bukti Pembayaran berhasil disetujui.');
         }
-        
+
     }
 
     public function adminDisBuktiPembayaran ($transaksiId){
@@ -244,7 +244,7 @@ class TransaksiController extends Controller
     }
 
     public function unggahBuktiPembayaran (Request $request, $transaksiId){
-        
+
         $transaksi = Transaksi::findOrFail($transaksiId);
 
         $buktiBayar = $request->file('buktiPembayaran');
@@ -304,7 +304,7 @@ class TransaksiController extends Controller
     }
 
     public function selesaikanPesanan($transaksiId){
-        
+
         $transaksi = Transaksi::findOrFail($transaksiId);
 
         $transaksi->status = 'Selesai';
