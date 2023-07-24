@@ -7,6 +7,7 @@ use App\Models\Lukisan;
 use App\Models\Transaksi;
 use App\Models\Ulasan;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -401,6 +402,28 @@ class LukisanController extends Controller
     }
 
     public function kategori(Request $request){
+        $kategori = $request->input('radioKategori');
+
+        if ($kategori == "penjualanTerbaik") {
+            // $semuaLukisans = Lukisan::all();
+
+            
+
+        } 
+        elseif ($kategori == "kedatanganBaru") {
+            $oneWeekAgo = Carbon::now()->subWeek(); // Get the date one week ago
+            $lukisans = Lukisan::where('created_at', '>=', $oneWeekAgo)->Paginate(6);
+        } 
+        else {
+            $lukisans = Lukisan::where('nama_lukisan', 'LIKE', "%$kategori%")
+            ->where('flag', 0)
+            ->whereHas('user', function ($query) {
+                $query->where('flag', 1);
+            })
+            ->Paginate(6);
+        }
+
+        return view('lukisan.lihat-semua-lukisan', ['lukisans' => $lukisans]);
         
     }
 }
