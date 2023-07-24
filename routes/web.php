@@ -68,6 +68,8 @@ Route::post('/buatUlasan/{lukisanId}/{transaksiId}', [LukisanController::class, 
 Route::get('/lihatSemuaUlasan/{id}', [LukisanController::class, 'lihatSemuaUlasan']);
 
 Route::get('/search', [LukisanController::class, 'searchResult']);
+Route::get('/kategori', [LukisanController::class, 'kategori']);
+
 
 // Transaksi
 Route::get('/checkoutPage/{id}', [TransaksiController::class, 'checkoutPage'])->middleware(2);

@@ -317,25 +317,55 @@ class TransaksiController extends Controller
     public function filter(Request $request){
         $status = $request->input('status');
 
-        if ($status == 'Belum Bayar') {
-            $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Belum Bayar')->with('detailTransaksis.lukisan')->get();
-        } 
-        elseif ($status === 'Menunggu Konfirmasi Pembayaran') {
-            $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Menunggu Konfirmasi Pembayaran')->with('detailTransaksis.lukisan')->get();
-        } 
-        elseif ($status === 'Dikemas') {
-            $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Dikemas')->with('detailTransaksis.lukisan')->get();
-        } 
-        elseif ($status === 'Dikirim') {
-            $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Dikirim')->with('detailTransaksis.lukisan')->get();
-        } 
-        elseif ($status === 'Selesai') {
-            $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Selesai')->with('detailTransaksis.lukisan')->get();
-        } 
-        elseif ($status === 'Pembayaran Invalid') {
-            $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Pembayaran Invalid')->with('detailTransaksis.lukisan')->get();   
-        }
+        $user = Auth::user();
 
+        if($user->id == 1){ //Admin
+            if ($status == 'Belum Bayar') {
+                $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Belum Bayar')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Menunggu Konfirmasi Pembayaran') {
+                $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Menunggu Konfirmasi Pembayaran')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Dikemas') {
+                $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Dikemas')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Dikirim') {
+                $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Dikirim')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Selesai') {
+                $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Selesai')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Pembayaran Invalid') {
+                $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Pembayaran Invalid')->with('detailTransaksis.lukisan')->get();
+            }
+        }
+        elseif($user->id == 2) { //Member
+            if ($status == 'Belum Bayar') {
+                $transaksis = Transaksi::where('user_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Belum Bayar')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Menunggu Konfirmasi Pembayaran') {
+                $transaksis = Transaksi::where('user_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Menunggu Konfirmasi Pembayaran')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Dikemas') {
+                $transaksis = Transaksi::where('user_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Dikemas')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Dikirim') {
+                $transaksis = Transaksi::where('user_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Dikirim')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Selesai') {
+                $transaksis = Transaksi::where('user_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Selesai')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Pembayaran Invalid') {
+                $transaksis = Transaksi::where('user_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Pembayaran Invalid')->with('detailTransaksis.lukisan')->get();
+            }
+
+        }
+        elseif($user->id == 3) { //Seniman
+            if ($status == 'Belum Bayar') {
+                $transaksis = Transaksi::where('penjual_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Belum Bayar')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Menunggu Konfirmasi Pembayaran') {
+                $transaksis = Transaksi::where('penjual_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Menunggu Konfirmasi Pembayaran')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Dikemas') {
+                $transaksis = Transaksi::where('penjual_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Dikemas')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Dikirim') {
+                $transaksis = Transaksi::where('penjual_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Dikirim')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Selesai') {
+                $transaksis = Transaksi::where('penjual_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Selesai')->with('detailTransaksis.lukisan')->get();
+            } elseif ($status === 'Pembayaran Invalid') {
+                $transaksis = Transaksi::where('penjual_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Pembayaran Invalid')->with('detailTransaksis.lukisan')->get();
+            }
+        }
+        
         return view('transaksi.riwayat-transaksi-admin', compact('transaksis'));
     }
 

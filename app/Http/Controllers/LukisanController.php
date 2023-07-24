@@ -399,4 +399,8 @@ class LukisanController extends Controller
 
         return view('lukisan.lihat-semua-ulasan', compact('ulasans', 'lukisan', 'totalBintang'));
     }
+
+    public function kategori(Request $request){
+        
+    }
 }
