@@ -12,7 +12,7 @@
 
         <div class="d-flex bg-detail justify-content-center align-items-start">
             <div class="card-unggah-lukisan bg-white px-5 py-5 mb-5 rounded-3 shadow-lg">
-                <form action="/riwayatTransaksiAdmin">
+                <form action="/riwayatTransaksi">
                     <div class="mb-3 ">
                         <select name="status" class="btn btn-light" >
                             <option value="Belum Bayar">Belum Bayar</option>
