@@ -404,7 +404,8 @@ class LukisanController extends Controller
         return view('lukisan.lihat-semua-ulasan', compact('ulasans', 'lukisan', 'totalBintang'));
     }
 
-    public function kategori(Request $request){
+    public function kategori(Request $request)
+    {
         $kategori = $request->input('radioKategori');
 
         if ($kategori == "penjualanTerbaik") {
@@ -420,7 +421,7 @@ class LukisanController extends Controller
                         return false;
                     }
 
-                    $totalStars = $lukisan->ulasans->sum('stars');
+                    $totalStars = $lukisan->ulasans->sum('bintang');
                     $averageStars = $totalStars / $lukisan->ulasans_count;
 
                     return $averageStars > 4.5;
@@ -436,22 +437,18 @@ class LukisanController extends Controller
                 $currentPage,
                 ['path' => request()->url()]
             );
-            
-        } 
-        elseif ($kategori == "kedatanganBaru") {
+        } elseif ($kategori == "kedatanganBaru") {
             $oneWeekAgo = Carbon::now()->subWeek(); // Get the date one week ago
             $lukisans = Lukisan::where('created_at', '>=', $oneWeekAgo)->Paginate(6);
-        } 
-        else {
+        } else {
             $lukisans = Lukisan::where('nama_lukisan', 'LIKE', "%$kategori%")
-            ->where('flag', 0)
-            ->whereHas('user', function ($query) {
-                $query->where('flag', 1);
-            })
-            ->Paginate(6);
+                ->where('flag', 0)
+                ->whereHas('user', function ($query) {
+                    $query->where('flag', 1);
+                })
+                ->Paginate(6);
         }
 
         return view('lukisan.lihat-semua-lukisan', ['lukisans' => $lukisans]);
-        
     }
 }
