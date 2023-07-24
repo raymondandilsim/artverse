@@ -8,7 +8,10 @@ use App\Models\Transaksi;
 use App\Models\Ulasan;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator as PaginationPaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -407,8 +410,33 @@ class LukisanController extends Controller
         if ($kategori == "penjualanTerbaik") {
             // $semuaLukisans = Lukisan::all();
 
-            
+            // Get all lukisans with their ulasans and ulasans count
+            $lukisanss = Lukisan::with('ulasans')
+                ->withCount('ulasans')
+                ->get()
+                ->filter(function ($lukisan) {
+                    if ($lukisan->ulasans_count === 0) {
+                        // Handle cases where there are no ulasans for the lukisan
+                        return false;
+                    }
 
+                    $totalStars = $lukisan->ulasans->sum('stars');
+                    $averageStars = $totalStars / $lukisan->ulasans_count;
+
+                    return $averageStars > 4.5;
+                });
+
+            // Paginate the filtered lukisans
+            $perPage = 6;
+            $currentPage = request()->query('page', 1);
+            $lukisans = new LengthAwarePaginator(
+                $lukisanss->forPage($currentPage, $perPage),
+                $lukisanss->count(),
+                $perPage,
+                $currentPage,
+                ['path' => request()->url()]
+            );
+            
         } 
         elseif ($kategori == "kedatanganBaru") {
             $oneWeekAgo = Carbon::now()->subWeek(); // Get the date one week ago
