@@ -333,6 +333,7 @@ class TransaksiController extends Controller
             } elseif ($status === 'Pembayaran Invalid') {
                 $transaksis = Transaksi::orderBy('created_at', 'desc')->where('status', 'Pembayaran Invalid')->with('detailTransaksis.lukisan')->get();
             }
+            return view('transaksi.riwayat-transaksi-admin', compact('transaksis'));
         }
         elseif($user->id == 2) { //Member
             if ($status == 'Belum Bayar') {
@@ -348,7 +349,7 @@ class TransaksiController extends Controller
             } elseif ($status === 'Pembayaran Invalid') {
                 $transaksis = Transaksi::where('user_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Pembayaran Invalid')->with('detailTransaksis.lukisan')->get();
             }
-
+            return view('transaksi.riwayat-transaksi-member', compact('transaksis'));
         }
         elseif($user->id == 3) { //Seniman
             if ($status == 'Belum Bayar') {
@@ -364,9 +365,10 @@ class TransaksiController extends Controller
             } elseif ($status === 'Pembayaran Invalid') {
                 $transaksis = Transaksi::where('penjual_id', $user->id)->orderBy('created_at', 'desc')->where('status', 'Pembayaran Invalid')->with('detailTransaksis.lukisan')->get();
             }
+            return view('transaksi.riwayat-transaksi-seniman', compact('transaksis'));
         }
         
-        return view('transaksi.riwayat-transaksi-admin', compact('transaksis'));
+        
     }
 
 }
