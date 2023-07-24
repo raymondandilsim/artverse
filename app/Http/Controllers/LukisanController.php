@@ -420,7 +420,7 @@ class LukisanController extends Controller
                         return false;
                     }
 
-                    $totalStars = $lukisan->ulasans->sum('stars');
+                    $totalStars = $lukisan->ulasans->sum('bintang');
                     $averageStars = $totalStars / $lukisan->ulasans_count;
 
                     return $averageStars > 4.5;
@@ -436,12 +436,12 @@ class LukisanController extends Controller
                 $currentPage,
                 ['path' => request()->url()]
             );
-            
-        } 
+
+        }
         elseif ($kategori == "kedatanganBaru") {
             $oneWeekAgo = Carbon::now()->subWeek(); // Get the date one week ago
             $lukisans = Lukisan::where('created_at', '>=', $oneWeekAgo)->Paginate(6);
-        } 
+        }
         else {
             $lukisans = Lukisan::where('nama_lukisan', 'LIKE', "%$kategori%")
             ->where('flag', 0)
@@ -452,6 +452,6 @@ class LukisanController extends Controller
         }
 
         return view('lukisan.lihat-semua-lukisan', ['lukisans' => $lukisans]);
-        
+
     }
 }
